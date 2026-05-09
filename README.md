@@ -1,5 +1,5 @@
 # Math.Notes.et.Problems
-My repository storing Linear Algebra, Exponent pairs, etc. notes, and adjunctive exercises.
+It is my repository storing Linear Algebra, Exponent pairs, etc. notes, and adjunctive exercises, which mainly based on self-study and my own chain of thoughts.
 
 Linear Algebra -- from _Linear Algebra and Geometery_ by _Shafarevich_, _Exercise in Algebra_ by _Kostrikin_, Multiple resource by Prof. _Gilbert Strang_, and _Axler_.
 
