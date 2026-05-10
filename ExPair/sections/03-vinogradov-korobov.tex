@@ -1,1 +1,373 @@
+\section{Exercises from \textit{254A, Notes 5: Bounding exponential sums and the zeta function}}
 
+Prerequisite Theorems: 
+\begin{theorem}
+    For $s = \sigma + it, \; 0 < \varepsilon \l \sigma \ll 1, \; \abs{t} \gg 1,$ 
+    \begin{equation}
+        \zeta(s) \ll_\varepsilon \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^{1-\sigma} \abs{\frac{1}{N} \sum_{N \l n < N+M} \e{- \frac{t}{2\pi} \log n)}}
+    \end{equation}
+    from the dyadic method and smooth cutoff.
+\end{theorem}
+
+\begin{theorem}
+    $2 \l N \ll T, \abs{I} < N$, $\abs{f^{(j)}(x)} = \exp(O(j^2))\frac{T}{N^j}.$ Then, 
+    \begin{align}
+        i) \; \text{(Van der Corput's estimate)} \; \frac{1}{N} \sum_{n \in I} \e{f(n)} &\ll \left( \frac{T}{N^k} \right)^\frac{1}{2^k-2} \log^\frac{1}{2}(T+2), \;\; \forall k \g 2\\
+        ii) \; \text{(Vinogradov's estimate)} \; \frac{1}{N} \sum_{n \in I} \e{f(n)} &\ll N^{-\frac{c}{k^2}}, \;\; \forall T \l N^k, c \text{ is absolute constant}.
+    \end{align}
+\end{theorem}
+The Van der Corput's estimate stated in the Theorem can be properly depicted by terminologies from exponent pairs, which is the A-process (Theorem 5.3). The result in the theorem is equivalent to $$(\kappa_k,\lambda_k) = \left( \frac{1}{2^k-2}, 1-\frac{k}{2^k-2} \right) \text{ is an exponent pair},$$ but $(\kappa_k,\lambda_k) = A^k(0, 1).$ 
+
+\subsection{Exercise 3 (Subconvexity bound)}
+\begin{theorem}
+    (i) Show that $\zeta \left( \frac{1}{2}+it \right) \ll (1+\abs{t})^{1/6} \log^{O(1)}(2+\abs{t})$ for all $t \in \mathbb{R}$. (Hint: use the $k=3$ case of the Van der Corput estimate) \\
+    (ii) For any $0 < \sigma < 1$, show that $\zeta(\sigma+it) \ll (1+\abs{t})^{\max( \frac{1-\sigma}{3}, \frac{1}{2} - \frac{2\sigma}{3}) + o(1)}$ as $\abs{t} \rightarrow \infty$ (the decay rate in the $o(1)$ is allowed to depend on $\sigma$).
+\end{theorem}
+
+\begin{proof} For $(i)$,
+$$\zeta \left( \frac{1}{2}+it \right) \ll_\varepsilon \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^\frac{1}{2} \abs{\frac{1}{N} \sum_{N \l n < N+M} e(-\frac{t}{2\pi}\log n)},$$ and for function $f(n) = -\frac{t}{2\pi}\log n$, $\abs{f^{(j)}(x)} \asymp \frac{\abs{t}}{N^j}.$ Then, we apply van der Corput's estimate when $k = 3$.
+\begin{align*}
+    \zeta \left( \frac{1}{2}+it \right) &\ll \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^\frac{1}{2} \left( \frac{\abs{t}^\frac{1}{6}}{N^\frac{1}{2}} \log^\frac{1}{2}(\abs{t} + 2) \right) \\
+    &\asymp \abs{t}^\frac{1}{6} \log^\frac{3}{2}(\abs{t}+2) \\
+    &\ll (1 + \abs{t})^\frac{1}{6} \log^{O(1)}(\abs{t}+2)
+\end{align*}
+
+For $(ii)$, we have to separate the interval $[N, 2N)$. When van der Corput's estimate offers a result that is worse than the trivial bound, we replace it with trivial bound. $$\left( \frac{T}{N^k} \right)^\frac{1}{2^k-2} \log^\frac{1}{2}(T+2) \gg 1 \Longleftrightarrow N \ll R_k(T) := T^\frac{1}{k} \log^\frac{1}{2k(2^k-2)}(T+2).$$ Thus, we apply the $B(T) \asymp T^{\frac{1}{k}+o(1)}$ to the $\zeta$ function's exponential sum $S_M = \frac{1}{N} \sum_{N \l n < N+M} e(-\frac{t}{2\pi}\log n)$: 
+\begin{align}
+    \zeta(s) &\ll_\varepsilon \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^{1-\sigma} \abs{S_M} \\
+    &\ll \log(\abs{t}+2) \min_{1 < N_1 \ll R_k(\abs{t}) \ll N_2 \ll \abs{t}} \left( N_1^{1-\sigma}, \abs{t}^\frac{1}{2^k-2} N_2^{1-\sigma-\frac{k}{2^k-2}} \log^\frac{1}{2}(\abs{t}+2) \right) \\ 
+    &\ll \left( R_k^{1-\sigma}(\abs{t}) + \abs{t}^{\frac{1}{2^k-2}} \log^\frac{1}{2}(\abs{t}+2) \max_{R_k(\abs{t}) \ll N \ll \abs{t}} N^{1-\sigma-\frac{k}{2^k-2}} \right) \log(\abs{t}+2)
+\end{align}
+
+Now, what's remains to be debunked is the $N^{1-\sigma-\frac{k}{2^k-2}}.$ If $1-\sigma-\frac{k}{2^k-2} < 0$, then the $(30)$ is equivalent to $\abs{t}^{\frac{1-\sigma}{k}+o(1)}$; if $1-\sigma-\frac{k}{2^k-2} > 0$, then the $(30)$ is $\abs{t}^{\max(1-\sigma-\frac{k-1}{2^k-2}, \frac{1-\sigma}{k})+o(1)}$. To sum up, we have derived $\abs{t}^{\max(1-\sigma-\frac{k-1}{2^k-2}, \frac{1-\sigma}{k})+o(1)}$
+\end{proof}
+
+\subsection{Exercise 4}
+
+\begin{theorem}
+    Let $t$ be such that $\abs{t} \g 100$, and let $\sigma \g 1/2$. \\
+    $(i)$ (Littlewood bound) Use the van der Corput estimate to show that $$\zeta(\sigma+it) \ll \log^{O(1)} \abs{t} \text{, whenever } \sigma \g 1 - O\! \left( \frac{(\log\log \abs{t})^2}{\log \abs{t}} \right).$$ \\
+    $(ii)$ (Vinogradov-Korobov bound) Use the Vinogradov estimate to show that $$\zeta(\sigma+it) \ll \log^{O(1)} \abs{t} \text{, whenever } \sigma \g 1 - O\! \left( \frac{(\log\log \abs{t})^{2/3}}{\log^{2/3} \abs{t}} \right).$$
+\end{theorem}
+
+\begin{proof}
+For the Littlewood bound, we derive $$\zeta(s) \ll_\varepsilon \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^{O(\delta)} \abs{S_M}, \;\; \delta := \frac{(\log\log \abs{t})^2}{\log \abs{t}}$$ due to $1 - \sigma \l O( \frac{(\log\log \abs{t})^2}{\log \abs{t}} ),$ in which the $S_M$ is the same as in exercise 3. We incorporate the train of thought in exercise 3 to estimate $\zeta(s),$ with $R_k(T) \asymp T^\frac{1}{k}.$
+\begin{align}
+    \zeta(s) &\ll \log(\abs{t}+2) \min_{1 < N_1 \ll R_k(\abs{t}) \ll N_2 \ll \abs{t}} \left( N_1^{O(\delta)}, \abs{t}^\frac{1}{2^k-2} N_2^{O(\delta)-\frac{k}{2^k-2}} \log^\frac{1}{2}(\abs{t}+2) \right) \\
+    &\ll \log^{O(1)} \abs{t} \min_{1 < N_1 \ll R_k(\abs{t}) \ll N_2 \ll \abs{t}} \left( N_1^{O(\delta)}, \abs{t}^\frac{1}{2^k-2} N_2^{O(\delta)-\frac{k}{2^k-2}} \right) \\
+    &\ll \log^{O(1)} \abs{t} \left( R_k(\abs{t})^{O(\delta)} \abs{t}^\frac{1}{2^k-2} R_k(\abs{t})^{O(\delta) - \frac{k}{2^{k}-2}} \right)^\frac{1}{2}
+\end{align}
+We arrive at $R_k(\abs{t})^{O(\delta)} \abs{t}^\frac{1}{2^k-2} R_k(\abs{t})^{O(\delta) - \frac{k}{2^{k}-2}}$ because $\min(a,b) \l (ab)^\frac{1}{2},$ and since the functions minimizing are monotonically increasing $f(N_1) = N_1^{O(\delta)}$, and monotonically decreasing $g(N_2) = \abs{t}^\frac{1}{2^k-2} N_2^{O(\delta)-\frac{k}{2^k-2}}$, the maximum appears at the boundary $R_k(\abs{t})$ for the entire minimum, which means $N_1 \asymp R_k(\abs{t}) \asymp N_2$. Set $k = [c \log \log \abs{t}]$ for some absolute constant $c,$ 
+\begin{align*}
+    (33) &\Longleftrightarrow \log^{O(1)} \abs{t} \left( \abs{t}^\frac{1}{2^k-2} \abs{t}^{O(\delta/k) - \frac{1}{2^{k}-2}} \right)^\frac{1}{2} \\ 
+    &\asymp  \left( \abs{t}^{O(\delta/k)} \right)^\frac{1}{2} \log^{O(1)} \abs{t} \\ 
+    &\asymp \abs{t}^{\frac{\log \log \abs{t}}{\log \abs{t}}} \log^{O(1)} \abs{t} \asymp \log^{O(1)} \abs{t}.
+\end{align*}
+
+For Vinogradov-Korobov bound, we apply Vinogradov's estimate, which is applicable only if $T \ll N^k$. We define some quantities first: $$S_M := \frac{1}{N} \sum_{N \l n < N+M} \e{- \frac{t}{2\pi} \log n}, \;\; \delta := \frac{(\log\log \abs{t})^{2/3}}{\log^{2/3} \abs{t}}, \;\; k = [\log \log \abs{t}].$$
+By classical arguments,
+\begin{align*}
+    \zeta(s) &\ll_\varepsilon \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^{1-\sigma} \abs{S_M} \\
+    &\ll \log(\abs{t}+2) \min_{1 < N_1 \ll \abs{t}^{1/k} \ll N_2 \ll \abs{t}} \left( N_1^{O(\delta)}, N_2^{O(\delta)-\frac{c}{k^2}} \right),
+\end{align*}
+for some absolute constant $c$. The Vinogradov-estimate can deal with the $N_2^k \gg \abs{t}$ just right. Since $f(N) = N^{O(\delta)}$ monotonically increases and $g(N) = N^{O(\delta)-\frac{c}{k^2}}$ monotonically decreases, the $\sup \min_{N_1 \ll \abs{t}^{1/k} \ll N_2} \Longleftrightarrow N_1 \asymp N_2 \asymp \abs{t}^{1/k}$.
+\begin{align*}
+    \zeta(s) &\ll \log(\abs{t}+2) \min \left( \abs{t}^{O(\delta/k)}, \abs{t}^{O(\delta/k)-\frac{c}{k^3}} \right) \\
+    &\ll \abs{t}^{O(\delta/k)-\frac{c}{k^3}} \log(\abs{t}+2) \ll \log^{O(1)} \abs{t}.
+\end{align*}
+\end{proof}
+
+\subsection{Remarks on the choice of $k$ and technical points in the Littlewood bound}
+
+\begin{remark}[Choice of the parameter $k$ in van der Corput's method]
+In the proof of the Littlewood bound for $\zeta(\sigma+it)$, the parameter $k$ in the $k$-th derivative test of van der Corput's method must be chosen with care. 
+Although the bound obtained from the oscillatory integral formally improves as $k$ increases, the implicit constant in the van der Corput estimate grows rapidly with $k$.
+
+We reconstruct the proof procedure of Weyl-differencing, the fundamental principal of A-process. 
+\begin{enumerate}
+    \item $$\abs{S}^2 = \sum_{h} \sum_{n} e(f(n+h)-f(n)) \Rightarrow \abs{S}^2 \l \sum_{|h|\l H} \abs{\sum_{n} e(\Delta_h f(n))} + \text{(error)},$$ losing factor $H$. Cauchy-Schwarz, $$\abs{S}^4 \ll H \sum_h \abs{\sum_n e(\Delta_h f(n))}^2,$$ add one $H$ to the constant $C_k$.
+    \item Iterate $k$ times, we derive $$\abs{S}^{2^k} \ll \sum_{h_1,h_2,\dots,h_k} \abs{\sum_n e(\Delta_{h_1} \Delta_{h_2} \cdots \Delta_{h_k} f(n))}.$$ Considering the difference function, $$\Delta_{h_1} \Delta_{h_2} \cdots \Delta_{h_k} f(n) = \sum_{J\subseteq\{1,\dots,k\}} (-1)^{k-|J|} f\Bigl(n+\sum_{j\in J} h_j\Bigr).$$ The $k$-fold difference involves $2^k$ shifted values of $f$, reflecting an exponential combinatorial complexity.
+    \item We can also analyze the Taylor expansion of difference since we have $f(x+h) = f(x) + f'(x)h +o(h)$: $$\Delta_{h_1} \Delta_{h_2} \cdots \Delta_{h_k} f(n) = \frac{f^{(k)}(n)}{k!}h_1h_2h_3\cdots h_k + O\left(\sum_i |h_i|^{k+1}\right).$$ We must at least multiply $k!$ to obtain effective oscillation of function $f$.
+\end{enumerate}
+To sum up, we have a $c^k$ for Cauchy-Schwarz, a $\prod_i H_i \asymp c^k$, and a $k!$ from differencing function. For a constant $c$, 
+\begin{equation}
+    C_k \gtrsim c^k k! \asymp c^k k^{k+\frac{1}{2}} e^{-k} \asymp (Ck)^k.
+\end{equation}
+\end{remark}
+
+\begin{remark}[The critical scale $R_k(t)$]
+We know $R_k(t) \asymp \abs{t}^{1/k}.$ In the estimation of $\zeta(s)$ via short exponential sums, one naturally encounters expressions of the form
+$$\min_{1 < N_1 \ll R_k(t) \ll N_2 \ll \abs{t}} \left( N_1^{O(\delta)}, \abs{t}^{\frac{1}{2^k-2}} N_2^{O(\delta)-\frac{k}{2^k-2}} \right),$$
+The first term is monotone increasing in $N_1$, while the second term is monotone decreasing in $N_2$. 
+Hence the worst (largest) value of the minimum occurs at the boundary
+$$ \sup \min_{N_1 \ll R_k(\abs{t}) \ll N_2} (f(N_1), g(N_2)) \Longleftrightarrow N_1 \asymp N_2 \asymp R_k(t).$$ This explains why the scale $R_k(t)$ is intrinsic to the argument and cannot be avoided.
+\end{remark}
+
+\begin{remark}[Common pitfalls]
+In applying van der Corput's method to the Littlewood bound, the following points are essential:
+\begin{itemize}
+    \item One must not take $k$ to grow faster than $\log \log \abs{t}$, since the implicit constant $C_k$ grows at least as fast as $(Ak)^k$.
+    \item The appearance of negative powers of $\abs{t}$ in intermediate expressions should not be overinterpreted; at the critical scale $R_k(t)$, these powers cancel exactly.
+    \item The final bound is of the form $$\zeta(\sigma+it) \ll \abs{t}^{O(\delta/k)}\log^{O(1)}\abs{t},$$ and since $\delta/k=o(1)$ for $k\asymp \log\log \abs{t},$ this yields the Littlewood bound $$\zeta(\sigma+it)\ll \log^{O(1)}\abs{t}.$$
+\end{itemize}
+\end{remark}
+
+\subsection{Exercise 5 (Vinogradov-Korobov in arithmetic progressions)}
+
+\begin{theorem}
+    Let $\chi$ be a non-principal character of modulus $q$.
+    \begin{itemize}
+        \item[(i)] (Vinogradov-Korobov bound) Use the Vinogradov estimate to show that 
+          \[ L(\sigma + it, \chi) \ll \log^{O(1)} (q\abs{t}) \]
+          whenever $\abs{t} \g 100$ and
+          \[ \sigma \g 1 - O\!\left( \min\!\left( \frac{\log\log(q\abs{t})}{\log q}, \frac{(\log\log(q|t|))^{2/3}}{\log^{2/3} |t|} \right) \right). \]
+    
+          (Hint: use the Vinogradov estimate and a change of variables to control $\sum_{n \in I: n \equiv a \pmod{q}} \exp(-it \log n)$ for various intervals $I$ of length at most $N$ and residue classes $a \pmod{q}$, in the regime $N \g q^2$ (say). For $N < q^2$, do not try to capture any cancellation and just use the triangle inequality instead.)
+        
+        \item[(ii)] Obtain a zero-free region
+          $$\set{\sigma + it : \sigma > 1 - c \min\!\left( \frac{1}{(\log |t|)^{2/3} (\log\log |t|)^{1/3}}, \frac{1}{\log q} \right), \, |t| \g 200}$$
+          for $L(s, \chi)$, for some (effective) absolute constant $c > 0$.
+        
+        \item[(iii)] Obtain the prime number theorem in arithmetic progressions with an error term
+          $$\sum_{\substack{n \l x \\ n \equiv a \pmod{q}}} \Lambda(n) = \frac{x}{\phi(q)} + O\!\left( x \exp\!\left( -c_A \frac{\log^{3/5} x}{(\log\log x)^{1/5}} \right) \right),$$ whenever $x > 100$, $q \l \log^A x$, $a \pmod{q}$ is primitive, and $c_A > 0$ depends (ineffectively) on $A$.
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+The most crucial obstacle is propagating the result of $\zeta$ to $L(s, \chi).$
+
+\subsubsection{Vinogradov-Korobov bound of Dirichlet $L(s, \chi)$}
+For $(i)$, we first analyze the $L(s, \chi), s = \sigma + it$. We will try to prove a lemma that is quite similar to Theorem 7.1. 
+
+By some transformation, 
+\begin{align}
+    L(s, \chi) &= \sum_n \frac{\chi(n)}{n^s} = \sum_{\substack{a \l q \\ (a, q) =1}} \chi(a) \sum_{n \equiv a \pmod{q}} \frac{1}{n^s} \\
+    &= \sum_{\substack{a \l q \\ (a, q) =1}} \chi(a) \sum_{n} \frac{1}{(a+qn)^s} = q^{-s} \sum_{\substack{a \l q \\ (a, q) =1}} \chi(a) \zeta\! \left( s,\frac{a}{q} \right),
+\end{align}
+we reduce the study of $L(s,\chi)$ to a linear combination of Hurwitz zeta functions. We shall use $\alpha = \frac{a}{q}$ for a given and fixed $a$.
+
+We define the smooth cut-off function:
+\begin{equation*}
+    \eta(x) = \left\{ \begin{array}{rcl}
+    0 & \mbox{for} & x > C \\
+    1 & \mbox{for} & x < -C \\
+    C^\infty(\mathbb R) & \mbox{for} & x \in [-C,C]
+\end{array} \right..
+\end{equation*}
+And we introduce the function
+\begin{align}
+    f(s) :=& \sum_n \frac{1}{(n+\alpha)^s} \eta(\log (n + \alpha) - \log x) + \int_{\mathbb{R}} \frac{(t + \alpha)^{-s}}{1-s} \eta'(\log (t + \alpha) - \log x) dt \\ 
+    =& \sum_n \frac{1}{(n+\alpha)^s} \eta(\log (n + \alpha) - \log x) + \int_{\mathbb{R}} \frac{e^{(1-s)u}}{1-s} \eta'(u - \log x) du \quad (u = \log (t+\alpha)) \\
+    =& \sum_n \frac{1}{(n+\alpha)^s} \eta(\log (n + \alpha) - \log x) + x^{1-s} \int_{\mathbb{R}} \frac{e^{(1-s)t}}{1-s} \eta'(t) dt
+\end{align}
+It would converge uniformly to $\zeta(s, \alpha)$ in the region $\set{s: \Re(s) > 0; s \neq 1}$ for trivial arguments shown in Exercise 32 of \textit{254A, Supplement 3: The Gamma function and the functional equation}. For critical strip $\set{s: \Re(s) \in [0, 1]},$ the integral $x^{1-s} \int_{\mathbb{R}} \frac{e^{(1-s)t}}{1-s} \eta'(t) dt = - x^{1-s} \int_{\mathbb{R}} e^{(1-s)t} \eta(t) dt.$
+
+\begin{lemma}
+    Similar to the $\zeta(s)$ scenario, we deduce $$\sum_n \frac{1}{(n+\alpha)^s} \psi(\log (n + \alpha) - \log x) - x^{1-s} \int_{\mathbb{R}} e^{(1-s)t} \psi(t) dt = O_{\psi, A}(x^{-A})$$ for $s$ in the critical strip $\set{s: 0 < \Re(s) < 1}.$ In addition, $x \gg_\psi 1 + \abs{t},$ and $\psi(u)$ here is a smooth, compactly supported function ( $\exists \text{ constants } A < B, \; \psi(u) \neq 0 \Leftrightarrow u \in [A,B]; \quad \psi \in C^\infty((A,B))$ ). 
+\end{lemma}
+\begin{proof}
+The integral $\int_{\mathbb{R}} e^{(1-s)t} \psi(t) dt = O_{\psi, A}(x^{-A})$ can be derived from $\int_{\mathbb{R}} \frac{1}{(t + \alpha)^s} \psi(\log (t + \alpha) - \log x) dt,$ which is $x^{1-s} \int_{\mathbb{R}} \frac{e^{(1-s)t}}{1-s} \psi'(t) dt$ for critical strip.
+We apply Poisson Summation Formula due to $n + \alpha \asymp x \gg_\psi 1 + \abs{t}$, 
+\begin{align*}
+    &\sum_{n} \frac{1}{(n + \alpha)^s} \psi(\log (n + \alpha) - \log x) = \sum_{m \in \mathbb{Z}} H(m), \\
+    &H(m) := \int_{\mathbb{R}} \frac{1}{(y + \alpha)^s} \psi(\log (y + \alpha) - \log x) \cdot e(m(y + \alpha)) dy.
+\end{align*}
+We substitute $s$ with $\sigma + it$ and $u = \log(y + \alpha) - \log x$ with $y$. 
+\begin{align*}
+    H(m) &= x^{1-s} \int_{\mathbb{R}} e^{(1-s)u} \psi(u) e(mxe^u) du \\
+    &= x^{1-s} \int_{\mathbb{R}} \underbrace{e^{(1-\sigma)u} \psi(u)}_{\hat{\psi}(u)} \e{mx \underbrace{\left( e^u - \frac{t}{2\pi mx}u \right)}_{h_m(u)}} du = x^{1-s} \int_{\mathbb{R}} \hat{\psi}(u) \e{mx h_m(u)} du. \\
+    H(0) &= \int_{\mathbb{R}} \frac{1}{(y + \alpha)^s} \psi(\log (y + \alpha) - \log x) dt.
+\end{align*}
+Thus, we reduce the lemma to $$\sum_{m \in \mathbb{Z}} H(m) - H(0) \ll_{\psi, A} x^{-A}.$$ Now, the proof is completely the same as $\zeta(s).$ $$\sum_{m \in \mathbb{Z}} H(m) - H(0) \ll_{\psi, A} x^{-A} \Longleftrightarrow \int_{\mathbb{R}} \hat{\psi}(u) \e{mx h_m(u)} du \ll_{\psi, A} (\abs{m} x)^{-A}.$$
+
+Since the $\psi(u)$ confines the growth of $u \ll_C 1$, $h^{(k)}_m(u) = O_{\psi, k}(1).$ We conduct integration by-parts for the integral asymptotically in support of $\psi(u)$: $\e{mx h_m(u)} du = \frac{1}{2\pi i mx h'_m(u)} d(\e{mx h_m(u)}).$ $$\int_{\mathbb{R}} \hat{\psi}(u) \e{mx h_m(u)} du \asymp_\psi \frac{1}{mx} \int_{\mathbb{R}} \hat{\psi}(u) d(\e{mx h_m(u)}) \asymp_\psi \frac{1}{mx} \left( 1 - \int_{\mathbb{R}} \hat{\psi}'(u) \e{mx h_m(u)} du \right) \asymp_\psi \cdots \ll_{\psi, A} x^{-A}.$$ 
+\end{proof}
+
+We now incorporate Lemma 7.9. to prove the following result
+\begin{theorem}
+    Hurwitz $\zeta(s, \alpha)$ has similar properties to Riemann $\zeta(s).$
+    \begin{equation}
+        \zeta(s, \alpha) = \sum_n \frac{1}{(n+\alpha)^s} \eta(\log(n + \alpha) - \log x) - x^{1-s} \int_{\mathbb{R}} e^{(1-s)u} \eta(u) du + O_{\eta, A, \sigma}(x^{-A})
+    \end{equation}
+\end{theorem} 
+\begin{proof}
+Assume that $\psi$ is a smooth, compactly supported function that equals $\eta$ when $u \in [-C, C],$ we obtain
+\begin{align*}
+    f(s) &= \left( \sum_{n < e^C x} \frac{1}{(n + \alpha)^s} - x^{1-s} \int^{-C}_{-\infty} e^{(1-s)u} du \right) + \left( \sum_n \frac{1}{(n+\alpha)^s} \psi(\log (n + \alpha) - \log x) - x^{1-s} \int_{\mathbb{R}} e^{(1-s)t} \psi(t) dt \right) \\
+    &= \left( \sum_{n < e^C x} \frac{1}{(n + \alpha)^s} - \frac{x^{1-s}e^{-(1-s)C}}{1-s} \right) + O_{\eta, A, \sigma}(x^{-A}) \\
+    &\sim \zeta(s, \alpha) + O_{\eta, A, \sigma}(x^{-A}), \quad (x \rightarrow \infty).
+\end{align*}
+\end{proof}
+
+Choosing $x \asymp |t|+1$, the main term $x^{1-s}\int e^{(1-s)u}\eta(u)\,du $ is $ O_{\eta,\sigma}(1)$. Hence, we obtain the truncated representation $\zeta(s,\alpha) = \sum_n (n+\alpha)^{-s}\eta(\log(n+\alpha)-\log x) + O_{\eta,\sigma}(1).$
+
+\begin{theorem}
+    We deduce the following bound of Hurwitz $\zeta(s, \alpha)$ for $s = \sigma + it$, $0 < \varepsilon \l \sigma \ll 1$, and $\abs{t} \gg 1.$
+    $$\zeta(s, \alpha) \ll \log(\abs{t} + 2) \sup_{1 \l M \l N \ll \abs{t}} N^{-\sigma} \abs{\sum_{N \l n < N+M} \e{- \frac{t}{2\pi} \log(n + \alpha)}}.$$
+\end{theorem}
+\begin{proof}
+We know the result $$\zeta(s,\alpha) = \sum_n (n+\alpha)^{-s}\eta(\log(n+\alpha)-\log (C \abs{t})) + O_{\eta,\sigma}(1)$$ for some constant $C$ from the last theorem. Utilizing dyadic decomposition, 
+\begin{equation}
+    \zeta(s, \alpha) \ll 1 + \log(\abs{t} + 2) \cdot \sup_{1 < N \ll \abs{t}} \abs{\sum_{N \l n < 2N} \frac{1}{(n + \alpha)^s} \eta(\log(n+\alpha)-\log (C \abs{t}))}
+\end{equation}
+
+We seek to transform the $\sum_{N \l n < 2N} \frac{1}{(n + \alpha)^s} \eta(\log(n+\alpha)-\log (C \abs{t}))$ into exponential sums. 
+\begin{align*}
+    &\frac{1}{(n + \alpha)^s} \eta(\log(n+\alpha)-\log (C \abs{t})) = N^{-\sigma} \e{- \frac{t}{2\pi}\log(n + \alpha)} F_N(n) \\
+    &F_N(n) := \left( \frac{N}{n + \alpha} \right)^\sigma \eta(\log(n+\alpha)-\log (C \abs{t})).
+\end{align*}
+It thus suffices to show that $$ \sum_{N \l n < 2N} \e{- \frac{t}{2\pi} \log(n + \alpha)} F_N(n) \ll \sup_{1 \l M \l N} \abs{\sum_{N \l n < N+M} \e{- \frac{t}{2\pi} \log(n + \alpha)}}.$$ However, from simple Abel summation, $LHS$ can be rewritten as: 
+\begin{align*}
+    &F_N(2N) \sum_{N \l n < 2N} \e{- \frac{t}{2\pi} \log(n + \alpha)} - \int_0^N \sum_{N \l n < N+M} \e{- \frac{t}{2\pi} \log(n + \alpha)} \cdot F'_N(M) dM \\
+    \ll & \abs{\sum_{N \l n < 2N} \e{- \frac{t}{2\pi} \log(n + \alpha)}} + \sup_{1 \l M \l N \ll \abs{t}} \abs{\sum_{N \l n < N+M} \e{- \frac{t}{2\pi} \log(n + \alpha)}} \int_0^N F'_N(M) dM \\
+    \asymp &\sup_{1 \l M \l N \ll \abs{t}} \abs{\sum_{N \l n < N+M} \e{- \frac{t}{2\pi} \log(n + \alpha)}}.
+\end{align*}
+\end{proof}
+Now, we are ready to finish the proof by constructing a exponential sum bound for $L(s, \chi).$
+\begin{align*}
+    L(\sigma + it, \chi) &\ll q^{-s} \sum_{\substack{a \l q \\ (a, q) =1}} \chi(a) \log(\abs{t} + 2) \sup_{1 \l M \l N \ll \abs{t}} N^{-\sigma} \abs{\sum_{N \l n < N+M} \e{- \frac{t}{2\pi} \log(n + \frac{a}{q})}} \\
+    &\asymp q^{-\sigma} \log(\abs{t} + 2) \sum_{\substack{a \l q \\ (a, q) =1}} \chi(a) \sup_{1 \l M \l N \ll \abs{t}} N^{-\sigma} \abs{\sum_{\substack{qN+a \l n < q(N+M)+a \\ n \equiv a \pmod{q}}} \e{- \frac{t}{2\pi} \log n}} \\
+    &\ll q^{-\sigma} \log(\abs{t} + 2) \sup_{1 \l M \l N \ll \abs{t}} N^{-\sigma}\underbrace{\abs{\sum_{n \in I_q(N,M)} \chi(n) \e{- \frac{t}{2\pi} \log n}}}_{S(I_q(N,M))},
+\end{align*}
+in which $I_q(N,M) := \set{n: \; qN \l n < q(N+M)},$ since $\chi(n)=0$ whenever $(n,q)>1,$ the sum over $a \bmod q$ may be recombined into a single sum over integers $n \equiv a \pmod q$.
+
+we evaluate the sum using the Vinogradov estimate (Theorem 7.2 $(ii)$) with $f(x) = -\frac{t}{2 \pi} \log x, \; \abs{I_q(N, M)} \asymp qM \l qN,$ and we define $\delta_1 = \frac{\log\log(q|t|)}{\log q}, \delta_2 =  \frac{(\log\log(q|t|))^{2/3}}{\log^{2/3} |t|}.$ Since we recognize that $f^{(k)}(n) = \exp(O(j^2)) \frac{\abs{t}}{N^k},$ we separate the range of $N$ into $N \l q^2$(trivial estimate) and $N > q^2$(Vinogradov).
+\begin{align*}
+    &\sup_{1 \l M \l N \ll \abs{t}} qMN^{-\sigma} \left( \frac{1}{qM} S(I_q(N,M)) \right) \\ 
+    \ll \; &q^{1+2(1-\sigma)} + \sup_{1 \l M \l N \ll \abs{t}} \left( \sup_{\substack{q^3 < qN \l \abs{t}^{1/k} \\ \text{or} \\ qM < \abs{t}^{1/k} < qN}}(qMN^{-\sigma}) + \sup_{\abs{t}^{1/k} < qM \l qN} (qM)^{1-\frac{c}{k^2}}N^{-\sigma} \right) \\
+    \ll \; &q^{1+2(1-\sigma)} + \sup_{1 \l M \l N \ll \abs{t}} \left( q^\sigma \abs{t}^\frac{1-\sigma}{k} + q^{1-\frac{c}{k^2}} \sup_{\abs{t}^{1/k} < qN} N^{1-\sigma-\frac{c}{k^2}} \right)
+\end{align*}
+For the last maximum of $N,$
+\begin{equation*}
+    q^{1-\frac{c}{k^2}} \sup_{\abs{t}^{1/k} < qN} N^{1-\sigma-\frac{c}{k^2}} = \left\{ \begin{array}{rcl}
+        q^{1-\frac{c}{k^2}} \frac{\abs{t}^{\frac{1-\sigma}{k}-\frac{c}{k^3}}}{q^{1-\sigma-\frac{c}{k^2}}} = q^\sigma \abs{t}^{\frac{1-\sigma}{k}-\frac{c}{k^3}} & \mbox{for} & 1-\sigma-\frac{c}{k^2} < 0 \quad (N = \abs{t}^{1/k}) \\
+        q^{1-\frac{c}{k^2}} \abs{t}^{1-\sigma-\frac{c}{k^2}} & \mbox{for} & 1-\sigma-\frac{c}{k^2} > 0 
+    \end{array} \right..
+\end{equation*}
+We seek to exclude the second scenario by setting $k = \frac{(\log|t|)^{1/3}}{(\log\log|t|)^{1/3}}.$ Therefore, the final bound $\log^{O(1)} (q\abs{t})$ is attained due to $1 - \sigma \ll \min(\delta_1, \delta_2) \ll k^{-2}, \; \abs{t}^\frac{1-\sigma}{k} \ll \abs{t}^\frac{\log \log \abs{t}}{\log \abs{t}} = \log^{O(1)} \abs{t},$ and the fact that $q^{1+2(1-\sigma)} = O_q(1).$
+
+\subsubsection{Zero-Free Region of $L(s, \chi)$}
+For $(2),$ we employ the Vinogradov-Korobov bound to determine the Zero-free Region.
+
+We deal with the $\zeta(s)$ case of the Zero-Free Region via the Vinogradov-Korobov bound (Theorem 7.4 $(ii)$) first and seek propagation.
+
+\begin{lemma}
+    When $s = \sigma + it$, $|t| \g 200$, and $\sigma > 1 - \delta(t)$, the Vinogradov-Korobov bound $$\abs{\zeta(s)} \ll \log^{O(1)} \abs{t}$$ holds, in which $\delta(t) := c\frac{(\log\log \abs{t})^{2/3}}{\log^{2/3} \abs{t}}$ and $c > 0$ are absolute constants. Then, for $\sigma = \Re s > 1$
+    \begin{equation}
+        -\frac{\zeta'}{\zeta}(s) = -\sum_{\rho: |\rho - s| \l \delta(t)} \frac{1}{s - \rho} + O\left( \log^{2/3} |t| (\log \log |t|)^{1/3} \right).
+    \end{equation}
+    The sum is over zeros $\rho$ of $\zeta(s)$. Furthermore, the number of zeroes $\rho$ in the above sum is $O(\log \log t)$.
+\end{lemma}
+\begin{proof}
+We analyze $f(s) = (s-1)\zeta(s)$ instead of directly studying $\zeta(s),$ so the main function is holomorphic at $\Re s > 0$ and $\frac{f'}{f}(s) = \frac{1}{s-1} + \frac{\zeta'}{\zeta}(s).$ This lemma follows by applying Tao’s \textit{truncated log-derivative formula} to $f(s)$, together with the Vinogradov–Korobov bound.
+
+First, we define the disk set $D(s, R) := \set{z \in \mathbb{C}: \abs{z - s} \l R}$ and utilize $D = D(1+\delta(t)+it, \delta(t)).$ Furthermore, we have to construct a $M$ that $\abs{f(z)} \l M^{O_{c_1, c_2}(1)} \abs{f(z_0)}, z \in D, z_0 := 1+\delta(t)+it, 0 < c_1 < c_2 < 1.$ From the Vinogradov-Korobov bound, we can use $M = \log^{O(1)} \abs{t},$ and thus $\log M \asymp \log \log t.$ 
+
+Normalizing $z_0 = 0$ without loss of generality, the disk is turned to $D = D(0, \delta(t))$. What's left to prove is that $$\sum_{\rho: \abs{\rho} \l \delta(t)} \frac{1}{s - \rho} - \frac{f'}{f}(s) = O(\frac{\log M}{\delta(t)}) = O(\frac{\log \log t}{\delta(t)}).$$ 
+
+Applying Tao’s truncated log-derivative formula to $f$ with radius
+$r = \delta(t)$, we obtain $$\frac{f'}{f}(s) = \sum_{\rho: |\rho - s| \l c_1 \delta(t)} \frac{1}{s-\rho} + O\!\left(\frac{\log M}{\delta(t)}\right) = \sum_{\rho: |\rho - s| \l c_1 \delta(t)} \frac{1}{s-\rho} + O\! \left( \log^{2/3}|t|(\log\log|t|)^{1/3} \right).$$ Absorbing the term $\frac{1}{s-1}$ to $O(\log^{2/3}|t|(\log\log|t|)^{1/3})$ gives the desired formula for $-\zeta'(s)/\zeta(s)$. This completes the proof.
+\end{proof}
+
+\begin{corollary}
+    When $s = \sigma + it$, $|t| \g 200$, and $\sigma > 1 - \delta(t)$, the Vinogradov-Korobov bound $$\abs{L(s, \chi)} \ll \log^{O(1)} (q\abs{t})$$ holds, in which $$\delta(t) := c \min\left( \frac{\log\log(q\abs{t})}{\log q}, \frac{(\log\log(q|t|))^{2/3}}{\log^{2/3} |t|} \right)$$ and $c > 0$ are absolute constants. Then, for $\sigma = \Re s > 1$
+    \begin{equation}
+        -\frac{L'}{L}(s, \chi) = -\sum_{\rho: |\rho - s| \l \delta(t)} \frac{1}{s - \rho} + O\! \left( \min \left( \log q, \log^{2/3} |t| (\log \log |t|)^{1/3} \right) \right).
+    \end{equation}
+    The sum is over zeros $\rho$ of $L(s, \chi)$. Furthermore, the number of zeroes $\rho$ in the above sum is $O(\log \log (q|t|))$.
+\end{corollary}
+\begin{proof}
+We follow almost identical procedures as in $\zeta$ case; nonetheless, $L(s, \chi)$ is more generalized than $\zeta(s).$ We noticed that the $L(s, \chi)$ is holomorphic and pole-free in $\Re s > 0$ since $\chi$ is non-principal. After we normalize the center of the disk set to $D(0, \delta(t)),$ we apply the Vinogradov-Korobov bound for $L(s, \chi)$ in order to finalize the $M = \log^{O(1)} (q \abs{t}),$ and thus, 
+\begin{align*}
+    -\frac{L'}{L}(s, \chi) &= -\sum_{\rho: |\rho - s| \l c_1 \delta(t)} \frac{1}{s - \rho} + O\! \left( \frac{\log M}{\delta(t)} \right) \\
+    &= -\sum_{\rho: |\rho - s| \l c_1 \delta(t)} \frac{1}{s - \rho} + O\! \left( \min \left( \log q, \log^{2/3} |t| (\log \log |t|)^{1/3} \right) \right).
+\end{align*}
+\end{proof}
+
+Considering the quantity $-\Re \frac{L'}{L}(s, \chi),$
+\begin{align*}
+    -\Re \frac{L'}{L}(s, \chi) &= -\sum_{\rho: |\rho - s| \l \delta(t)} \Re \frac{1}{s - \rho} + O\! \left( \min \left( \log q, \log^{2/3} |t| (\log \log |t|)^{1/3} \right) \right) \\
+    &= O\! \left( \min \left( \log q, \log^{2/3} |t| (\log \log |t|)^{1/3} \right) \right).
+\end{align*}
+If we have a zero $\rho = \beta + it \in S := \set{\sigma + it : \sigma > 1 - c \min\!\left( \frac{1}{(\log |t|)^{2/3} (\log\log |t|)^{1/3}}, \frac{1}{\log q} \right), \, |t| \g 200}$ such that it has the same imaginary part as $s = \sigma + it$ and $\abs{\sigma - \beta} > \delta(t)$, then the bound of $-\Re \frac{L'}{L}(s, \chi)$ is surmountable. $$-\Re \frac{L'}{L}(\sigma + it, \chi) \l - \frac{1}{\sigma - \beta} + O\! \left( \min \left( \log q, \log^{2/3} |t| (\log \log |t|)^{1/3} \right) \right).$$ 
+
+Expanding the log-derivative of $L(s, \chi)$ along with the familiar inequality regarding the real parts,
+\begin{align*}
+    &\begin{cases}
+        \displaystyle -\Re \frac{L'}{L}(\sigma + it, \chi) = \sum_{n} \frac{\Lambda(n)}{n^\sigma} \Re(\chi(n) n^{-it}) \\
+        3 + 4 \Re z + \Re z^2 \g 0
+    \end{cases}, \\
+    \Longrightarrow& -3 \frac{L'}{L}(\sigma, \chi) - 4 \Re \frac{L'}{L}(\sigma + it, \chi) - \Re \frac{L'}{L}(\sigma + 2it, \chi^2) \g 0.
+\end{align*}
+We estimate the two quantities involving log-derivative, noting that $\Re \frac{L'}{L}(\sigma + it, \chi)$ is already derived. $$-\frac{L'}{L}(\sigma, \chi) = \sum_{n} \frac{\Lambda(n)}{n^\sigma} = -\frac{\zeta'}{\zeta}(\sigma) = \frac{1}{\sigma - 1} + O(1).$$
+
+If $\chi_1$ is the primitive character that induces $\chi^2,$ then by Euler product formula, 
+\begin{align*}
+    &L(s, \chi^2) = \prod_{p \nmid q} \frac{1}{1 - \chi^2(p) p^{-s}} = \prod_{p \nmid q} \frac{1}{1 - \chi_1(p) p^{-s}} = L(s,\chi_1) \prod_{p|q} 1 - \chi_1(p)p^{-s} \\
+    \Longrightarrow &\frac{L'}{L}(s, \chi^2) = \frac{L'}{L}(s, \chi_1) + \sum_{p|q} \frac{\chi_1(p) p^{-s}}{1 - \chi_1(p) p^{-s}} \log p \\
+    \Longrightarrow &\abs{\frac{L'}{L}(s, \chi^2) - \frac{L'}{L}(s, \chi_1)} \l \sum_{p|q} \frac{p^{-\sigma}}{1 - p^{-\sigma}} \log p \l \sum_{p|q} \log p \l \log q.
+\end{align*}
+Thus, we are able to claim $$-\Re \frac{L'}{L}(\sigma + 2it, \chi^2) = O\! \left( \min \left( \log q, \log^{2/3} |t| (\log \log |t|)^{1/3} \right) \right).$$ 
+
+Therefore, we obtain $$\frac{3}{\sigma - 1} - \frac{4}{\sigma - \beta} + O\! \left( \min \left( \log q, \log^{2/3} |t| (\log \log |t|)^{1/3} \right) \right) \g 0.$$ $\text{Letting } \sigma = 1 + C(1-\beta) \text{ for an absolute constant } C,$ $$\left( \frac{4}{C+1} - \frac{3}{C} \right) \frac{1}{1-\beta} \l O\! \left( \min \left( \log q, \log^{2/3} |t| (\log \log |t|)^{1/3} \right) \right).$$
+The contradiction of hypothesis $\beta \in S$ completes the proof.
+
+\subsubsection{P.N.T. in Arithmetic Progressions with an Error Term}
+We introduce the local integrability of log-derivative.
+\begin{lemma}
+    From the Corollary of $L(s, \chi)$'s log-derivative, we obtain that $\forall C > \varepsilon > 0, t_0 \in \mathbb{R},$ $$\int_\varepsilon^C \int_{t_0-1}^{t_0+1} \abs{\frac{L'}{L}(\sigma + it, \chi)} dt d\sigma \ll_{\varepsilon, C} \min \left( \log q, \log^{2/3} |t| (\log \log |t|)^{1/3} \right).$$
+\end{lemma}
+\begin{proof}
+Applying Corollary 7.13, the error term is negligible, and each zero in $[t_0 - 1, t_0 + 1] = D(t_0, O_{\varepsilon, C}(1))$ contributes $O_{\varepsilon, C}(1)$ to the integral. The claim follows from the fact that there are $\log \log |t|$ zeros in $\asymp t$ (the proof is trivial).
+\end{proof}
+In addition, we introduce the truncated Perron's formula.
+\begin{lemma}[Truncated Perron's Formula]
+    Let $f: \mathbb{N} \rightarrow \mathbb{C}$ be such that $\forall n, f(n) = O(\log(2+n)),$ and $x, T \g 2.$ Then, $$\sum_{n \l x} f(n) = \frac{1}{2 \pi i} \int_{\sigma - iT}^{\sigma + iT} \mathcal{D}f(s) \frac{x^s}{s}ds + O\! \left( \left( 1+\frac{x}{T} \right) \log^2 x \right),$$ where $\mathcal{D}f(s)$ is Dirichlet series and $\sigma := 1 + \frac{1}{\log x}.$
+\end{lemma}
+
+Now, we shall tackle the Mangoldt summation.
+\begin{theorem}[Truncated von Mangoldt summation for arithmetic progression]
+    $\forall 0 < \varepsilon < 1; x,T \g 2,$ $$\sum_{\substack{n \l x \\ n \equiv a \pmod{q}}} \chi(a) \Lambda(n) = x - \sum_{\substack{\rho: \\ \Re \rho \g \varepsilon, \\ \Im \rho \l T}} \frac{x^\rho}{\rho} + O_\varepsilon \! \left( x^\varepsilon \log^2 T +\frac{x}{T} \log^2 x \right),$$ where $\rho$ represents the zeros of $L(s, \chi).$
+\end{theorem}
+\begin{proof}
+We claim that $\exists T' \in [T, T+1]$ such that $$\int_\varepsilon^C \abs{\frac{L'}{L}(\sigma \pm iT', \chi)} d \sigma \ll_{C, \varepsilon} \min \left( \log q, \log^{2/3} T (\log \log T)^{1/3} \right)$$ due to the fact that there are $t$ such that $f(t)$ are less than the average of $f$ in $[T, T+1]$, which is the inner integral in Lemma 7.14. 
+
+Furthermore, we incorporate the Residue theorem by constructing a set $$S_0(\varepsilon, T) = \set{s \in \mathbb{C}: \varepsilon \l \Re s \l 1 + \frac{1}{\log x} , \abs{\Im s} \l T},$$ and defining $\gamma = \partial S_0(\varepsilon, T').$ For substantial residues $\rho, s = 1$, $\Res{s = \rho} \frac{L'}{L}(s, \chi) \frac{x^s}{s} = \frac{x^\rho}{\rho},$ $\Res{s = 1} \frac{L'}{L}(s, \chi) \frac{x^s}{s} = -x.$
+\begin{align}
+    \sum_{n \l x} \chi(n)\Lambda(n) =& -\frac{1}{2 \pi i} \int_{1 + \frac{1}{\log x} - iT'}^{1 + \frac{1}{\log x} + iT'} \frac{L'}{L}(s, \chi) \frac{x^s}{s} ds + O\! \left( \left( 1+\frac{x}{T} \right) \log^2 x \right) \\
+    =& -\frac{1}{2 \pi i} \int_\gamma \frac{L'}{L}(s, \chi) \frac{x^s}{s} ds + \frac{1}{2 \pi i} \int_{1 + \frac{1}{\log x} + iT'}^{\varepsilon + iT'} \frac{L'}{L}(s, \chi) \frac{x^s}{s} ds \\ 
+    &+ \frac{1}{2 \pi i} \int_{\varepsilon + iT'}^{\varepsilon - iT'} \frac{L'}{L}(s, \chi) \frac{x^s}{s} ds + \frac{1}{2 \pi i} \int_{\varepsilon - iT'}^{1 + \frac{1}{\log x} - iT'} \frac{L'}{L}(s, \chi) \frac{x^s}{s} ds + O\! \left( \left( 1+\frac{x}{T} \right) \log^2 x \right)
+\end{align}
+From the residue theorem and the observation we made,
+\begin{equation*}
+    (46) = x - \sum_{\rho: \rho \in S_0(\varepsilon, T')} \frac{x^\rho}{\rho} - \frac{1}{2 \pi i} \int_{\varepsilon - iT'}^{\varepsilon + iT'} \frac{L'}{L}(s, \chi) \frac{x^s}{s} ds + O\! \left( \min \left( \log q, \log^{2/3} T (\log \log T)^{1/3} \right) \right) + O_\varepsilon \! \left( \frac{x}{T} \log^2 x \right).
+\end{equation*}
+
+In addition, we utilize Lemma 7.14 again to find a $\varepsilon'$ that facilitates bounding $\int_{\varepsilon - iT'}^{\varepsilon + iT'} \frac{L'}{L}(s, \chi) \frac{x^s}{s} ds.$ 
+\begin{align*}
+    \int_{\varepsilon - iT'}^{\varepsilon + iT'} \int_{-T'}^{T'} \abs{\frac{L'}{L}(s, \chi) \frac{x^s}{s}} dt d\sigma \ll_\varepsilon x^\varepsilon \cdot \min \left( \log q \log T, \log^{5/3} T (\log \log T)^{1/3} \right)
+\end{align*}
+By finding a $\varepsilon'$ rendering $\int_{-T'}^{T'} \abs{\frac{L'}{L}(s, \chi) \frac{x^s}{s}} dt$ below its average on $[\varepsilon/2, \varepsilon],$ we obtain the bound of the contour integral. 
+\begin{equation}
+    \sum_{n \l x} \chi(n)\Lambda(n) = x - \sum_{\rho: \rho \in S_0(\varepsilon', T')} \frac{x^\rho}{\rho} + O_\varepsilon \! \left( x^\varepsilon \min \left( \log q \log T, \log^{5/3} T (\log \log T)^{1/3} \right) + \frac{x}{T} \log^2 x \right)
+\end{equation}
+The claim follows from our previous conclusions regarding the contributions of zeros $\notin S_0(\varepsilon', T')$. 
+\end{proof}
+We use $E(x, T)$ to denote the error $O_\varepsilon \! \left( x^\varepsilon \min \left( \log q \log T, \log^{5/3} T (\log \log T)^{1/3} \right) + \frac{x}{T} \log^2 x \right).$ The Summation formula we derived is sufficient to transform, by the orthogonality of Dirichlet characters, 
+\begin{align*}
+    \sum_{\substack{n \l x \\ n \equiv a \pmod{q}}} \Lambda(n) &= \sum_{n \l x} \left( \frac{1}{\phi(q)} \sum_{\chi \bmod q} \bar{\chi}(a) \chi(n) \right) \Lambda(n) = \frac{1}{\phi(q)} \sum_{\chi \bmod q} \bar{\chi}(a) \sum_{n \l x} \chi(n) \Lambda(n) \\
+    &= \frac{1}{\phi(q)} \sum_{\chi \bmod q} \bar{\chi}(a) \left( x - \sum_{\rho: \rho \in S_0(\varepsilon', T')} \frac{x^\rho}{\rho} + E(x, T) \right)
+\end{align*}
+due to $(a, q) = 1.$ 
+
+Coupled with the Zero-Free proposition, $$\forall \rho = \beta + it, \; \rho \in \set{\sigma + it : \sigma \l 1 - c \min\!\left( \frac{1}{(\log |t|)^{2/3} (\log\log |t|)^{1/3}}, \frac{1}{\log q} \right), \, |t| \g 200}$$ for Dirichlet $L(s, \chi),$ and $$x^\beta \l x \exp\! \left( -c\min\!\left( \frac{\log x}{(\log T')^{2/3} (\log \log T')^{1/3}}, \frac{\log x}{\log q} \right) \right),$$ we are able to mitigate the growth of 
+\begin{align*}
+    \sum_{\rho: \rho \in S_0(\varepsilon', T')} \frac{x^\rho}{\rho} &\l \sum_{\rho: \rho \in S_0(\varepsilon', T')} \frac{x^\beta}{\abs{\rho}} \\ 
+    &\ll x \exp\! \left( -\min\!\left( \frac{\log x}{(\log T')^{2/3} (\log \log T')^{1/3}}, \frac{\log x}{\log q} \right) \right) \log T' \\
+    &\asymp x \exp\! \left( -\min\!\left( \frac{\log x}{(\log T)^{2/3} (\log \log T)^{1/3}}, \frac{\log x}{\log q} \right) \right) \log T
+\end{align*}
+Choosing $\log T \asymp (\log x)^{3/5}(\log\log x)^{-1/5}$ due to $q \l \log^A x,$ $$\sum_{\rho: \rho \in S_0(\varepsilon', T')} \abs{\frac{x^\rho}{\rho}} \ll_A x \exp\! \left( - \frac{\log^{3/5}x}{(\log\log x)^{1/5}} \right),$$ which counteracts the increasing rate stemming from $E(x, T).$ Thus, \textbf{\textit{Quod Erat Demonstrandum}}. 
+\begin{equation}
+    \sum_{\substack{n \l x \\ n \equiv a \pmod{q}}} \Lambda(n) = \frac{x}{\phi(q)} + O\!\left( x \exp\!\left( -c_A \frac{\log^{3/5} x}{(\log\log x)^{1/5}} \right) \right).
+\end{equation}
+\end{proof}
