@@ -1,1 +1,336 @@
+\section{Theorem 2.2 of Van der Corput}
 
+\begin{theorem}
+Assume \(f\) is twice differentiable on \(I = [a,b]\), and there exist constants \(\lambda > 0\) and \(\alpha \g 1\) such that
+\[
+   \lambda \l \abs{f''(x)} \l \alpha \lambda \qquad (x \in I).
+\]
+Then
+\[
+   \sum_{n \in I} \e{f(n)} \ll \alpha \abs{I} \lambda^{1/2} + \lambda^{-1/2}.
+\]
+\end{theorem}
+
+\begin{proof}
+Let \( \e{t} = e^{2\pi i t} \), denote \(\abs{I} = b-a\), and let \(\norm{x}\) be the distance from \(x\) to the nearest integer.  
+
+Since \(f''\) does not change sign on \(I\), \(f'\) is strictly monotonic.  
+By the mean value theorem,
+\begin{equation}\label{eq:range-fprime}
+   \abs{f'(b) - f'(a)} \l \alpha \lambda \abs{I}.
+\end{equation}
+
+\subsection*{Splitting the interval}
+Fix \(0 < \delta < \tfrac12\). Define the sets
+\[
+   G = \{ x \in I : \norm{f'(x)} \g \delta \} 
+   \quad \text{(good set)}, \qquad 
+   B = I \setminus G \quad \text{(bad set)}.
+\]
+
+Since \(f'\) is monotone, each component of \(B\) is of the form
+\[
+   J_m := f'^{-1}\big([m-\delta,\,m+\delta]\big), \qquad m \in \mathbb{Z}.
+\]
+Such intervals exist only if they intersect \(f'(I)=[f'(a),f'(b)]\). Hence, the number of relevant \(m\) is bounded by
+\begin{equation}\label{eq:number-bad}
+   \#\{m : J_m \neq \varnothing\} 
+   \;\l\; \abs{f'(b)-f'(a)} + 2 
+   \;\l\; \alpha \lambda \abs{I} + 2.
+\end{equation}
+Therefore:
+\begin{itemize}[leftmargin=2em]
+   \item The number of bad intervals is \(\ll \alpha \lambda \abs{I} + 1\).
+   \item The number of good intervals is at most one more than the number of bad intervals, hence also \(\ll \alpha \lambda \abs{I} + 1\).
+\end{itemize}
+
+Moreover, for each bad interval \(J_m\), the length is bounded by
+\begin{equation}\label{eq:bad-length}
+   \abs{J_m} \l \frac{2\delta}{\lambda},
+\end{equation}
+since \(\abs{f''}\g \lambda\).
+
+\subsection*{Estimates on intervals}
+For a set \(E\), write
+\[
+   S(E) := \sum_{n \in E \cap \mathbb{Z}} \e{f(n)}.
+\]
+
+\begin{itemize}[leftmargin=2em]
+   \item \textbf{Good intervals (\(\norm{f'} \g \delta\))}:  
+   By the first derivative test (Kusmin--Landau lemma),
+   \begin{equation}\label{eq:good-est}
+      \abs{S(J)} \;\ll\; \delta^{-1}, 
+      \qquad J \subset G.
+   \end{equation}
+
+   \item \textbf{Bad intervals (\(\norm{f'} < \delta\))}:  
+   Trivially,
+   \begin{equation}\label{eq:bad-est}
+      \abs{S(J_m)} \;\l\; \#(J_m \cap \mathbb{Z}) 
+      \;\ll\; \abs{J_m} + 1 
+      \stackrel{\eqref{eq:bad-length}}{\ll} \tfrac{\delta}{\lambda} + 1.
+   \end{equation}
+\end{itemize}
+
+\subsection*{Global estimate}
+Combining \eqref{eq:number-bad}, \eqref{eq:good-est}, and \eqref{eq:bad-est}, we obtain
+\begin{equation}\label{eq:main-bound}
+   \sum_{n \in I} \e{f(n)}
+   = \sum_{J \subset G} S(J) + \sum_{J_m \subset B} S(J_m)
+   \;\ll\; \big(\alpha \lambda \abs{I} + 1\big)
+          \left( \tfrac{1}{\delta} + \tfrac{\delta}{\lambda} + 1 \right).
+\end{equation}
+
+\subsection*{Optimizing \(\delta\)}
+Choose \(\delta = \lambda^{1/2}\). If \(\lambda \l \tfrac14\), then \(\delta < \tfrac12\), so \eqref{eq:main-bound} yields
+\[
+    \sum_{n \in I} \e{f(n)}
+    \;\ll\; \alpha \abs{I} \lambda^{1/2} + \lambda^{-1/2}.
+\]
+If \(\lambda > \tfrac14\), the right-hand side is \(\asymp \alpha \abs{I}\).  
+The trivial bound \(\abs{\sum_{n \in I} \e{f(n)}} \l \abs{I}+1\) gives the same order, so
+\[
+    \sum_{n \in I} \e{f(n)}
+    \;\ll\; \alpha \abs{I} \lambda^{1/2} + \lambda^{-1/2}.
+\]
+This completes the proof.
+\end{proof}
+
+\section{Lemma 3.6 of Exponent Pairs}
+
+\begin{lemma}
+Suppose that $f$ has four continuous derivatives on $[a,b]$, and that $f' < 0$ on this interval. Suppose further that $[a,b] \subseteq [N,2N]$ and that $\alpha = f'(b)$ and $\beta = f'(a)$. Assume that there is some $F > 0$ such that
+\[
+f^{(2)}(x) \approx F N^{-2}, \quad f^{(3)}(x) < F N^{-3}, \quad \text{and} \quad f^{(4)}(x) < F N^{-4}
+\]
+for $x$ in $[a,b]$. Let $x_\nu$ be defined by the relation $f'(x_\nu) = \nu$, and let $\phi(\nu) = -f(x_\nu) + \nu x_\nu$. Then
+\[
+\sum_{n \in I} \e{f(n)} = \sum_{\alpha < \nu \l \beta} \frac{\e{-\phi(\nu) - 1/8}}{|f''(x_\nu)|^{1/2}} + O(\log(F N^{-1} + 2) + F^{-1/2} N).
+\]
+\end{lemma}
+
+\begin{proof}
+We may assume that $F \g 1$, for the theorem is trivial otherwise. Let $H_1 = [\alpha] - 1$ and $H_2 = [\beta] + 1$. From the previous lemmas, we see that
+\[
+\sum_{n \in I} \e{f(n)} = \sum_{H_1 \l \nu \l H_2} \frac{\e{-\phi(\nu) - 1/8}}{|f''(x_\nu)|^{1/2}} + O(E),
+\]
+where
+\[
+E = \sum_{H_1 \l \nu \l H_2} F^{-1} N + \min(|f'(a) - \nu|^{-1}, F^{-1/2} N) + \min(|f'(b) - \nu|^{-1}, F^{-1/2} N).
+\]
+Note that
+\[
+H_2 - H_1 < \left| \int_a^b f''(x) \, dx \right| + 1 < F N^{-1} + 1,
+\]
+so
+\[
+\sum_{H_1 \l \nu \l H_2} F^{-1} N < F^{-1} N (F N^{-1} + 1) < 1 + F^{-1} N.
+\]
+The second term is majorized by $F^{-1/2} N$ since we are assuming that $F \g 1$. Note also that for $\nu < H_2 - 1$,
+\[
+|f'(a) - \nu| \g H_2 - 1 - \nu
+\]
+so
+\[
+\sum_{H_1 \l \nu \l H_2} \min(|f'(a) - \nu|^{-1}, F^{-1/2} N) < F^{-1/2} N + \sum_{H_1 \l \nu < H_2 -1} (H_2 - 1 - \nu)^{-1} < F^{-1/2} N + \log(F N^{-1} + 2).
+\]
+The same upper bound holds for the sum
+\[
+\sum_{H_1 \l \nu \l H_2} \min(|f'(b) - \nu|^{-1}, F^{-1/2} N).
+\]
+Finally, if we change the range of summation in (3.2.6) to $\alpha < \nu \l \beta$, this changes the sum by $< F^{-1/2} N$, and this may be absorbed into the error term.
+\end{proof}
+
+\section{Heuristic Definitions}
+
+\begin{definition}
+    Let $N, y, s, \varepsilon < \frac{1}{2} \in \mathbb{R}_+ \;$, and $P \in \mathbb{Z}_+$. We define the set 
+    \begin{align*}
+        &\mathbf{F}(N, P, s, y, \varepsilon) \\
+        := &\set{f \in C^P([a,b]) : \; \forall 0 \l p \l P-1, a \l x \l b, \; \abs{f^{(p+1)}(x) - (-1)^p (s)_p yx^{-s-p}} < \varepsilon (s)_p yx^{-s-p}},
+    \end{align*}
+    in which $[a,b] \subset [N,2N],$ and $(s)_p = s(s+1)(s+2) \cdots (s+p-1) = \frac{(s+p-1)!}{(s-1)!}$. $f \in C^p(\Omega)$ means that $f$ is defined and has $p$ continuous derivatives on the set $\Omega$.
+\end{definition}
+The set $\mathbf{F}(N, P, s, y, \varepsilon)$ consists of all functions $f \in C^P([a,b])$ whose derivatives up to order $P$ closely resemble those of the model phase $f_0(x) = -y x^{-s}$.
+Specifically, for each $0 \l p \l P-1$ and $x \in [a,b] \subset [N,2N]$,
+$$f^{(p+1)}(x) = (-1)^p (s)_p yx^{-s-p} (1 + O(\varepsilon)),$$
+or equivalently,
+$$(1-\varepsilon)(s)_p yx^{-s-p} < (-1)^p f^{(p+1)}(x) < (1+\varepsilon)(s)_p yx^{-s-p}.$$
+Thus, $\mathbf{F}(N,P,s,y,\varepsilon)$ captures all phase functions whose derivatives follow the same scaling pattern as $x^{-s-p}$, up to a small relative error $\varepsilon$.
+
+\begin{definition}
+    Let $k,l \in \mathbb{R}$ such that $0 \l k \l \frac{1}{2} \l l \l 1$. $\forall s > 0, \; \exists P = P(k, l, s), \varepsilon = \varepsilon(k, l, s) \; s.t. \; \forall N > 0, y > 0, \; f \in \mathbf{F}(N, P, s, y, \varepsilon),$ the estimate $$\sum_{n \in I} \e{f(n)} \ll L^k N^l + L^{-1}$$ where $L = yN^{-s}$. Then, $(k,l)$ is an \textbf{exponent pair}. 
+\end{definition}
+The combination of $L^k N^l$ and $L^{-1}$ is due to the fact that for cases $L \gg 1$, the $L^k N^l$ dominates, and $L^{-1}$ dominates if $L \ll 1$. Since we usually assume that $L \gg 1$, we can reduce the estimate to $S \ll L^k N^l$.
+
+We are able to summarize the standardized method consisting of Weyl differencing and Cauchy-Schwartz in the equidistribution problems we resolved. By observing the change of parameters when we conduct one differencing step, we summarized Table 1. To sum up, we introduce the Van der Corput A-process, the normalized, standardized resolution.
+
+\begin{theorem}[Van der Corput \textbf{A-process}] 
+    If $(k, l)$ is an exponent pair, then $$A(k, l) := \left( \frac{k}{2k+2}, \frac{k+l+1}{2k+2} \right)$$ is also an exponent pair.
+\end{theorem}
+
+From now on, the estimation can be attained mechanically.
+
+\begin{table}[!ht]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|c|p{3.2cm}|p{3.2cm}|p{2.3cm}|p{5cm}|}
+\hline
+\textbf{Param.} & \textbf{Original $f(x)$} 
+& \textbf{After differencing $f_1(x)=f(x+h)-f(x)$} 
+& \textbf{Change} 
+& \textbf{Explanation} \\ \hline
+
+$\mathbf{F}$ 
+& $f \in \mathbf{F}(N, P, s, y, \varepsilon)$ 
+& $f_1 \in \mathbf{F}(N, P-1, s+1, shy, 3\varepsilon)$ 
+& $P\!\to\!P\!-\!1$, $s\!\to\!s\!+\!1$, $y\!\to\!shy$ 
+& Differencing lowers smoothness ($P$), raises degree ($s$), scales $y$ by $sh$. \\ \hline
+
+$L$ 
+& $L = y N^{-s}$ 
+& $L_1 = (shy) N^{-(s+1)} = s h L N^{-1}$ 
+& $L\!\to\! s h L N^{-1}$ 
+& $L$ shrinks by $N^{-1}$ and multiplies by $sh$. \\ \hline
+
+Effective $L$ 
+& $L$ 
+& $L' = h L N^{-1}$ 
+& $L' \!\approx\! L_1 / s$ 
+& $s$ is fixed, so absorbed into the implied constant. \\ \hline
+
+$N$ 
+& $N$ 
+& $N$ (unchanged) 
+& --- 
+& Differencing acts on $f$, not on the summation interval. \\ \hline
+
+$s$ 
+& Fixed degree parameter 
+& New fixed value $s+1$ 
+& $s\!\to\!s\!+\!1$ 
+& $s$ treated as constant within each step. \\ \hline
+
+$P$ 
+& $P$ 
+& $P-1$ 
+& $P\!\to\!P\!-\!1$ 
+& Smoothness order decreases by one. \\ \hline
+
+$\varepsilon$ 
+& $\varepsilon$ 
+& $3\varepsilon$ 
+& $\varepsilon\!\to\!3\varepsilon$ 
+& Error term grows after differencing. \\ \hline
+
+$y$ 
+& $y$ 
+& $shy$ 
+& $y\!\to\!shy$ 
+& From $f(x+h)-f(x)\!\approx\!f'(x)h\!\sim\!s y h x^{s-1}$. \\ \hline
+
+\end{tabular}
+\caption{Parameter transitions after one differencing step in van der Corput’s method.}
+\end{table}
+\newpage
+
+\section{The Proof of B-process}
+
+\begin{lemma}
+    For function $f \in \mathbf{F}(N, F, s, y, \varepsilon)$, we define the $\sigma = \frac{1}{s}$, and $\eta = y^\sigma$; assume that $f$ is defined on $[a, b]$ and $\nu \in [\alpha, \beta] = [f'(b), f'(a)]$. $x_\nu$ satisfies $f'(x_\nu) = \nu$. The auxiliary function $\phi(\nu) = \nu x_\nu - f(x_\nu)$. Then, $\exists \; C = C(s, P)$ constant that $$\abs{\phi^{(p+1)}(\nu) - (-1)^p (s)_p \eta \nu^{-\sigma-p}} < C \varepsilon (s)_p \eta \nu^{-\sigma-p}.$$
+\end{lemma}
+
+\begin{proof} We first incorporate the bound function $F$: 
+$$F(x) := \left\{
+\begin{array}{rcl}
+    y \frac{x^{1-s}}{1-s} & \text{for} & s \neq 1, \\
+    y \log x & \text{for} & s = 1
+\end{array}
+\right.$$
+Then the condition $f \in \mathbf{F}(N, F, s, y, \varepsilon) \Longleftrightarrow \abs{f^{(p+1)}(x) - F^{(p+1)}(x)} < \varepsilon \abs{F^{(p+1)}(x)}$. From this perspective, we can also create a function that represents the bound of $\phi(\nu).$
+\subsection*{The functional within the bound}
+For $X_\nu$ satisfies $F'(X_\nu) = \nu$ and $\Phi(\nu) = \nu X_\nu - F(X_\nu)$, we can actually deduce that $X_\nu = \eta \nu^{-\sigma}$. Then, the lemma is reduced to 
+\begin{equation}
+    \abs{\phi^{(p+1)}(\nu) - \Phi^{(p+1)}(\nu)} < C\varepsilon \abs{\Phi^{(p+1)}(\nu)}
+\end{equation}
+We recognize that Phi is a sort of functional. 
+
+By Chain Rule, we derived that the $\phi''(\nu) = \frac{1}{f''(x_\nu)}$ from $f'(\phi'(\nu)) = \nu$. If we iterate, 
+\begin{align*}
+    \phi^{(3)}(\nu) &= \frac{1}{(f''(x_\nu))^3} (-1)f^{(3)}(x_\nu) \\
+    \phi^{(4)}(\nu) &= \frac{1}{(f''(x_\nu))^4} (f^{(3)}(x_\nu) - f^{(4)}(x_\nu)) \\ 
+    &\dots \\
+    \phi^{(p+1)}(\nu) &= \frac{1}{(f''(x_\nu))^{2p-1}} \sum_{\mathbf{u}} w_\mathbf{u} \prod_{i = 1}^{p-1} f^{(u_i+1)}(x_\nu)
+\end{align*}
+and we found that the $\sum_i u_i = 2p-2$; $w_\mathbf{u}$ is a constant that depends only on $u_i$. Similarly, 
+
+\begin{equation}
+    \begin{cases}
+        \phi^{(p+1)}(\nu) = \frac{1}{(f''(x_\nu))^{2p-1}} \sum_{\mathbf{u}} w_\mathbf{u} \prod_{i = 1}^{p-1} f^{(u_i+1)}(x_\nu) \\
+        \Phi^{(p+1)}(\nu) = \frac{1}{(F''(X_\nu))^{2p-1}} \sum_{\mathbf{u}} w_\mathbf{u} \prod_{i = 1}^{p-1} F^{(u_i+1)}(X_\nu) \\
+    \end{cases}
+\end{equation}
+Thus, we reveal the structure of the functional Phi: $\varphi^{(p+1)}(f) = \frac{1}{(f''(x_\nu))^{2p-1}} \sum_{\mathbf{u}} w_\mathbf{u} \prod_{i = 1}^{p-1} f^{(u_i+1)}(x_\nu)$
+
+\subsection*{From function difference to functional difference}
+We have to estimate the difference $\abs{f^{(p+1)}(x_\nu) - F^{(p+1)}(X_\nu)} < \varepsilon \abs{F^{(p+1)}(X_\nu)}$ so that we are able to get $$f^{(p+1)}(x_\nu) \asymp_\varepsilon F^{(p+1)}(x_\nu).$$ Since we already have $\abs{f^{(p+1)}(x) - F^{(p+1)}(x)} < \varepsilon \abs{F^{(p+1)}(x)}$, what's left is $$\abs{F^{(p+1)}(x_\nu) - F^{(p+1)}(X_\nu)} < \varepsilon \abs{F^{(p+1)}(X_\nu)}.$$
+
+We can apply the Mean Value Theorem: $\exists \; t$ between endpoints $x_\nu, X_\nu$ such that $$\abs{F^{(p+1)}(x_\nu) - F^{(p+1)}(X_\nu)} = \abs{F^{(p+2)}(t)(x_\nu - X_\nu)}.$$ For $\abs{x_\nu - X_\nu}$, recall that $\abs{f'(x_\nu) - F'(X_\nu)} < \varepsilon \abs{F'(X_\nu)} \Longleftrightarrow \abs{\nu - yx_\nu^{-s}} < \varepsilon yx_\nu^{-s}$. We have $\abs{x_\nu-X_\nu} \ll \varepsilon \eta \nu^{-\sigma}$. Therefore, 
+\begin{align}
+    &\abs{F^{(p+1)}(x_\nu) - F^{(p+1)}(X_\nu)} = \abs{F^{(p+2)}(t)(x_\nu - X_\nu)} \\
+    \ll \; &\varepsilon yN^{-s-p-1} \eta \nu^{-\sigma} \ll \varepsilon yN^{-s-p}.
+\end{align}
+Together with the known condition $\abs{f^{(p+1)}(x_\nu) - F^{(p+1)}(x_\nu)} < \varepsilon \abs{F^{(p+1)}(x_\nu)} \ll \varepsilon yN^{-s-p}$, we derive that $$\abs{f^{(p+1)}(x_\nu) - F^{(p+1)}(X_\nu)} \ll \varepsilon yN^{-s-p}.$$
+
+Now consider the difference of functional, 
+\begin{align}
+    \abs{\phi^{(p+1)}(\nu) - \Phi^{(p+1)}(\nu)} &= \abs{\underbrace{\frac{1}{(f''(x_\nu))^{2p-1}}}_A \underbrace{\sum_{\mathbf{u}} w_\mathbf{u} \prod_{i = 1}^{p-1} f^{(u_i+1)}(x_\nu)}_{S_1} - \underbrace{\frac{1}{(F''(X_\nu))^{2p-1}}}_B \underbrace{\sum_{\mathbf{u}} w_\mathbf{u} \prod_{i = 1}^{p-1} F^{(u_i+1)}(X_\nu)}_{S_2}} \\
+    &= (A-B)S_1 + B(S_1-S_2) \\
+    &\ll \frac{\varepsilon}{(F''(X_\nu))^{2p-1}} y^{p-1} X_\nu^{-s(p-1)-\sum_i u_i}  \\ 
+    &+ \frac{1}{(F''(X_\nu))^{2p-1}} \sum_{\mathbf{u}} w_\mathbf{u} \left( \prod_{i = 1}^{p-1} f^{(u_i+1)}(x_\nu) - \prod_{i = 1}^{p-1} F^{(u_i+1)}(X_\nu) \right) \\
+    &\ll \frac{\varepsilon}{(F''(X_\nu))^{2p-1}} y^{p-1} X_\nu^{-s(p-1)-2p+2}
+\end{align}
+in which the 
+\begin{align}
+    \prod_{i = 1}^{p-1} f^{(u_i+1)}(x_\nu) - \prod_{i = 1}^{p-1} F^{(u_i+1)}(X_\nu) &= \sum_{j = 1}^{p-1} \prod_{i < j} f^{(u_i+1)}(x_\nu) \prod_{i > j} F^{(u_i+1)}(x_\nu) (f^{(u_i+1)}(x_\nu) - F^{(u_i+1)}(x_\nu)) \\
+    &\ll \sum_{j = 1}^{p-1} \prod_i\max_{i \neq j}(f^{(u_i+1)}(x_\nu), F^{(u_i+1)}(x_\nu)) \cdot \varepsilon yN^{-s-p} \\ 
+    &\ll \varepsilon y^{p-1} X_\nu^{-s(p-1)-2p+2}.
+\end{align}
+We convert the $F''(X_\nu)$ into its upper bound to obtain $$\frac{\varepsilon}{(yX_\nu^{-s-1})^{2p-1}} y^{p-1} X_\nu^{-s(p-1)-2p+2} \ll \varepsilon y^{-p} X_\nu^{ps+1} \ll \varepsilon y^{-p} N^{ps+1} \asymp \varepsilon \abs{\Phi^{(p+1)}(\nu)},$$
+because the $X_\nu \in [X_{2N}, X_N] \asymp N^{-\sigma}$.
+\end{proof}
+
+\subsection*{The Main Proof}
+
+\begin{theorem}[Van der Corput \textbf{B-process}]
+    $\forall (k,l)$ as exponent pairs, we have $$B(k, l) := \left( l - \frac{1}{2}, k + \frac{1}{2} \right)$$ as a new exponent pair.
+\end{theorem}
+
+\begin{proof}
+We would first use the final form of Lemma 3.6 to decipher the $S = \sum \e{f(n)}$, then derive the corresponding bound from the result of the lemma we just proved. In the proof, the function $F, \Phi, \phi$ is always the same as in the previous lemma.
+
+From the $B(k, l)$, we know that $0 \l l-\frac{1}{2} \l \frac{1}{2} \l k+\frac{1}{2}$; if the $l = \frac{1}{2}$, then $k = \frac{1}{2}$, and $B(k,l) = (0,1)$. We may assume $l > \frac{1}{2}$.
+
+According to the definition of the exponent pair, it ensures that $\exists \mathbf{F}$ such that $f \in \mathbf{F}(N, P, s, y, \varepsilon).$ In the form of inequality, $\abs{f^{(p+1)}(x) - (-1)^p (s)_p yx^{-s-p}} < \varepsilon (s)_p yx^{-s-p} \Longleftrightarrow f^{(p+1)}(x) \asymp LN^{-p},$ which satisfies the requirement of Lemma 3.6 about the restriction for $2, 3, 4$ order of derivatives if we set $F = LN$.
+
+We plug the $f$ in the equation:
+\begin{equation}
+    S = \underbrace{\sum_{\alpha \l \nu \l \beta} \frac{\e{-\phi(\nu)}-1/8}{\abs{f''(x_\nu)}^\frac{1}{2}}}_{\Sigma_1} + O(\log(L+2) + L^{-\frac{1}{2}}N^\frac{1}{2}).
+\end{equation}
+Then we transform the $\Sigma_1$ into integrals 
+\begin{equation}
+    \Sigma_1 = \e{-\frac{1}{8}} \int_\alpha^\beta \frac{\e{-\phi(\nu)}}{\abs{f''(x_\nu)}^\frac{1}{2}} d[\nu] \asymp \int_\alpha^\beta \frac{1}{\abs{f''(x_w)}^\frac{1}{2}}d \underbrace{\left( \overline{\sum_{\alpha \l \nu < w} \e{\phi(\nu)}} \right)}_{T(w)}.
+\end{equation}
+
+From the exponent pair $(k,l)$, we obtain $$T(w) \ll (\eta J^{-\sigma})^k J^l + \eta^{-1} J^\sigma \ll N^k J^l + N^{-1}.$$ Therefore, 
+\begin{align}
+    \int_\alpha^\beta \frac{1}{\abs{f''(x_w)}^\frac{1}{2}} d \overline{T(w)} &= \left. \frac{\overline{T(w)}}{\abs{f''(x_w)}^\frac{1}{2}} \right |_\alpha^\beta - \int_\alpha^\beta \overline{T(w)} \; d \left( \abs{f''(x_w)}^{-\frac{1}{2}} \right) \\
+    &\ll_{(1)} (N^k L^l + N^{-1}) \left( (LN^{-1})^{-\frac{1}{2}} - \int_\alpha^\beta d \left( \abs{f''(x_w)}^{-\frac{1}{2}} \right) \right) \\
+    &\asymp (N^k L^l + N^{-1}) (LN^{-1})^{-\frac{1}{2}} \\
+    &\asymp L^{l-\frac{1}{2}} N^{k+\frac{1}{2}} + L^{-\frac{1}{2}} N^{-\frac{1}{2}}.
+\end{align}
+For $(1)$, the $\nu \asymp J([\alpha, \beta]) \asymp f'(N) \asymp L$. Combining with the error term, $$S \ll L^{l-\frac{1}{2}} N^{k+\frac{1}{2}} + \log(L+2) + L^{-\frac{1}{2}}N^\frac{1}{2},$$ in which $L^{l-\frac{1}{2}} N^{k+\frac{1}{2}}$ dominates.
+\end{proof}
