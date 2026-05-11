@@ -17,31 +17,22 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    # ===== Compile LaTeX =====
     - uses: xu-cheng/latex-action@v3
       with:
         root_file: LinearAlgebra/main.tex
         work_in_root_file_dir: true
 
-    - name: Commit PDF
+    # ===== Prepare Pages structure =====
+    - name: Prepare Pages folder
       run: |
-        git config --local user.name "github-actions"
-        git config --local user.email "github-actions@github.com"
+        mkdir -p public/LinearAlgebra
+        cp LinearAlgebra/main.pdf public/LinearAlgebra/
 
-        git add LinearAlgebra/main.pdf
-
-        git commit -m "Update Project A PDF" || echo "No changes"
-
-        git push
-
-
-    # deploy pages
-
+    # ===== Deploy to GitHub Pages =====
     - name: Deploy to GitHub Pages
-  
       uses: peaceiris/actions-gh-pages@v4
-  
       with:
-  
         github_token: ${{ secrets.GITHUB_TOKEN }}
-  
-        publish_dir: LinearAlgebra
+        publish_dir: public
+        publish_branch: gh-pages
