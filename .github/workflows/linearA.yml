@@ -4,8 +4,6 @@ on:
   push:
     paths:
       - 'LinearAlgebra/**'
-    paths-ignore:
-      - 'LinearAlgebra/*.pdf'
 
 jobs:
   build:
