@@ -1,0 +1,84 @@
+\subsection{Operators}
+\begin{definition}[Operator]
+    The linear transformation, or \emph{operator}, is a map $A: L \to M$ such that $$A(\b{x} + \b{y}) = A(\b{x}) + A(\b{y}), \quad A(\alpha \b{x}) = \alpha A(\b{x}).$$
+\end{definition}
+
+The operator is an embodiment of linear algebra in which it not only fully inherits the attributes of matrix algebra, but also surpasses the axis-dependence and is dedicated to the discussion of the algebraic properties of linear spaces. 
+
+The operator corresponds to a transformation by a matrix, while a base from $L,M$ is selected, respectively. Let $\mathcal E = (\b{e}_1, \cdots, \b{e}_n)$ and $\mathcal F = (\b{f}_1, \cdots, \b{f}_m)$ be bases of $L, M$, respectively. For any vector in $L$
+\begin{align*}
+    \b{x} &= \alpha_1 \b{e}_1 + \alpha_2 \b{e}_2 + \cdots + \alpha_n \b{e}_n, \\
+    A(\b{x}) &= \alpha_1 A(\b{e}_1) + \alpha_2 A(\b{e}_2) + \cdots + \alpha_n A(\b{e}_n). 
+\end{align*}
+If the operator transforms the bases of $L$ into
+\begin{equation*}
+    \begin{cases}
+        A(\b{e}_1) = a_{11}\b{f}_1 + a_{21}\b{f}_2 + \cdots + a_{m1}\b{f}_m \\
+        A(\b{e}_2) = a_{12}\b{f}_1 + a_{22}\b{f}_2 + \cdots + a_{m2}\b{f}_m \\
+        \cdots \\
+        A(\b{e}_n) = a_{1n}\b{f}_1 + a_{2n}\b{f}_2 + \cdots + a_{mn}\b{f}_m
+    \end{cases}, \qquad 
+    [A]_{\mathcal{F} \leftarrow \mathcal{E}} := \mat{a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}}
+\end{equation*}
+then we have if $A(\b{x}) = \beta_1 \b{f}_1 + \beta_2 \b{f}_2 + \cdots + \beta_m \b{f}_m,$ 
+\begin{equation}
+    \begin{cases}
+        \beta_1 = a_{11}\alpha_1 + a_{12}\alpha_2 + \cdots + a_{1n}\alpha_n \\
+        \beta_2 = a_{21}\alpha_1 + a_{22}\alpha_2 + \cdots + a_{2n}\alpha_n \\
+        \cdots \\
+        \beta_m = a_{m1}\alpha_1 + a_{m2}\alpha_2 + \cdots + a_{mn}\alpha_n
+    \end{cases} \Longrightarrow 
+    [A(\b{x})]_{\mathcal{F}} = [A]_{\mathcal{F} \leftarrow \mathcal{E}} [\b{x}]_{\mathcal{E}}
+\end{equation}
+$[A]_{\mathcal{F} \leftarrow \mathcal{E}}$ is solely determined by the bases $\mathcal{E}, \mathcal{F},$ and the operator itself. By converting to matrix $[A]_{\b{e} \to \b{f}},$, we obtain the trivial but important result. Here, we have just introduced a crucial notation $[\b{x}]_{\mathcal{E}};$ it represents the "coordinate" of an unaltered vector $\b{x}$ under a specific bases $\mathcal E.$ For example, the scalars $\beta_1, \beta_2 \cdots,\beta_m$ in $(9)$ is the coordinates of $A(\b{x})$ under $\mathcal F.$
+
+\begin{lemma}
+    $A: L \to N, B: N \to M.$ $(BA)(\b{x}) := B(A(\b{x})).$ Let $\mathcal E = (\b{e}_1, \cdots, \b{e}_n),$ $\mathcal G = (\b{g}_1, \cdots, \b{g}_l)$ and $\mathcal F = (\b{f}_1, \cdots, \b{f}_m)$ be bases of $L, N, M$, respectively. We reached that $$(BA)(\b{e}_i) = \sum_{j = 1}^m c_{ij} \b{f}_{j}, \quad c_{ij} = ([B]_{\mathcal{F} \leftarrow \mathcal{G}} [A]_{\mathcal{G} \leftarrow \mathcal{E}})_{ij}.$$ In addition, the $A(B+C) = AB + AC, (A+B)C = AC + BC.$
+\end{lemma}
+
+From the fundamental discussion of operators, we instantly resolve the problem involving any shift in coordinates(bases; they are actually equivalent). 
+
+\begin{theorem}[General Shifts in bases]
+    Let $\mathcal E = (\b{e}_1, \cdots, \b{e}_n),$ and $\mathcal E' = (\b{e}_1', \cdots, \b{e}_n')$ be two bases of $L.$ Since the shift in bases does not change the value of a vector, we regard the shift in bases as an \emph{Identity Operator} $I_L: L \to L.$ Then, the matrices
+    $$[I_L]_{\mathcal E' \leftarrow \mathcal E}^{-1} = [I_L]_{\mathcal E \leftarrow \mathcal E'}.$$
+\end{theorem}
+\begin{proof}
+We recall the expression in $(9).$ Let $\b{x} \in L.$ If tuple $\mathcal E = (\b{e}_1, \b{e}_2, \cdots, \b{e}_n)$ transforms to $\mathcal E' = (\b{e}'_1, \b{e}'_2, \cdots, \b{e}'_n),$ then the coordinates alter as $$[\b{x}]_{\mathcal E'} = [I_L(\b{x})]_{\mathcal{E}'} = [I_L]_{\mathcal E' \leftarrow \mathcal E} [\b{x}]_{\mathcal{E}},$$ which implies that $[I_L]_{\mathcal E' \leftarrow \mathcal E}^{-1} = [I_L]_{\mathcal E \leftarrow \mathcal E'}.$
+\end{proof}
+
+\begin{theorem}[Operators' matrix with bases Shifts]
+    $A: L \to M$ is an operator. Let $\mathcal E = (\b{e}_1, \cdots, \b{e}_n),$ and $\mathcal E' = (\b{e}_1', \cdots, \b{e}_n')$ be two bases of $L;$ $\mathcal F = (\b{f}_1, \cdots, \b{f}_n),$ and $\mathcal F' = (\b{f}_1', \cdots, \b{f}_n')$ be two bases of $M.$
+    $$
+    \begin{tikzcd}
+        {[x]_{\mathcal{E'}}} \arrow[dd, "A: L \to M"] &  & {[x]_{\mathcal{E}}} \arrow[ll, "I_L: L \to L"] \arrow[dd, "A: L \to M"] \\ &  & \\
+        {[A(x)]_{\mathcal{F'}}} &  & {[A(x)]_{\mathcal{F}}} \arrow[ll, "I_M: M \to M"]
+    \end{tikzcd}
+    $$
+    From the diagram, we acquire the relation of matrices $$[A]_{\mathcal{F'} \leftarrow \mathcal{E'}} = [I_{M}]_{\mathcal{F'} \leftarrow \mathcal{F}} [A]_{\mathcal{F} \leftarrow \mathcal{E}} [I_L]_{\mathcal{E'} \leftarrow \mathcal{E}}^{-1}.$$
+\end{theorem}
+\begin{proof}
+The main idea is shown in the commutative diagram. In fact, by Lemma 1.39 and Theorem 1.41, we 
+obtain 
+\begin{align*}
+    \begin{cases}
+        [A(x)]_{\mathcal{F'}} = [A]_{\mathcal F' \leftarrow \mathcal E'} [x]_{\mathcal{E'}} = [A]_{\mathcal F' \leftarrow \mathcal E'} [I_L]_{\mathcal E' \leftarrow \mathcal E} [x]_{\mathcal E} \\
+        [A(x)]_{\mathcal{F}} = [A]_{\mathcal F \leftarrow \mathcal E} [x]_{\mathcal{E}} \\
+        [A(x)]_{\mathcal{F'}} = [I_M]_{\mathcal F' \leftarrow \mathcal F} [A(x)]_{\mathcal{F}}
+    \end{cases}
+    &\Longrightarrow [A]_{\mathcal F' \leftarrow \mathcal E'} [I_L]_{\mathcal E' \leftarrow \mathcal E} [x]_{\mathcal E} = [I_M]_{\mathcal F' \leftarrow \mathcal F} [A]_{\mathcal F \leftarrow \mathcal E} [x]_{\mathcal{E}} \\
+    &\Longrightarrow [A]_{\mathcal F' \leftarrow \mathcal E'} [I_L]_{\mathcal E' \leftarrow \mathcal E} = [I_M]_{\mathcal F' \leftarrow \mathcal F} [A]_{\mathcal F \leftarrow \mathcal E}
+\end{align*}
+Because $I$ is mapping $L \to L,$ the matrix $[I_L]_{\mathcal E' \leftarrow \mathcal E}$ must be a square matrix with a non-zero determinant. Thus, any $[I_L]_{\mathcal E' \leftarrow \mathcal E}$ is nonsingular.
+\end{proof}
+
+\begin{corollary}
+    We note that if $A$ maps $L \to L,$ then the result is reduced to $$[A]_{\mathcal{E'} \leftarrow \mathcal{E'}} = [I_{L}]_{\mathcal{E'} \leftarrow \mathcal{E}} [A]_{\mathcal{E} \leftarrow \mathcal{E}} [I_L]_{\mathcal{E'} \leftarrow \mathcal{E}}^{-1}.$$ The result means that for matrices $M', M, P$ such that $M' = PMP^{-1},$ $M, M'$ belong to one operator. 
+\end{corollary}
+
+\begin{remark}
+The book usually employs the other perspective of bases shifts, which is, without introducing $I_L,$ constructing a "shift" operator $P: L \to L$ that directly turns the bases. $P(\b{e}_i) = \b{e}_i'.$ Then, $[P(\b{x})]_{\mathcal E'} = [\b{x}]_{\mathcal E}.$ 
+\end{remark}
+
+\begin{definition}[Determinant of an Operator]
+    For any operator $A: L \to L,$ its determinant is defined as $\det A := \det [A]_{\mathcal{E} \leftarrow \mathcal{E}}$ for any bases.
+\end{definition}
