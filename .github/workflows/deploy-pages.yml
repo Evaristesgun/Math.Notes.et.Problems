@@ -1,0 +1,34 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    paths:
+      - 'LinearAlgebra/main.pdf'
+      - 'ExPair/main.pdf'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Build website structure
+    - name: Prepare public folder
+      run: |
+        mkdir -p public/LinearAlgebra
+        mkdir -p public/ExPair
+
+        cp LinearAlgebra/main.pdf public/LinearAlgebra/
+        cp ExPair/main.pdf public/ExPair/
+
+    # Deploy
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: public
+        publish_branch: gh-pages
