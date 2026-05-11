@@ -24,6 +24,12 @@ We therefore present some supplements to the vector space.
     \end{align*}
 \end{definition}
 
+\begin{definition}[Linear Independence/dependence]
+    For vectors $\b{x}_1, \b{x}_2, \b{x}_3, \cdots, \b{x}_{n},$ if $\exists  \alpha_1, \alpha_2, \cdots, \alpha_{n}$ such that $$\alpha_1 \b{x}_1 + \alpha_2 \b{x}_2 + \alpha_3 \b{x}_3 + \cdots + \alpha_n \b{x}_n = 0$$ for at least one $\alpha_i \neq 0.$ $\b{x}_1, \b{x}_2, \b{x}_3, \cdots, \b{x}_{n},$ are \emph{linear dependent}. 
+
+    On the other hand, if $$\alpha_1 \b{x}_1 + \alpha_2 \b{x}_2 + \alpha_3 \b{x}_3 + \cdots + \alpha_n \b{x}_n = 0 \iff \alpha_1, \alpha_2, \cdots, \alpha_{n} = 0,$$ $\b{x}_1, \b{x}_2, \b{x}_3, \cdots, \b{x}_{n}$ are \emph{linear independent}.
+\end{definition}
+
 \begin{definition}[Dimension of vector space]
     Similar to the $\rk{A}$ in matrices, the $\dim$ is the maximum quantity of linearly independent vectors in vector space $L.$ 
     If $d = \dim L,$ then $\forall \b{x}_1, \b{x}_2, \b{x}_3, \cdots, \b{x}_{d+1}, \exists \alpha_1, \alpha_2, \cdots, \alpha_{d+1}$ such that
@@ -31,7 +37,7 @@ We therefore present some supplements to the vector space.
         \alpha_1 \b{x}_1 + \alpha_2 \b{x}_2 + \alpha_3 \b{x}_3 + \cdots + \alpha_{d+1} \b{x}_{d+1} &= 0. \\
         \alpha_1 \b{x}_1 + \alpha_2 \b{x}_2 + \cdots + \alpha_{i-1} \b{x}_{i-1} + \alpha_{i+1} \b{x}_{i+1} + \cdots + \alpha_{d+1} \b{x}_{d+1} &= \b{x}_i
     \end{align*}
-    for at least one $\alpha_i \neq 0.$ There is one $x_i$ that is composed by other vectors. Furthermore, $\forall n \l d, \b{x}_1, \b{x}_2, \b{x}_3, \cdots, \b{x}_n$ are, in contrast, \emph{linear independent}. 
+    for at least one $\alpha_i \neq 0.$ There is one $x_i$ that is composed by other vectors. 
 \end{definition}
 
 \begin{lemma}
