@@ -2,9 +2,8 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    paths:
-      - 'LinearAlgebra/main.pdf'
-      - 'ExPair/main.pdf'
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -16,16 +15,22 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Build website structure
-    - name: Prepare public folder
+    # ===== Build website structure =====
+    - name: Prepare Pages directory
       run: |
         mkdir -p public/LinearAlgebra
         mkdir -p public/ExPair
 
-        cp LinearAlgebra/main.pdf public/LinearAlgebra/
-        cp ExPair/main.pdf public/ExPair/
+        # copy PDFs if they exist
+        if [ -f LinearAlgebra/main.pdf ]; then
+          cp LinearAlgebra/main.pdf public/LinearAlgebra/
+        fi
 
-    # Deploy
+        if [ -f ExPair/main.pdf ]; then
+          cp ExPair/main.pdf public/ExPair/
+        fi
+
+    # ===== Deploy =====
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
