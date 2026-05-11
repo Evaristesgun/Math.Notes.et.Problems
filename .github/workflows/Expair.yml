@@ -1,9 +1,12 @@
-name: Build ExPair
+name: Build ExPair PDF
 
 on:
   push:
     paths:
       - 'ExPair/**'
+
+    paths-ignore:
+      - 'ExPair/*.pdf'
 
 jobs:
   build:
@@ -28,6 +31,6 @@ jobs:
 
         git add ExPair/main.pdf
 
-        git commit -m "Update Project A PDF" || echo "No changes"
+        git commit -m "Update ExPair PDF" || echo "No changes"
 
         git push
