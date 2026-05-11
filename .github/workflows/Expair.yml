@@ -17,22 +17,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # ===== Compile LaTeX =====
+    # Compile
     - uses: xu-cheng/latex-action@v3
       with:
         root_file: ExPair/main.tex
         work_in_root_file_dir: true
 
-    # ===== Prepare GitHub Pages structure =====
-    - name: Prepare Pages folder
+    # Commit PDF back to repo
+    - name: Commit PDF
       run: |
-        mkdir -p public/ExPair
-        cp ExPair/main.pdf public/ExPair/
+        git config --local user.name "github-actions"
+        git config --local user.email "github-actions@github.com"
 
-    # ===== Deploy to GitHub Pages =====
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: public
-        publish_branch: gh-pages
+        git add ExPair/main.pdf
+
+        git commit -m "Update ExPair PDF" || echo "No changes"
+        git push
