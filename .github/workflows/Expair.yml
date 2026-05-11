@@ -1,0 +1,33 @@
+name: Build Project A
+
+on:
+  push:
+    paths:
+      - 'ExPair/**'
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: xu-cheng/latex-action@v3
+      with:
+        root_file: ExPair/main.tex
+
+    - name: Commit PDF
+      run: |
+        git config --local user.name "github-actions"
+        git config --local user.email "github-actions@github.com"
+
+        git add ExPair/main.pdf
+
+        git commit -m "Update Project A PDF" || echo "No changes"
+
+        git push
