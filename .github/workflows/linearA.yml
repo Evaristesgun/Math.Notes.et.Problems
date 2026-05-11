@@ -32,3 +32,16 @@ jobs:
         git commit -m "Update Project A PDF" || echo "No changes"
 
         git push
+
+
+    # deploy pages
+
+    - name: Deploy to GitHub Pages
+  
+      uses: peaceiris/actions-gh-pages@v4
+  
+      with:
+  
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+  
+        publish_dir: ExPair
