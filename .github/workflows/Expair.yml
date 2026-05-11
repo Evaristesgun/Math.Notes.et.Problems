@@ -5,9 +5,6 @@ on:
     paths:
       - 'ExPair/**'
 
-    paths-ignore:
-      - 'ExPair/*.pdf'
-
 jobs:
   build:
     if: github.actor != 'github-actions[bot]'
