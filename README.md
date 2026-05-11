@@ -6,10 +6,10 @@ Linear Algebra -- from _Linear Algebra and Geometery_ by _Shafarevich_, _Exercis
 link: https://Evaristesgun.github.io/Math.Notes.et.Problems/LinearAlgebra/main.pdf
 
 Exponent Pairs -- _Van der Corput's Method of Exponential Sums_ by
-_S. W. Graham_
+_S. W. Graham_ from
 Michigan Technological University, USA
 and
-_G. Kolesnik_
+_G. Kolesnik_ from
 California State University, Los Angeles, USA.
 
 link: https://Evaristesgun.github.io/Math.Notes.et.Problems/ExPair/main.pdf
