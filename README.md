@@ -9,7 +9,7 @@ This repository contains on-going Linear Algebra, Exponent Sum, etc. lecture-sty
 Based on *Linear Algebra and Geometry* by *Shafarevich*,  
 *Exercises in Algebra* by *Kostrikin*, multiple resources by Prof. *Gilbert Strang*, and *Axler*, 
 
-the linear algebra project correpsonds to basic concepts of the course and selects some of the typical, illuminating problems from *Exercises in Algebra* by *Kostrikin*.
+the linear algebra project corresponds to basic concepts of the course and selects some of the typical, illuminating problems from *Exercises in Algebra* by *Kostrikin*.
 
 ### Exponent Sum
 
