@@ -17,7 +17,7 @@ Based on *Van der Corput's Method of Exponential Sums* by
 *S. W. Graham* (Michigan Technological University, USA) and  
 *G. Kolesnik* (California State University, Los Angeles, USA),
 
-the exponential sum project covers basic application estimating exponent sums as well as Van der Corput's method, including _A, B process_. 
+the exponential sum project covers basic application estimating exponent sums as well as Van der Corput's method, including the _A-process_ and _B-process_. 
 
 In addition, I addressed some typical number theory problems:
 1. Exercise in _Harvard Lecture Notes- "Exponential sums III- the van der Corput" by Noam Elkies_, involving _Equidistribution_,
