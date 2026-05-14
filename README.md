@@ -1,6 +1,9 @@
 # Math.Notes.et.Problems
 
-It is my repository for Linear Algebra, Exponent Sum, etc. lecture-style notes and adjunctive exercises, which mainly based on my independent chain of theorems, definitions and correlated remarks.
+It is my repository for on-going Linear Algebra, Exponent Sum, etc. lecture-style notes and adjunctive exercises, which mainly based on my independent chain of theorems, definitions and correlated remarks.
+
+## Notes
+
 
 ## Build System
 
