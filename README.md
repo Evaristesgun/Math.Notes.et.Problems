@@ -2,6 +2,10 @@
 
 It is my repository for Linear Algebra, Exponent Sum, etc. lecture-style notes and adjunctive exercises, which mainly based on my independent chain of theorems, definitions and correlated remarks.
 
+## Build System
+
+All PDF documents are automatically compiled through GitHub Actions and deployed through GitHub Pages.
+
 ## Online PDFs
 
 ### Linear Algebra
@@ -44,8 +48,3 @@ Math.Notes.et.Problems/
 │
 └── .github/
     └── workflows/     GitHub Actions workflows
-
-## Build System
-
-All PDF documents are automatically compiled through
-GitHub Actions and deployed through GitHub Pages.
