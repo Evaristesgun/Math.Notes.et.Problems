@@ -1,4 +1,4 @@
-This is the exponent pair project. It covers basic application estimating exponent sums as well as Van der Corput's method, including _A, B process_. 
+This is the exponent sum project. It covers basic application estimating exponent sums as well as Van der Corput's method, including _A, B process_. 
 
 In addition, I addressed some typical number theory problems:
 1. Exercise in _Harvard Lecture Notes- "Exponential sums III- the van der Corput" by Noam Elkies_, involving _Equidistribution_,
