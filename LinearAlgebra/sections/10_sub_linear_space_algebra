@@ -40,7 +40,7 @@ The linear map $T$ is depicted by a matrix $A$ that transforms the vectors in $V
 \begin{align*}
     &T: V \to W, \; [\b{x}]_{\mathcal{E}} \longmapsto [T]_{\mathcal{E}' \leftarrow \mathcal{E}} [\b{x}]_{\mathcal{E}}, \\
     &A := [T]_{\mathcal{E}' \leftarrow \mathcal{E}},\; \b{b} := A[\b{x}]_{\mathcal{E}}. \\
-    &\text{If we choose another bases $\mathcal{F'}, \mathcal{E'},$ then according to Theorem 1.40:} \\
+    &\text{If we choose another bases $\mathcal{F'}, \mathcal{E'},$ then according to Theorem 3.15:} \\
     &A' = [I_M]_{\mathcal{F'} \leftarrow \mathcal{F}} A [I_L]_{\mathcal{E'} \leftarrow \mathcal{E}}^{-1} \Longrightarrow \rk{A'} = \rk{A}, \text{ which implies the inalterableness of rank.} \\
     &\b{x} := (x_1, x_2, \cdots, x_n)^T \in V, \; \b{b} := (b_1, b_2, \cdots, b_m)^T \in \img T \subset W, \; A \in M^{m \times n}.
 \end{align*}
