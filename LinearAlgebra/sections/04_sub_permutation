@@ -36,6 +36,6 @@
     The coefficient $\alpha_{i_1, i_2, \cdots, i_n} = F(\b{e}_{i_1}, \b{e}_{i_2}, \cdots, \b{e}_{i_n}).$
 \end{theorem}
 \textbf{(idea)}
-It is easily proven by induction, since any linear function is $F(\b{x}) = \sum_{i = 1}^n a_i x_i.$ In fact, from Theorem 1.13, we acknowledge the explicit formula for determinants. The determinant function $$F(\b{e}_{i_1}, \b{e}_{i_2}, \cdots, \b{e}_{i_n})$$ can be considered a permutation $\b{J}$ of the rows from the original matrix $E.$ Since we know the $I$ process adds $-$ to its determinant, we have $F(\b{e}_{i_1}, \b{e}_{i_2}, \cdots, \b{e}_{i_n}) = \varepsilon(\b{J}) \det E = \varepsilon(\b{J}).$ Thus,
+It is easily proven by induction, since any linear function is $F(\b{x}) = \sum_{i = 1}^n a_i x_i.$ In fact, from Theorem 2.11, we acknowledge the explicit formula for determinants. The determinant function $$F(\b{e}_{i_1}, \b{e}_{i_2}, \cdots, \b{e}_{i_n})$$ can be considered a permutation $\b{J}$ of the rows from the original matrix $E.$ Since we know the $I$ process adds $-$ to its determinant, we have $F(\b{e}_{i_1}, \b{e}_{i_2}, \cdots, \b{e}_{i_n}) = \varepsilon(\b{J}) \det E = \varepsilon(\b{J}).$ Thus,
 
 $$\det A = \sum_{\b{J}} \varepsilon(\b{J}) a_{1i_1} a_{2i_2} a_{3i_3} \cdots a_{ni_n}.$$
