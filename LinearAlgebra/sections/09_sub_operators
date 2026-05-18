@@ -57,7 +57,7 @@ We recall the expression in $(9).$ Let $\b{x} \in L.$ If tuple $\mathcal E = (\b
     From the diagram, we acquire the relation of matrices $$[A]_{\mathcal{F'} \leftarrow \mathcal{E'}} = [I_{M}]_{\mathcal{F'} \leftarrow \mathcal{F}} [A]_{\mathcal{F} \leftarrow \mathcal{E}} [I_L]_{\mathcal{E'} \leftarrow \mathcal{E}}^{-1}.$$
 \end{theorem}
 \begin{proof}
-The main idea is shown in the commutative diagram. In fact, by Lemma 1.39 and Theorem 1.41, we 
+The main idea is shown in the commutative diagram. In fact, by Lemma 3.13 and Theorem 3.14, we  
 obtain 
 \begin{align*}
     \begin{cases}
