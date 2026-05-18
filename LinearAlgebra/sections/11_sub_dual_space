@@ -1,1 +1,14 @@
 \subsection{Dual space}
+The Dual space was invented to decipher a specific type of operator, $A: L \to \mathbb{K}$ in which $\mathbb{K}$ is any sum of scalars. 
+\begin{definition}[Dual Space]
+    If $L$ has finite dimension, then $L$'s dual space is defined as 
+    $$L^* := \mathcal{L}(L, \mathbb{K}) = \set{f \mid f: L \to \mathbb{K}, f(\b{x}+\b{y}) = f(\b{x}) + f(\b{y}), f(k\b{x}) = kf(\b{x})}.$$
+\end{definition}
+
+\begin{remark}[Infinite-Dimensional linearity \& Dual Space]
+    In the history of studying linear functions on infinite-dimensional vector spaces, an impressive idea was considering every \emph{Continuous} linear function $\b{x}(t)$ in the form 
+    \begin{equation*}
+        f_{\phi}(\b{x}) := \int_a^b \phi(t) \b{x}(t) dt.
+    \end{equation*}
+    The $\phi$ resembles the smooth cutoff function in my \textit{Exponential Sum} Proofs. 
+\end{remark}
