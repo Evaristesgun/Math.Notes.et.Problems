@@ -1,11 +1,11 @@
 \subsection*{The Column of the determinant}
-We consider the propagated form of the determinant's definition, which consists of eliminating a random column of the original matrix: $$F_j(A) = \sum_{i = 1}^{n} (-1)^{i+1} a_{ij} M_{ij}.$$ We can simply conclude that it satisfies Theorem 1.7; thus $F_j(A) = F_j(E) \det A.$
+We consider the propagated form of the determinant's definition, which consists of eliminating a random column of the original matrix: $$F_j(A) = \sum_{i = 1}^{n} (-1)^{i+1} a_{ij} M_{ij}.$$ We can simply conclude that it satisfies Theorem 2.5; thus $F_j(A) = F_j(E) \det A.$
 \begin{align*}
     F_j(E) &= \sum_{i = 1}^{n} (-1)^{i+1} a_{ij} M_{ij} = (-1)^{j+1} a_{jj} M_{jj} = (-1)^{j+1} \\
     F_j(A) &= (-1)^{j+1} \det A \\
     \det A &= \sum_{i = 1}^n (-1)^{i+j} M_{ij} \cdot a_{ij} =: \sum_{i = 1}^n A_{ij}a_{ij}.
 \end{align*}
-by induction hypothesis: $M_{jj} = \det E$ for order $n-1,$ $\det E = 1.$ $A_{ij}$ is the \emph{Algebraic cofactor} of $a_{ij}.$ The linearity of determinants for columns, with the assistance of algebraic cofactors, implies the viability of Theorem 1.4 on columns. 
+by induction hypothesis: $M_{jj} = \det E$ for order $n-1,$ $\det E = 1.$ $A_{ij}$ is the \emph{Algebraic cofactor} of $a_{ij}.$ The linearity of determinants for columns, with the assistance of algebraic cofactors, implies the viability of Theorem 2.2 on columns. 
 
 \begin{lemma}[algebraic cofactors acting on linear combinations]
     $$\forall k \neq j, \; \sum_{i = 1}^n A_{ik}a_{ij} = 0$$
