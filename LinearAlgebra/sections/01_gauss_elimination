@@ -97,8 +97,8 @@ The result we summarized in Gaussian elimination can be transcribed as:
 Furthermore, by Gaussian elimination, we can conclude that the matrix for every $T_A$ is row-equivalent to one \emph{Row Echelon Form} $\bar{A}$.
 
 \begin{align*}
-    \forall T_A:& V \mapsto W, \; \b{x} \longrightarrow A \b{x}, \\
-    \iff T_{G(A)}:& V \mapsto W, \b{x} \longrightarrow G(A) \b{x}.
+    \forall T_A:& V \to W, \; \b{x} \mapsto A \b{x}, \\
+    \iff T_{G(A)}:& V \to W, \b{x} \mapsto G(A) \b{x}.
 \end{align*}
 
 If the $r = n,$ then the matrix for $T_A$ is row-equivalent to one REF matrix such that there are no $(0,0, \cdots, b_i)$ rows.
