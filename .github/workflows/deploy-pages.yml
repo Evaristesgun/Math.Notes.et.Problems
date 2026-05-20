@@ -1,12 +1,18 @@
 name: Deploy GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows:
+      - Build LinearAlgebra
+      - Build ExPair PDF
+    types:
+      - completed
 
 jobs:
   deploy:
+    # only deploy if build succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     runs-on: ubuntu-latest
 
     permissions:
@@ -14,10 +20,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: main
+
+    # ===== Wait for latest commit =====
+    - name: Pull latest changes
+      run: |
+        git pull origin main
 
     # ===== Build website structure =====
     - name: Prepare Pages directory
       run: |
+        rm -rf public
         mkdir -p public/LinearAlgebra
         mkdir -p public/ExPair
 
@@ -28,6 +42,11 @@ jobs:
 
         if [ -f ExPair/main.pdf ]; then
           cp ExPair/main.pdf public/ExPair/
+        fi
+
+        # optional homepage
+        if [ -f index.html ]; then
+          cp index.html public/
         fi
 
     # ===== Deploy =====
