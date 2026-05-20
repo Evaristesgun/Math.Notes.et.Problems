@@ -62,7 +62,7 @@ If $\b{f} = 0,$ then $\forall \b{x} \in L, \b{f}(\b{x}) = 0,$ which only happens
 We haven't yet noticed the dual relationship between the elements in $L$ and mapping in $L^*.$ To unravel the inner attribute of dual, we are firstly interrupted by the fact that the creation of isomorphic mapping between $L$ and $L^*$ cannot be done without the selection of a basis in $L.$ Instead of studying directly $L, L^*,$ we try to discover a $A: L \xrightarrow{\sim} L^{**}, L^{**} := (L^*)^*$ that does not rely on basis.
 
 \begin{lemma}
-    $L \cong L^{**}$
+    $L \cong L^*$ as vector spaces.
 \end{lemma}
 \begin{proof}
 The space $L^{**}$ is the set of linear functionals on $L^*$ that map $f \in L^*$ to $k \in \mathbb{K}.$ The $A(\b{x})$ is functional; considering $$A(\b{x})[\b{f}] := \b{f}(\b{x}) \quad (\b{x} \in L, \b{f} \in L^*),$$ it is trivial to prove its linearity. 
