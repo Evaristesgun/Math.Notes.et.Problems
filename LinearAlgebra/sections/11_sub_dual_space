@@ -58,4 +58,4 @@ If $\b{f} = 0,$ then $\forall \b{x} \in L, \b{f}(\b{x}) = 0,$ which only happens
     If vector space $L$ has a finite dimension, $L \cong L^*.$ However, if we are considering infinitely dimensional cases, $L$ and $L^*$ are not necessarily isomorphic.
 \end{corollary}
 
-We haven't yet noticing the symmetric nature between the elements in $L$ and mapping in $L^*.$ 
+We haven't yet noticing the symmetric nature between the elements in $L$ and mapping in $L^*.$
