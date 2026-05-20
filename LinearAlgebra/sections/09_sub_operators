@@ -5,7 +5,7 @@
 
 The operator is an embodiment of linear algebra in which it not only fully inherits the attributes of matrix algebra, but also surpasses the axis-dependence and is dedicated to the discussion of the algebraic properties of linear spaces. 
 
-The operator corresponds to a transformation by a matrix, while a base from $L,M$ is selected, respectively. Let $\mathcal E = (\b{e}_1, \cdots, \b{e}_n)$ and $\mathcal F = (\b{f}_1, \cdots, \b{f}_m)$ be bases of $L, M$, respectively. For any vector in $L$
+The operator corresponds to a transformation by a matrix, while a basis from $L,M$ is selected, respectively. Let $\mathcal E = (\b{e}_1, \cdots, \b{e}_n)$ and $\mathcal F = (\b{f}_1, \cdots, \b{f}_m)$ be bases of $L, M$, respectively. For any vector in $L$
 \begin{align*}
     \b{x} &= \alpha_1 \b{e}_1 + \alpha_2 \b{e}_2 + \cdots + \alpha_n \b{e}_n, \\
     A(\b{x}) &= \alpha_1 A(\b{e}_1) + \alpha_2 A(\b{e}_2) + \cdots + \alpha_n A(\b{e}_n). 
@@ -30,7 +30,7 @@ then we have if $A(\b{x}) = \beta_1 \b{f}_1 + \beta_2 \b{f}_2 + \cdots + \beta_m
     \end{cases} \Longrightarrow 
     [A(\b{x})]_{\mathcal{F}} = [A]_{\mathcal{F} \leftarrow \mathcal{E}} [\b{x}]_{\mathcal{E}}
 \end{equation}
-$[A]_{\mathcal{F} \leftarrow \mathcal{E}}$ is solely determined by the basis $\mathcal{E}, \mathcal{F},$ and the operator itself. By converting to matrix $[A]_{\mathcal{F} \leftarrow \mathcal{E}},$ we obtain the trivial but important result. Here, we have just introduced a crucial notation $[\b{x}]_{\mathcal{E}};$ it represents the "coordinate" of an unaltered vector $\b{x}$ under a specific basis $\mathcal E.$ For example, the scalars $\beta_1, \beta_2 \cdots,\beta_m$ in $(9)$ is the coordinates of $A(\b{x})$ under $\mathcal F.$
+$[A]_{\mathcal{F} \leftarrow \mathcal{E}}$ is solely determined by the basis $\mathcal{E}, \mathcal{F},$ and the operator itself. By converting to matrix $[A]_{\mathcal{F} \leftarrow \mathcal{E}}$ we obtain the trivial but important result. Here, we have just introduced a crucial notation $[\b{x}]_{\mathcal{E}};$ it represents the "coordinate" of an unaltered vector $\b{x}$ under a specific basis $\mathcal E.$ For example, the scalars $\beta_1, \beta_2 \cdots,\beta_m$ in $(9)$ is the coordinates of $A(\b{x})$ under $\mathcal F.$
 
 \begin{lemma}
     $A: L \to N, B: N \to M.$ $(BA)(\b{x}) := B(A(\b{x})).$ Let $\mathcal E = (\b{e}_1, \cdots, \b{e}_n),$ $\mathcal G = (\b{g}_1, \cdots, \b{g}_l)$ and $\mathcal F = (\b{f}_1, \cdots, \b{f}_m)$ be bases of $L, N, M$, respectively. We reached that $$(BA)(\b{e}_i) = \sum_{j = 1}^m c_{ij} \b{f}_{j}, \quad c_{ij} = ([B]_{\mathcal{F} \leftarrow \mathcal{G}} [A]_{\mathcal{G} \leftarrow \mathcal{E}})_{ij}.$$ In addition, the $A(B+C) = AB + AC, (A+B)C = AC + BC.$
@@ -57,8 +57,7 @@ We recall the expression in $(9).$ Let $\b{x} \in L.$ If tuple $\mathcal E = (\b
     From the diagram, we acquire the relation of matrices $$[A]_{\mathcal{F'} \leftarrow \mathcal{E'}} = [I_{M}]_{\mathcal{F'} \leftarrow \mathcal{F}} [A]_{\mathcal{F} \leftarrow \mathcal{E}} [I_L]_{\mathcal{E'} \leftarrow \mathcal{E}}^{-1}.$$
 \end{theorem}
 \begin{proof}
-The main idea is shown in the commutative diagram. In fact, by Lemma 3.13 and Theorem 3.14, we 
-obtain 
+The main idea is shown in the commutative diagram. In fact, by Lemma 3.13 and Theorem 3.14, we obtain 
 \begin{align*}
     \begin{cases}
         [A(x)]_{\mathcal{F'}} = [A]_{\mathcal F' \leftarrow \mathcal E'} [x]_{\mathcal{E'}} = [A]_{\mathcal F' \leftarrow \mathcal E'} [I_L]_{\mathcal E' \leftarrow \mathcal E} [x]_{\mathcal E} \\
@@ -76,7 +75,7 @@ Because $I$ is mapping $L \to L,$ the matrix $[I_L]_{\mathcal E' \leftarrow \mat
 \end{corollary}
 
 \begin{remark}
-The book usually employs the other perspective of base shifts, which is, without introducing $I_L,$ constructing a "shift" operator $P: L \to L$ that directly turns the bases. $P(\b{e}_i) = \b{e}_i'.$ Then, $[P(\b{x})]_{\mathcal E'} = [\b{x}]_{\mathcal E}.$ 
+The book usually employs the other perspective of bases shifts, which is, without introducing $I_L,$ constructing a "shift" operator $P: L \to L$ that directly turns the bases. $P(\b{e}_i) = \b{e}_i'.$ Then, $[P(\b{x})]_{\mathcal E'} = [\b{x}]_{\mathcal E}.$ 
 \end{remark}
 
 \begin{definition}[Determinant of an Operator]
