@@ -29,3 +29,33 @@ The Dual space was invented to decipher a specific type of operator, $A: L \to \
 
     From the \emph{weight} perspective, we consider Dirac $\delta$ a non-continuous, singular-point-only weight that only allows one point to pass; while $\eta, \psi$ are absolutely smooth for which they return roughly sum(integration) on certain interval to reduce the error from Fourier transform.
 \end{remark}
+
+\begin{definition}[Dual Basis]
+    For a base $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ its dual basis are vectors $\b{f}_1, \b{f}_2, \cdots, \b{f}_n \in L^*,$ such that $$\b{f}_i(\b{e}_j) = \delta_{ij}.$$ $\delta_{ij}$ is \emph{Kronecker delta}. 
+\end{definition}
+
+\begin{theorem}
+    If vector space $L$ has a finite dimension, $\dim L = \dim L^*.$
+\end{theorem}
+\begin{proof}
+We are prone to prove that the Dual basis in the previous definition is an actual base in the dual space. 
+
+$\forall \b{f} \in L^*, \b{x} \in L,$ for a base $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$
+\begin{align*}
+    \b{f}(\b{x}) &= a_1\b{f}(\b{e}_1) + a_2\b{f}(\b{e}_2) + \cdots + a_2\b{f}(\b{e}_n) \\
+    &= a_1 b_1 + a_2 b_2 + \cdots + a_n b_n \quad(\text{for some constants } b).
+\end{align*}
+Incorporating Dual basis, 
+\begin{align*}
+    \b{f}_{i}(\b{x}) &= a_1\b{f}_i(\b{e}_1) + a_2\b{f}_i(\b{e}_2) + \cdots + a_2\b{f}_i(\b{e}_n) \\
+    &= a_i \\
+    \Longrightarrow \b{f}(\b{x}) &= b_1 \b{f}_1(\b{x}) + b_2 \b{f}_2(\b{x}) + \cdots + b_n \b{f}_n(\b{x}) \iff \b{f} = b_1 \b{f}_1 + b_2 \b{f}_2 + \cdots + b_n \b{f}_n.
+\end{align*}
+
+If $\b{f} = 0,$ then $\forall \b{x} \in L, \b{f}(\b{x}) = 0,$ which only happens when $b_1, b_2, \cdots, b_n$ are all $0.$ Thus, $\b{f}_1, \b{f}_2, \cdots, \b{f}_n$ are linear independent. Plus, $\forall \b{f} \in L^*,$ $\b{f}$ can be represented by linear combination of a dual basis. Hence, any dual basis is an actual basis, $\dim L = \dim L^*.$
+\end{proof}
+\begin{corollary}
+    If vector space $L$ has a finite dimension, $L \cong L^*.$ However, if we are considering infinitely dimensional cases, $L$ and $L^*$ are not necessarily isomorphic.
+\end{corollary}
+
+We haven't yet noticing the symmetric nature between the elements in $L$ and mapping in $L^*.$ 
