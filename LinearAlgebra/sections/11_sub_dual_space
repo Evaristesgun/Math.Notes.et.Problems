@@ -1,21 +1,21 @@
 \subsection{Dual space}
-The Dual space was invented to decipher a specific type of operator, $A: L \to \mathbb{K}$ in which $\mathbb{K}$ is any sum of scalars. 
+The Dual space was invented to decipher a specific type of operator, $A: L \to \mathbb{K},$ where $\mathbb{K}$ is the field of scalars.. 
 \begin{definition}[Dual Space]
-    If $L$ has finite dimension, then $L$'s dual space is defined as 
+    For a vector space $L,$ then $L$'s dual space is defined as 
     $$L^* := \mathcal{L}(L, \mathbb{K}) = \set{f \mid f: L \to \mathbb{K}, f(\b{x}+\b{y}) = f(\b{x}) + f(\b{y}), f(k\b{x}) = kf(\b{x})}.$$
 \end{definition}
 
 \begin{remark}[Infinite-Dimensional linearity \& Dual Space]
-    In the history of studying linear functions on infinite-dimensional vector spaces, an impressive idea was that for many \emph{continuous linear functionals}, especially in Hilbert spaces such as $L^2,$ $\b{x}(t)$ can be represented in the prototypical form
+    In the history of studying linear functions on infinite-dimensional vector spaces, an impressive idea was that for many \emph{continuous linear functionals}, especially in Hilbert spaces such as $L^2,$ continuous linear functionals can often be represented in the prototypical form
     \begin{equation*}
         f_{\phi}(\b{x}) := \int_a^b \phi(t) \b{x}(t) dt.
     \end{equation*}
     
-    For linear space $L = \set{\b{x}: \b{x} \in C^1([a,b]), \b{x}(a) = \b{x}(b) = 0},$ \emph{Paul Dirac} introduced Dirac $\delta,$ which stemmed from the generalized cutoff function $H = \mathbf{1}_{\g 0},$ initially lacking proper definition of derivative. However, if we use the prototypical function, $$f_{\phi'}(\b{x}) := \int_a^b \b{x}(t) d \phi(t) = \left. \b{x}(t)\phi(t) \right|_a^b - f_{\phi}(\b{x}') = -f_{\phi}(\b{x}')$$ whenever $\phi$ is differentiable. We define the Dirac distribution $\delta_{t_0}$ through $f_{\delta}(\b{x}) = -f_H(\b{x}'),$ and thus, in the distributional sense, $\delta_{t_0} = H'.$
+    For linear space $L = \set{\b{x}: \b{x} \in C^1([a,b]), \b{x}(a) = \b{x}(b) = 0},$ \emph{Paul Dirac} introduced Dirac $\delta,$ which may formally be viewed as the derivative of the generalized cutoff function, initially lacking proper definition of derivative. However, if we use the prototypical function, $$f_{\phi'}(\b{x}) := \int_a^b \b{x}(t) d \phi(t) = \left. \b{x}(t)\phi(t) \right|_a^b - f_{\phi}(\b{x}') = -f_{\phi}(\b{x}')$$ whenever $\phi$ is differentiable. We define the Dirac distribution $\delta_{t_0}$ through $$f_{\delta_{t_0}}(\b{x}) := -f_H(\b{x}'),$$ which formally corresponds to $$\delta_{t_0} = \frac{d}{dt}H(t-t_0),$$ and thus, in the distributional sense, $\delta_{t_0} = \frac{d}{dt}H(t-t_0).$
 
-    Now, by Dirac $\delta$ function, $\forall t_0 \in [a,b],$ $$f_{\delta}(\b{x}) = -f_{H}(\b{x}') = -\int_a^b H(t - t_0) d\b{x}(t) = - \int_{t_0}^b d\b{x}(t) = \b{x}(t_0).$$ The $\delta$ marks the value of $\b{x}$ in one variable.
+    Now, by Dirac $\delta$ function, $\forall t_0 \in [a,b],$ $$f_{\delta}(\b{x}) = -f_{H}(\b{x}') = -\int_a^b H(t - t_0) d\b{x}(t) = - \int_{t_0}^b d\b{x}(t) = \b{x}(t_0).$$ The $\delta$ evaluates the value of $\b{x}$ at one point.
     
-    The Dirac $\delta$ reminds me the smooth cutoff function in my \textit{Exponential Sum} Proofs, $\eta(t).$ 
+    From the dual-space perspective, the function $\phi$ may be viewed as a \emph{weight} selecting information from $\b{x}$. The Dirac $\delta$ reminds me the smooth cutoff function in my \textit{Exponential Sum} Proofs, $\eta(t).$ 
     \begin{equation*}
         \eta(x) = \left\{ \begin{array}{rcl}
             0 & \mbox{for} & x > C \\
@@ -27,27 +27,27 @@ The Dual space was invented to decipher a specific type of operator, $A: L \to \
     
     The similarities expose in ways they operates, though one is distributional while the other is smooth. The utility of both functional Dirac $\delta$ and $\eta, \psi$ is to serve as \emph{weight} in the integral. 
 
-    From the \emph{weight} perspective, we consider Dirac $\delta$ a non-continuous, singular-point-only weight that only allows one point to pass; while $\eta, \psi$ are absolutely smooth for which they return roughly sum(integration) on certain interval to reduce the error from Fourier transform.
+    From the \emph{weight} perspective, we consider Dirac $\delta$ a non-continuous, singular-point-only weight that only allows one point to pass; while $\eta, \psi$ are absolutely smooth for which they return roughly sum(integration) on certain interval to reduce the error from Fourier transform. Hence, both singular distributions such as $\delta$ and smooth cutoffs such as $\eta, \psi$ may be interpreted as different kinds of weights acting through an integral pairing.
 \end{remark}
 
 \begin{definition}[Dual Basis]
-    For a base $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ its dual basis are vectors $\b{f}_1, \b{f}_2, \cdots, \b{f}_n \in L^*,$ such that $$\b{f}_i(\b{e}_j) = \delta_{ij}.$$ $\delta_{ij}$ is \emph{Kronecker delta}. 
+    For a basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ its dual basis are vectors $\b{f}_1, \b{f}_2, \cdots, \b{f}_n \in L^*,$ such that $$\b{f}_i(\b{e}_j) = \delta_{ij}.$$ $\delta_{ij}$ is \emph{Kronecker delta}. 
 \end{definition}
 
 \begin{theorem}
     If vector space $L$ has a finite dimension, $\dim L = \dim L^*.$
 \end{theorem}
 \begin{proof}
-We are prone to prove that the Dual basis in the previous definition is an actual base in the dual space. 
+We are prone to prove that the Dual basis in the previous definition is an actual basis in the dual space. 
 
-$\forall \b{f} \in L^*, \b{x} \in L,$ for a base $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$
+$\forall \b{f} \in L^*, \b{x} \in L,$ for a basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$
 \begin{align*}
     \b{f}(\b{x}) &= a_1\b{f}(\b{e}_1) + a_2\b{f}(\b{e}_2) + \cdots + a_2\b{f}(\b{e}_n) \\
-    &= a_1 b_1 + a_2 b_2 + \cdots + a_n b_n \quad(\text{for some constants } b).
+    &= a_1 b_1 + a_2 b_2 + \cdots + a_n b_n \quad(b_i = f(\b{x}_i)).
 \end{align*}
 Incorporating Dual basis, 
 \begin{align*}
-    \b{f}_{i}(\b{x}) &= a_1\b{f}_i(\b{e}_1) + a_2\b{f}_i(\b{e}_2) + \cdots + a_2\b{f}_i(\b{e}_n) \\
+    \b{f}_{i}(\b{x}) &= a_1\b{f}_i(\b{e}_1) + a_2\b{f}_i(\b{e}_2) + \cdots + a_n\b{f}_i(\b{e}_n) \\
     &= a_i \\
     \Longrightarrow \b{f}(\b{x}) &= b_1 \b{f}_1(\b{x}) + b_2 \b{f}_2(\b{x}) + \cdots + b_n \b{f}_n(\b{x}) \iff \b{f} = b_1 \b{f}_1 + b_2 \b{f}_2 + \cdots + b_n \b{f}_n.
 \end{align*}
@@ -58,4 +58,24 @@ If $\b{f} = 0,$ then $\forall \b{x} \in L, \b{f}(\b{x}) = 0,$ which only happens
     If vector space $L$ has a finite dimension, $L \cong L^*.$ However, if we are considering infinitely dimensional cases, $L$ and $L^*$ are not necessarily isomorphic.
 \end{corollary}
 
-We haven't yet noticing the symmetric nature between the elements in $L$ and mapping in $L^*.$
+We haven't yet noticed the dual relationship between the elements in $L$ and mapping in $L^*.$ To unravel the inner attribute of dual, we are firstly interrupted by the fact that the creation of isomorphic mapping between $L$ and $L^*$ cannot be done without the selection of a basis in $L.$ Instead of studying directly $L, L^*,$ we try to discover a $A: L \xrightarrow{\sim} L^{**}, L^{**} := (L^*)^*$ that does not rely on basis.
+
+\begin{lemma}
+    $L \cong L^{**}$
+\end{lemma}
+\begin{proof}
+The space $L^{**}$ is the set of linear functionals on $L^*$ that map $f \in L^*$ to $k \in \mathbb{K}.$ The $A(\b{x})$ is functional; considering $$A(\b{x})[\b{f}] := \b{f}(\b{x}) \quad (\b{x} \in L, \b{f} \in L^*),$$ it is trivial to prove its linearity. 
+
+For basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ its dual basis $\b{f}_1, \b{f}_2, \cdots, \b{f}_n \in L^*,$ and the dual basis of the dual basis in $L^*,$ $\b{G}_1, \b{G}_2, \cdots, \b{G}_n \in L^{**},$ $$\b{f_i}(\b{e}_j) = \delta_{ij},\; \b{G}_i[\b{f}_j] = \delta_{ij}.$$ If we can verify that $A(\b{e}_i) = \b{G}_i,$ then the bases of $L, L^{**}$ are one-to-one corresponded, and thus $L \cong L^{**},$ but $$A(\b{e}_i)[\b{f}_j] = \b{f}_j(\b{e}_i) = \delta_{ij} = \b{G}_i[\b{f}_j] \Longrightarrow A(\b{e}_i) = \b{G}_i.$$
+\end{proof}
+
+\begin{definition}
+    We define $\dpr{\b{f}, \b{x}} = \dpr{\b{x}, \b{f}} := \b{f}(\b{x}),$ $\b{x} \in L, \b{f} \in L^*.$ It is another notation for $A(\b{x})[\b{f}].$ 
+\end{definition}
+If we treat $\dpr{\b{f}, \b{x}}$ as a "function" for both $\b{x}$(as a function) and $\b{f}$(as a functional), we found that the $\dpr{\b{f}, \b{x}}$ satisfies
+\begin{enumerate}
+    \item $\dpr{\b{f}, \b{x}_1 + \b{x}_2} = \dpr{\b{f}, \b{x}_1} + \dpr{\b{f}, \b{x}_2},\; \dpr{\b{f}, k\b{x}} = k\dpr{\b{f}, \b{x}},$
+    \item $\dpr{\b{x}, \b{f}_1 + \b{f}_2} = \dpr{\b{x}, \b{f}_1} + \dpr{\b{x}, \b{f}_2},\; \dpr{\b{x}, k\b{f}} = k\dpr{\b{x}, \b{f}},$
+    \item $\forall \b{x} \in L, \dpr{\b{f}, \b{x}} = 0, \b{f} = \b{0}, \forall \b{f} \in L^*, \dpr{\b{f}, \b{x}} = 0, \b{x} = \b{0}.$
+\end{enumerate}
+It is a vivid example of bilinearity. 
