@@ -26,7 +26,7 @@ For any $\b{x} \in M,$ $\exists! \b{y} \in L, A(\b{y}) = \b{x}.$ $\b{y} = a_1\b{
 
 It is time to introduce the Rank-Nullity theorem to reveal the correlation between our previous insights, which we have already seen in the Gaussian elimination and Rank chapters.
 \begin{theorem}[Rank-Nullity Theorem]
-    For any linear transformation such that $T: V \mapsto W, \dim V$ is finite, 
+    For any linear transformation such that $T: V \to W, \dim V$ is finite, 
     \begin{equation}
         \dim(\img T) + \dim(\ker T) = \dim V
     \end{equation}
