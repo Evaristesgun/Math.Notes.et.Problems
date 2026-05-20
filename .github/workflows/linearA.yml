@@ -1,9 +1,9 @@
-name: Build ExPair PDF
+name: Build LinearAlgebra PDF
 
 on:
   push:
     paths:
-      - 'ExPair/**'
+      - 'LinearAlgebra/**'
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
     # ===== Compile =====
     - uses: xu-cheng/latex-action@v3
       with:
-        root_file: ExPair/main.tex
+        root_file: LinearAlgebra/main.tex
         work_in_root_file_dir: true
 
     # ===== Commit PDF back =====
@@ -32,12 +32,12 @@ jobs:
         git config --local user.name "github-actions"
         git config --local user.email "github-actions@github.com"
 
-        git add ExPair/main.pdf
+        git add LinearAlgebra/main.pdf
 
         # stop if nothing changed
         git diff --cached --quiet && echo "No PDF changes" && exit 0
 
-        git commit -m "Update ExPair PDF"
+        git commit -m "Update LinearAlgebra PDF"
 
         # sync latest main to avoid push conflicts
         git pull --rebase origin main
