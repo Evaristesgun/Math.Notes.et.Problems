@@ -6,12 +6,12 @@ The Dual space was invented to decipher a specific type of operator, $A: L \to \
 \end{definition}
 
 \begin{remark}[Infinite-Dimensional linearity \& Dual Space]
-    In the history of studying linear functions on infinite-dimensional vector spaces, an impressive idea was that for every \emph{Continuous} linear function, such as in Hilbert space $L^2$, $\b{x}(t)$ conforms the prototypical function 
+    In the history of studying linear functions on infinite-dimensional vector spaces, an impressive idea was that for many \emph{continuous linear functionals}, especially in Hilbert spaces such as $L^2,$ $\b{x}(t)$ can be represented in the prototypical form
     \begin{equation*}
         f_{\phi}(\b{x}) := \int_a^b \phi(t) \b{x}(t) dt.
     \end{equation*}
     
-    For linear space $L = \set{\b{x}: \b{x} \in C^1([a,b]), \b{x}(a) = \b{x}(b) = 0},$ \emph{Paul Dirac} introduced Dirac $\delta$ function, which stemmed from the generalized cutoff function $H = \mathbf{1}_{\g 0},$ initially lacking proper definition of derivative. However, if we use the prototypical function, $$f_{\phi'}(\b{x}) := \int_a^b \b{x}(t) d \phi(t) = \left. \b{x}(t)\phi(t) \right|_a^b - f_{\phi}(\b{x}') = -f_{\phi}(\b{x}').$$ We define the $\delta(t)$ as the function satisfying $f_{\delta}(\b{x}) = -f_H(\b{x}'),$ and thus, we have a differentiable function $\delta := H'.$
+    For linear space $L = \set{\b{x}: \b{x} \in C^1([a,b]), \b{x}(a) = \b{x}(b) = 0},$ \emph{Paul Dirac} introduced Dirac $\delta,$ which stemmed from the generalized cutoff function $H = \mathbf{1}_{\g 0},$ initially lacking proper definition of derivative. However, if we use the prototypical function, $$f_{\phi'}(\b{x}) := \int_a^b \b{x}(t) d \phi(t) = \left. \b{x}(t)\phi(t) \right|_a^b - f_{\phi}(\b{x}') = -f_{\phi}(\b{x}')$$ whenever $\phi$ is differentiable. We define the Dirac distribution $\delta_{t_0}$ through $f_{\delta}(\b{x}) = -f_H(\b{x}'),$ and thus, in the distributional sense, $\delta_{t_0} = H'.$
 
     Now, by Dirac $\delta$ function, $\forall t_0 \in [a,b],$ $$f_{\delta}(\b{x}) = -f_{H}(\b{x}') = -\int_a^b H(t - t_0) d\b{x}(t) = - \int_{t_0}^b d\b{x}(t) = \b{x}(t_0).$$ The $\delta$ marks the value of $\b{x}$ in one variable.
     
@@ -25,7 +25,7 @@ The Dual space was invented to decipher a specific type of operator, $A: L \to \
     \end{equation*} 
     As well as the supporting function $\psi,\, \exists \text{ constants } A < B, \; \psi(u) \neq 0 \Leftrightarrow u \in [A,B]; \quad \psi \in C^\infty((A,B)).$
     
-    The similarities expose in ways they operates, though one of them is functional, and the other is an actual function. The utility of both functional Dirac $\delta$ and $\eta, \psi$ is to serve as \emph{weight} in the integral. 
+    The similarities expose in ways they operates, though one is distributional while the other is smooth. The utility of both functional Dirac $\delta$ and $\eta, \psi$ is to serve as \emph{weight} in the integral. 
 
     From the \emph{weight} perspective, we consider Dirac $\delta$ a non-continuous, singular-point-only weight that only allows one point to pass; while $\eta, \psi$ are absolutely smooth for which they return roughly sum(integration) on certain interval to reduce the error from Fourier transform.
 \end{remark}
