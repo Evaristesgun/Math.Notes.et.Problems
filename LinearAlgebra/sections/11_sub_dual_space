@@ -2,7 +2,7 @@
 
 The Dual space was invented to decipher a specific type of operator, $A: L \to \mathbb{K},$ where $\mathbb{K}$ is the field of scalars.. 
 \begin{definition}[Dual Space]
-    For a vector space $L,$ then $L$'s dual space is defined as 
+    For a vector space $L,$ its dual space is defined as 
     $$L^* := \mathcal{L}(L, \mathbb{K}) = \set{f \mid f: L \to \mathbb{K}, f(\b{x}+\b{y}) = f(\b{x}) + f(\b{y}), f(k\b{x}) = kf(\b{x})}.$$
 \end{definition}
 
