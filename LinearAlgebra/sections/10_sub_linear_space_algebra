@@ -10,7 +10,7 @@
 \begin{proof}
 The necessary condition of the theorem, $\dim L = \dim M \Rightarrow L \cong M,$ can be proved by using the $\mathbb{K}^n := \set{(a_1, a_2, \cdots, a_n): a_1, a_2, \cdots, a_n \in \mathbb{K}}.$ It clear that $L \cong \mathbb{K}^n, M \cong \mathbb{K}^n,$ and $L \cong M.$
 
-The sufficient condition requires that for a bases $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ $\b{f}_1, \b{f}_2, \cdots, \b{f}_n = A(\b{e}_n) \in M$ is also a bases when $L \cong M$, which in turn indicates that $\b{f}_1, \b{f}_2, \cdots, \b{f}_n$ are linear independent, and $\forall \b{x} \in M,$ $\b{x}$ is a linear combination of $\b{f}_1, \b{f}_2, \cdots, \b{f}_n.$ Let $A \xrightarrow{\sim} M.$
+The sufficient condition requires that for a basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ $\b{f}_1, \b{f}_2, \cdots, \b{f}_n = A(\b{e}_n) \in M$ is also a basis when $L \cong M$, which in turn indicates that $\b{f}_1, \b{f}_2, \cdots, \b{f}_n$ are linear independent, and $\forall \b{x} \in M,$ $\b{x}$ is a linear combination of $\b{f}_1, \b{f}_2, \cdots, \b{f}_n.$ Let $A \xrightarrow{\sim} M.$
 
 If $a_1\b{e}_1 + a_2\b{e}_2 + \cdots + a_n\b{e}_n = \b{0},$ then $A(a_1\b{e}_1 + a_2\b{e}_2 + \cdots + a_n\b{e}_n) = A(\b{0}),$ $a_1\b{f}_1 + a_2\b{f}_2 + \cdots + a_n\b{f}_n = \b{0}' \in M,$ but such a scenario only takes place while $a_1, a_2, \cdots, a_n = 0$ since $A(\b{0}) = \b{0}'.$ Thus, $\b{f}_1, \b{f}_2, \cdots, \b{f}_n$ are linear independent.
 
@@ -40,7 +40,7 @@ The linear map $T$ is depicted by a matrix $A$ that transforms the vectors in $V
 \begin{align*}
     &T: V \to W, \; [\b{x}]_{\mathcal{E}} \longmapsto [T]_{\mathcal{E}' \leftarrow \mathcal{E}} [\b{x}]_{\mathcal{E}}, \\
     &A := [T]_{\mathcal{E}' \leftarrow \mathcal{E}},\; \b{b} := A[\b{x}]_{\mathcal{E}}. \\
-    &\text{If we choose another bases $\mathcal{F'}, \mathcal{E'},$ then according to Theorem 3.15:} \\
+    &\text{If we choose another basis $\mathcal{F'}, \mathcal{E'},$ then according to Theorem 3.15:} \\
     &A' = [I_M]_{\mathcal{F'} \leftarrow \mathcal{F}} A [I_L]_{\mathcal{E'} \leftarrow \mathcal{E}}^{-1} \Longrightarrow \rk{A'} = \rk{A}, \text{ which implies the inalterableness of rank.} \\
     &\b{x} := (x_1, x_2, \cdots, x_n)^T \in V, \; \b{b} := (b_1, b_2, \cdots, b_m)^T \in \img T \subset W, \; A \in M^{m \times n}.
 \end{align*}
@@ -50,7 +50,7 @@ We shall provide some insight for the proof of the theorem one step at a time.
     \item $\dim V = n,$ $n$ represents the dimension of the domain $V$, which is the number of coordinates of the input vector $\b{x}$.
     \item $\dim(\img T) = \rk{A}.$ 
     
-    The $\dim(\img T)$ represents the number of vectors in a bases in $\img T = \set{A\b{x}: \b{x} \in \b{V}}.$ We incorporate lemma 1.30 to reduce the matrix $A$ to Row Echelon Form, and we notice that the result vector of $\b{b}$ is solely determined by the $\rk{A}$ main unknown numbers. Thus, $\dim(\img T) = \rk{A}.$
+    The $\dim(\img T)$ represents the number of vectors in a basis in $\img T = \set{A\b{x}: \b{x} \in \b{V}}.$ We incorporate lemma 1.30 to reduce the matrix $A$ to Row Echelon Form, and we notice that the result vector of $\b{b}$ is solely determined by the $\rk{A}$ main unknown numbers. Thus, $\dim(\img T) = \rk{A}.$
     
     \item $\dim(\ker T) =$ the quantity of free unknown numbers in the linear equations $= n - \rk{A}.$
 
@@ -72,15 +72,15 @@ My proof is based on rather specific calculations on Matrix; however, the theore
 \begin{theorem}[Isomorphic Condition involving Kernel]
     $$\forall A: L \to M,\; \dim L = \dim M,\; \ker A =\set{\b{0}} \Longrightarrow A: L \xrightarrow{\sim} M.$$
 \end{theorem}
-Just consider the bases $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ and $A(\b{e}_1), A(\b{e}_2), \cdots, A(\b{e}_n) \in M.$
+Just consider the basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ and $A(\b{e}_1), A(\b{e}_2), \cdots, A(\b{e}_n) \in M.$
 
 \begin{theorem}[Isomorphic Condition involving Image]
     $$\forall A: L \to M,\; \dim L = \dim M,\; \img A = M \Longrightarrow A: L \xrightarrow{\sim} M.$$
 \end{theorem}
-Consider bases $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L$ such that $A(\b{e}_1), A(\b{e}_2), \cdots, A(\b{e}_n) \in M$ forms a bases.
+Consider basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L$ such that $A(\b{e}_1), A(\b{e}_2), \cdots, A(\b{e}_n) \in M$ forms a basis.
 
 \begin{theorem}[Isomorphic Condition involving Singularity]
-    If for every bases $\mathcal E \in L,\; \mathcal F \in M,\; A: L \to M$ has $\det([A]_{\mathcal{F} \leftarrow \mathcal{E}}) \neq 0,$ then $A$ is \emph{nonsingular}.
+    If for every basis $\mathcal E \in L,\; \mathcal F \in M,\; A: L \to M$ has $\det([A]_{\mathcal{F} \leftarrow \mathcal{E}}) \neq 0,$ then $A$ is \emph{nonsingular}.
     $$A: L \xrightarrow{\sim} M,\; \dim L = \dim M \iff A \text{ is nonsingular}.$$
 \end{theorem}
 
