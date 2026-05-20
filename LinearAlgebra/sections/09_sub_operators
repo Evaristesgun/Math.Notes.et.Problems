@@ -30,7 +30,7 @@ then we have if $A(\b{x}) = \beta_1 \b{f}_1 + \beta_2 \b{f}_2 + \cdots + \beta_m
     \end{cases} \Longrightarrow 
     [A(\b{x})]_{\mathcal{F}} = [A]_{\mathcal{F} \leftarrow \mathcal{E}} [\b{x}]_{\mathcal{E}}
 \end{equation}
-$[A]_{\mathcal{F} \leftarrow \mathcal{E}}$ is solely determined by the basis $\mathcal{E}, \mathcal{F},$ and the operator itself. By converting to matrix $[A]_{\b{e} \to \b{f}},$, we obtain the trivial but important result. Here, we have just introduced a crucial notation $[\b{x}]_{\mathcal{E}};$ it represents the "coordinate" of an unaltered vector $\b{x}$ under a specific basis $\mathcal E.$ For example, the scalars $\beta_1, \beta_2 \cdots,\beta_m$ in $(9)$ is the coordinates of $A(\b{x})$ under $\mathcal F.$
+$[A]_{\mathcal{F} \leftarrow \mathcal{E}}$ is solely determined by the basis $\mathcal{E}, \mathcal{F},$ and the operator itself. By converting to matrix $[A]_{\mathcal{F} \leftarrow \mathcal{E}},$ we obtain the trivial but important result. Here, we have just introduced a crucial notation $[\b{x}]_{\mathcal{E}};$ it represents the "coordinate" of an unaltered vector $\b{x}$ under a specific basis $\mathcal E.$ For example, the scalars $\beta_1, \beta_2 \cdots,\beta_m$ in $(9)$ is the coordinates of $A(\b{x})$ under $\mathcal F.$
 
 \begin{lemma}
     $A: L \to N, B: N \to M.$ $(BA)(\b{x}) := B(A(\b{x})).$ Let $\mathcal E = (\b{e}_1, \cdots, \b{e}_n),$ $\mathcal G = (\b{g}_1, \cdots, \b{g}_l)$ and $\mathcal F = (\b{f}_1, \cdots, \b{f}_m)$ be bases of $L, N, M$, respectively. We reached that $$(BA)(\b{e}_i) = \sum_{j = 1}^m c_{ij} \b{f}_{j}, \quad c_{ij} = ([B]_{\mathcal{F} \leftarrow \mathcal{G}} [A]_{\mathcal{G} \leftarrow \mathcal{E}})_{ij}.$$ In addition, the $A(B+C) = AB + AC, (A+B)C = AC + BC.$
