@@ -1,12 +1,12 @@
-\subsection{Vector bases and Vector Space Operations}
+\subsection{Vector basis and Vector Space Operations}
 
-\begin{definition}[bases]
+\begin{definition}[basis]
     $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ such that they are linear independent, and $\forall \b{x} \in L, \b{x} = a_1\b{e}_1 + a_2\b{e}_2 + \cdots + a_n\b{e}_n.$
 \end{definition}
 
 We are able to immediately derive the following fact that 
 \begin{theorem}
-    For any group of linear independent vectors $\b{e}_1, \b{e}_2, \cdots, \b{e}_m,$ we can find other $\b{e}_m, \b{e}_{m+1}, \cdots, \b{e}_n$ such that they form a bases of $L.$
+    For any group of linear independent vectors $\b{e}_1, \b{e}_2, \cdots, \b{e}_m,$ we can find other $\b{e}_m, \b{e}_{m+1}, \cdots, \b{e}_n$ such that they form a basis of $L.$
 \end{theorem}
 The result is proved by simply adding linear independent vectors repeatedly, and it can be written in terms of vector spaces $\forall L' \subset L, \exists L'' \subset L, L = L' \oplus L''.$ The next lemma indicates the dimension's restriction on the vector space.
 
@@ -45,7 +45,7 @@ We solve $\alpha$s by Theorem 1.2 since there are fewer equations ($m$) than unk
 \begin{corollary}
     If $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L$ are bases, then $\dim L = n.$
 \end{corollary}
-Next, we follow the train of thought that the bases is correlated with dimensions.
+Next, we follow the train of thought that the bases are correlated with dimensions.
 
 \begin{theorem}
     $L_1, L_2$ is a vector space.
@@ -53,7 +53,7 @@ Next, we follow the train of thought that the bases is correlated with dimension
     $$\dim(L_1 + L_2) = \dim L_1 + \dim L_2 - \dim(L_1 \cap L_2).$$
 \end{theorem}
 \begin{proof}
-    Let $\b{e}_1, \b{e}_2, \cdots, \b{e}_n$ and $\b{f}_1, \b{f}_2, \cdots, \b{f}_m$ denote a bases of $L_1, L_2.$ Then, every vector in $L_1 \oplus L_2$ is $$\b{x}_1 + \b{x}_2 = a_1\b{e}_1 + a_2\b{e}_2 + \cdots + a_n\b{e}_n + a_{n+1}\b{f}_1 + a_{n+2}\b{f}_2 + \cdots + a_{n+m}\b{f}_m,$$ $\b{x}_1 \in L_1, \b{x}_2 \in L_2.$ $\b{x}_1 + \b{x}_2 = 0$ yields the $a_1, a_2, \cdots, a_{n+m} = 0$ since $\b{x}_1, \b{x}_2 = 0,$ which indicates the linear independence of vectors $\b{e}_1, \b{e}_2, \cdots, \b{e}_n$ and $\b{f}_1, \b{f}_2, \cdots, \b{f}_m.$
+    Let $\b{e}_1, \b{e}_2, \cdots, \b{e}_n$ and $\b{f}_1, \b{f}_2, \cdots, \b{f}_m$ denote a basis of $L_1, L_2.$ Then, every vector in $L_1 \oplus L_2$ is $$\b{x}_1 + \b{x}_2 = a_1\b{e}_1 + a_2\b{e}_2 + \cdots + a_n\b{e}_n + a_{n+1}\b{f}_1 + a_{n+2}\b{f}_2 + \cdots + a_{n+m}\b{f}_m,$$ $\b{x}_1 \in L_1, \b{x}_2 \in L_2.$ $\b{x}_1 + \b{x}_2 = 0$ yields the $a_1, a_2, \cdots, a_{n+m} = 0$ since $\b{x}_1, \b{x}_2 = 0,$ which indicates the linear independence of vectors $\b{e}_1, \b{e}_2, \cdots, \b{e}_n$ and $\b{f}_1, \b{f}_2, \cdots, \b{f}_m.$
 
     The second result can be derived if we set $L_1 \cap L_2 = L_3, L_1 = L_1' \oplus L_3, L_2 = L_2' \oplus L_3.$
 \end{proof}
