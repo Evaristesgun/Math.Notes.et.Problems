@@ -1,4 +1,5 @@
 \subsection{Dual space}
+
 The Dual space was invented to decipher a specific type of operator, $A: L \to \mathbb{K},$ where $\mathbb{K}$ is the field of scalars.. 
 \begin{definition}[Dual Space]
     For a vector space $L,$ then $L$'s dual space is defined as 
