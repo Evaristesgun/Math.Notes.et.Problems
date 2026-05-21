@@ -59,7 +59,7 @@ If $\b{f} = 0,$ then $\forall \b{x} \in L, \b{f}(\b{x}) = 0,$ which only happens
     If vector space $L$ has a finite dimension, $L \cong L^*.$ However, if we are considering infinitely dimensional cases, $L$ and $L^*$ are not necessarily isomorphic.
 \end{corollary}
 
-We haven't yet noticed the dual relationship between the elements in $L$ and mapping in $L^*.$ To unravel the inner attribute of dual, we are firstly interrupted by the fact that the creation of isomorphic mapping between $L$ and $L^*$ cannot be done without the selection of a basis in $L.$ Instead of studying directly $L, L^*,$ we try to discover a $A: L \xrightarrow{\sim} L^{**}, L^{**} := (L^*)^*$ that does not rely on basis.
+We haven't yet noticed the dual relationship between the elements in $L$ and mapping in $L^*.$ To unravel the inner attribute of dual, we are firstly interrupted by the fact that the creation of isomorphic mapping between $L$ and $L^*$ cannot be done without the selection of a basis in $L$ ($\nexists$ canonical isomorphism). Instead of studying directly $L, L^*,$ we try to discover a $A: L \xrightarrow{\sim} L^{**}, L^{**} := (L^*)^*$ that does not rely on basis.
 
 \begin{lemma}
     $L \cong L^*$ as vector spaces.
@@ -73,10 +73,46 @@ For basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ its dual basis $\b{f}_1, \b
 \begin{definition}
     We define $\dpr{\b{f}, \b{x}} = \dpr{\b{x}, \b{f}} := \b{f}(\b{x}),$ $\b{x} \in L, \b{f} \in L^*.$ It is another notation for $A(\b{x})[\b{f}].$ 
 \end{definition}
-If we treat $\dpr{\b{f}, \b{x}}$ as a "function" for both $\b{x}$(as a function) and $\b{f}$(as a functional), we found that the $\dpr{\b{f}, \b{x}}$ satisfies
+If we treat $\dpr{\b{f}, \b{x}}$ as a "function" for both $\b{x}$(as a function) and $\b{f}$(as a functional), we find that the $\dpr{\b{f}, \b{x}}$ satisfies
 \begin{enumerate}
     \item $\dpr{\b{f}, \b{x}_1 + \b{x}_2} = \dpr{\b{f}, \b{x}_1} + \dpr{\b{f}, \b{x}_2},\; \dpr{\b{f}, k\b{x}} = k\dpr{\b{f}, \b{x}},$
     \item $\dpr{\b{x}, \b{f}_1 + \b{f}_2} = \dpr{\b{x}, \b{f}_1} + \dpr{\b{x}, \b{f}_2},\; \dpr{\b{x}, k\b{f}} = k\dpr{\b{x}, \b{f}},$
     \item $\forall \b{x} \in L, \dpr{\b{f}, \b{x}} = 0, \b{f} = \b{0}, \forall \b{f} \in L^*, \dpr{\b{f}, \b{x}} = 0, \b{x} = \b{0}.$
 \end{enumerate}
 It is a vivid example of bilinearity. 
+
+\begin{definition}[Annihilator]
+    $L' \subset L,$ the annihilator $$(L')^\circ := \set{\b{f} : \b{f} \in L^*, \forall \b{x} \in L', \b{f}(\b{x}) = 0}.$$ Also denoted by $\operatorname{Ann}(W).$
+\end{definition}
+
+\begin{lemma}
+    For vector spaces $L' \subset L, L^*,\; \dim (L')^\circ = \dim L - \dim L'.$ 
+\end{lemma}
+\begin{proof}
+For the basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_r \in L',$ we expand the basis to the $L,$ $\b{e}_1, \b{e}_2, \cdots, \b{e}_r, \b{e}_{r+1}, \cdots, \b{e}_n.$ Its dual basis is $\b{f}_1, \b{f}_2, \cdots, \b{f}_r, \b{f}_{r+1}, \cdots, \b{f}_n.$ 
+
+Obviously, the basis of $(L')^\circ$ is $\b{f}_r, \b{f}_{r+1}, \cdots, \b{f}_n,$ the \emph{complementary set} of the corresponding dual basis. Otherwise, there is a $\b{f}_i \in (L')^\circ, \exists \b{x} \in L', \b{f}_i(\b{x}) \neq 0.$ 
+\end{proof}
+\begin{corollary}
+    For vector spaces $L' \subset L, L^*,\; L' \cong ((L')^\circ)^\circ.$
+\end{corollary}
+
+From our understanding of the complementary nature of the annihilator, we reveal a fact: 
+\begin{lemma}
+    $\forall L_1, L_2 \subset L,\; (L_1 + L_2)^\circ = L_1^\circ \cap L_2^\circ.$
+\end{lemma}
+
+\begin{theorem}[Dual Principle (Non-rigorous)]
+    For a finitely dimensional vector space $L,$ if a relevant theorem is delivered only through concepts \emph{Subspaces, Dimensions, Sums, Intersections}, then another theorem, which is constructed by replacing 
+    $$
+    \begin{array}{rcl}
+        \text{Original Theorem } L &\longrightarrow& \text{Dual Theorem } L^* \\
+        \text{Subspace } L_1 &\longrightarrow& L_1^\circ \\
+        L_1 \subset L_2 &\longrightarrow& L_2^\circ \subset L_1^\circ \\
+        L_1 + L_2 &\longrightarrow& L_1^\circ \cap L_2^\circ \\
+        L_1 \cap L_2 &\longrightarrow& L_1^\circ + L_2^\circ \\        
+        0 &\longrightarrow& L^* \\
+        L &\longrightarrow& 0
+    \end{array}
+    $$
+\end{theorem}
