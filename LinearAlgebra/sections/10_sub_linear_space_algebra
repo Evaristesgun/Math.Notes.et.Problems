@@ -33,7 +33,8 @@ It is time to introduce the Rank-Nullity theorem to reveal the correlation betwe
 \end{theorem}
 The creation of the theorem is inspired by $(3), (4).$ We can easily verify some interesting facts: for $[T(\b{x})]_{\mathcal{E'}} = A [\b{x}]_{\mathcal{E}}, \rk{A} = \dim (\img T);$ $\dim(\ker T)$ is defined as the \emph{nullity} of the mapping $T.$
 
-We are able to provide a draft addressing the validity of the Rank-Nullity Theorem, \emph{in my words}.
+
+We are able to provide a draft addressing the validity of the Rank-Nullity Theorem \emph{in my words}.
 \begin{proof}
 The linear map $T$ is depicted by a matrix $A$ that transforms the vectors in $V$ to $W,$
 \begin{align*}
