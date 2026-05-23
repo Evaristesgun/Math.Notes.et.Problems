@@ -72,7 +72,7 @@ For basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ its dual basis $\b{f}_1, \b
 \end{proof}
 
 \begin{definition}
-    We define $\dpr{\b{f}, \b{x}} = \dpr{\b{x}, \b{f}} := \b{f}(\b{x}),$ $\b{x} \in L, \b{f} \in L^*.$ It is another notation for $A(\b{x})[\b{f}].$ 
+    We define $\dpr{\b{f}, \b{x}} := \b{f}(\b{x}),$ $\b{x} \in L, \b{f} \in L^*.$ It is another notation for $A(\b{x})[\b{f}].$ 
 \end{definition}
 If we treat $\dpr{\b{f}, \b{x}}$ as a "function" for both $\b{x}$(as a function) and $\b{f}$(as a functional), we find that the $\dpr{\b{f}, \b{x}}$ satisfies
 \begin{enumerate}
