@@ -3,8 +3,9 @@
 The Dual space was invented to decipher a specific type of operator, $A: L \to \mathbb{K},$ where $\mathbb{K}$ is the field of scalars.. 
 \begin{definition}[Dual Space]
     For a vector space $L,$ its dual space is defined as 
-    $$L^* := \mathcal{L}(L, \mathbb{K}) = \set{f \mid f: L \to \mathbb{K}, f(\b{x}+\b{y}) = f(\b{x}) + f(\b{y}), f(k\b{x}) = kf(\b{x})}.$$
+    $$L^* := \hom{L, \mathbb{K}} = \set{f \mid f: L \to \mathbb{K}, f(\b{x}+\b{y}) = f(\b{x}) + f(\b{y}), f(k\b{x}) = kf(\b{x})}.$$
 \end{definition}
+$\hom{X, Y}$ in Linear Algebra represents the maps that preserves the property of linearity.
 
 \begin{remark}[Infinite-Dimensional linearity \& Dual Space]
     In the history of studying linear functions on infinite-dimensional vector spaces, an impressive idea was that for many \emph{continuous linear functionals}, especially in Hilbert spaces such as $L^2,$ continuous linear functionals can often be represented in the prototypical form
@@ -76,8 +77,8 @@ For basis $\b{e}_1, \b{e}_2, \cdots, \b{e}_n \in L,$ its dual basis $\b{f}_1, \b
 If we treat $\dpr{\b{f}, \b{x}}$ as a "function" for both $\b{x}$(as a function) and $\b{f}$(as a functional), we find that the $\dpr{\b{f}, \b{x}}$ satisfies
 \begin{enumerate}
     \item $\dpr{\b{f}, \b{x}_1 + \b{x}_2} = \dpr{\b{f}, \b{x}_1} + \dpr{\b{f}, \b{x}_2},\; \dpr{\b{f}, k\b{x}} = k\dpr{\b{f}, \b{x}},$
-    \item $\dpr{\b{x}, \b{f}_1 + \b{f}_2} = \dpr{\b{x}, \b{f}_1} + \dpr{\b{x}, \b{f}_2},\; \dpr{\b{x}, k\b{f}} = k\dpr{\b{x}, \b{f}},$
-    \item $\forall \b{x} \in L, \dpr{\b{f}, \b{x}} = 0, \b{f} = \b{0}, \forall \b{f} \in L^*, \dpr{\b{f}, \b{x}} = 0, \b{x} = \b{0}.$
+    \item $\dpr{\b{f}_1 + \b{f}_2, \b{x}} = \dpr{\b{f}_1, \b{x}} + \dpr{\b{f}_2, \b{x}},\; \dpr{k\b{f}, \b{x}} = k\dpr{\b{f}, \b{x}},$
+    \item $\forall \b{x} \in L, \dpr{\b{f}, \b{x}} = 0, \b{f} = \b{0}, \forall \b{f} \in L^*, \dpr{\b{f}, \b{x}} = 0, \b{x} = \b{0}$ (nondegeneracy).
 \end{enumerate}
 It is a vivid example of bilinearity. 
 
@@ -103,7 +104,7 @@ From our understanding of the complementary nature of the annihilator, we reveal
 \end{lemma}
 
 \begin{theorem}[Dual Principle (Non-rigorous)]
-    For a finitely dimensional vector space $L,$ if a relevant theorem is delivered only through concepts \emph{Subspaces, Dimensions, Sums, Intersections}, then another theorem, which is constructed by replacing 
+    For a finite-dimensional vector space $L,$ if a relevant theorem is delivered only through concepts of \emph{Subspaces, Dimensions, Sums, Intersections}, then another theorem, which is constructed by replacing 
     $$
     \begin{array}{rcl}
         \text{Original Theorem } L &\longrightarrow& \text{Dual Theorem } L^* \\
@@ -117,3 +118,40 @@ From our understanding of the complementary nature of the annihilator, we reveal
     $$
     is also valid.
 \end{theorem}
+If we translate a theorem to its dual by taking the annihilator of all its subjects, we eventually obtain a new corresponding theorem.
+
+For an operator $A \in \hom{L, M},$ we define its dual operator.
+\begin{definition}[Dual Map]
+    $\forall A \in \hom{L, M},\; \exists! A^* \in \hom{M^*, L^*}$ such that $\forall \b{g} \in M^*,$
+    $$(A^*(\b{g}))(\b{x}) = (\b{g} \circ A)(\b{x}) \iff \dpr{A^*(\b{g}), \b{x}} = \dpr{\b{g} \circ A, \b{x}}, \quad \b{x} \in L$$
+\end{definition}
+
+\begin{theorem}[Basis Shifts regarding dual spaces]
+    For any bases $\mathcal E \in L, \mathcal F \in M$ and their dual bases $\mathcal E' \in L^*, \mathcal F' \in M^*,$ an operator $A \in \hom{L, M}$ and its dual map $A^* \in \hom{M^*, L^*}$ satisfy $$[A]_{\mathcal F \leftarrow \mathcal E} = [A^*]_{\mathcal E' \leftarrow \mathcal F'}^T.$$ 
+\end{theorem}
+\begin{proof}
+We examine the matrix by using the precedent theorem of basis shift.
+\begin{equation*}
+    \begin{cases}
+        A(\b{e}_1) = a_{11}\b{f}_1 + a_{21}\b{f}_2 + \cdots + a_{m1}\b{f}_m \\
+        A(\b{e}_2) = a_{12}\b{f}_1 + a_{22}\b{f}_2 + \cdots + a_{m2}\b{f}_m \\
+        \cdots \\
+        A(\b{e}_n) = a_{1n}\b{f}_1 + a_{2n}\b{f}_2 + \cdots + a_{mn}\b{f}_m
+    \end{cases}, \qquad 
+    [A]_{\mathcal{F} \leftarrow \mathcal{E}} := \mat{a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}}
+\end{equation*}
+in which $\mathcal{E} = (\b{e}_1, \b{e}_2, \cdots, \b{e}_n),$ $\mathcal{F} = (\b{f}_1, \b{f}_2, \cdots, \b{f}_n).$ 
+
+Then, for the $A^*,$ we have to scrutinize how it transforms $\b{f'} \in \mathcal{F'}$ to $\b{e'} \in \mathcal{E'}.$ $\forall \b{e_k} \in \mathcal{E},$
+\begin{align*}
+    &\begin{cases}
+        \dpr{A^*(\b{f}'_1), \b{e}_k} = \dpr{b_{11}\b{e'}_1 + b_{21}\b{e'}_2 + \cdots + b_{m1}\b{e'}_m,\; \b{e_k}} = b_{k1} \\
+        \dpr{A^*(\b{f}'_2), \b{e}_k} = \dpr{b_{12}\b{e'}_1 + b_{22}\b{e'}_2 + \cdots + b_{m2}\b{e'}_m,\; \b{e_k}} = b_{k2} \\
+        \cdots \\
+        \dpr{A^*(\b{f}'_n), \b{e}_k} = \dpr{b_{1n}\b{e'}_1 + b_{2n}\b{e'}_2 + \cdots + b_{mn}\b{e'}_m,\; \b{e_k}} = b_{kn}
+    \end{cases} \\
+    \Longrightarrow &\dpr{A^*(\b{f}'_i), \b{e}_k} = \dpr{\b{f}'_i \circ A, \b{e}_k} = \b{f}'_i(a_{1k}\b{f}_1 + a_{2k}\b{f}_2 + \cdots + a_{mk}\b{f}_m) \\
+    &= a_{ik} = b_{ki}, 
+\end{align*}
+which means $(a_{ij}) = (b_{ij})^T,$ but they are $[A]_{\mathcal F \leftarrow \mathcal E}$ and $[A^*]_{\mathcal E' \leftarrow \mathcal F'}^T.$
+\end{proof}
