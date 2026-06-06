@@ -4,48 +4,63 @@
     $\forall b > 1, \set{\log_b{n!}}_{n=0}^\infty$ is equidistributed $\bmod$ $1$ 
 \end{theorem}
 
-\begin{proof} We use Van der Corput's inequality and deal with the difference function. We first apply the Weyl criterion: $$\lim_{N \rightarrow \infty} \frac{1}{N} \sum_{n = 1}^N \e{\alpha \log_b {n!}} = 0, \forall \alpha \in \mathbb{Z},$$ and we define $S(N) := \sum_{n = 1}^N \e{\alpha \log_b {n!}})$, $f(n) := \alpha \log_b {n!}$ 
+\begin{proof} We use Van der Corput's inequality and deal with the difference function. We first apply the \emph{Weyl criterion}: $$\lim_{N \rightarrow \infty} \frac{1}{N} \sum_{n = 1}^N \e{\alpha \log_b {n!}} = 0, \forall \alpha \in \mathbb{Z} \backslash\!\set{0},$$ and we define $S(N) := \sum_{n = 1}^N \e{\alpha \log_b {n!}},$ $f(n) := \alpha \log_b {n!}$ 
 
-\subsection*{Van der Corput's inequality}
-$$\abs{S(N)}^2 \ll \frac{N}{H} + \frac{N}{H} \sum_{h \l H} \abs{S_1(h)}$$ in which $$S_1(h) = \sum_{n = 1}^{N-h} \e{\alpha \log_b {(n+h)!} - \alpha \log_b{n!}} = \sum_{n = 1}^{N-h} \e{\frac{\alpha}{\log{b}} \sum_{k = 1}^h \log(n+k)}.$$ Then, we consider the function $g(n;h) = a \sum_{k = 1}^h \log(n+k)$, $a = \frac{\alpha}{\log{b}}$. 
+\subsection{Van der Corput's inequality}
+$$\abs{S(N)}^2 \ll \frac{N}{H} + \frac{N}{H} \sum_{h \l H} \abs{S_1(h)}$$ in which $$S_1(h) = \sum_{n = 1}^{N-h} \e{\alpha \log_b {(n+h)!} - \alpha \log_b{n!}} = \sum_{n = 1}^{N-h} \e{\frac{\alpha}{\log{b}} \sum_{k = 1}^h \log(n+k)}.$$ Then, we consider the function $g(n;h) = a \sum_{k = 1}^h \log(n+k),$ $a = \frac{\alpha}{\log{b}}.$ 
 
-\subsection*{Taylor approximation and dyadic estimation}
+\subsection{Taylor approximation and dyadic estimation}
 By Taylor's formula,
-$$\log{(n+k)} = \log{n} + \frac{k}{n} - \frac{k^2}{2n^2} + \frac{k^3}{3n^3} + O(\frac{k^4}{n^4}).$$ Thus, we obtain $$g(n;h) = a\left(h \log{n} + \frac{h(h+1)}{2n} - \frac{h(h+1)(2h+1)}{12n^2} + \frac{h^2(h+1)^2}{12n^3} + O(h^5/n^4) \right) = ah \log{n} + \frac{ah(h+1)}{2n} + R(n;h),$$ and $R(n;h) \ll h^{3}n^{-2}$. If $h^{3}n^{-2} \ll 1$, the effects from the residue can be ignored.
+$$\log{(n+k)} = \log{n} + \frac{k}{n} - \frac{k^2}{2n^2} + \frac{k^3}{3n^3} + O(\frac{k^4}{n^4}).$$ Thus, we obtain 
+\begin{align*}
+    g(n;h) &= a\left(h \log{n} + \frac{h(h+1)}{2n} + O(h^3n^{-2}) \right) \\
+    &= ah \log{n} + \frac{ah(h+1)}{2n} + O(h^3n^{-2}),
+\end{align*}
+If $h^{3}n^{-2} \ll 1,$ the effect from the residue is 
+\begin{align*}
+    \e{O(h^3n^{-2})} &= 1 + O(h^3n^{-2}) \\
+    \e{g(n; h)} &= \e{ah \log{n} + \frac{ah(h+1)}{2n}} \e{O(h^3n^{-2})} = \e{ah \log{n} + \frac{ah(h+1)}{2n}} + O(h^3n^{-2}) \\
+    \Longrightarrow \sum_{n \in [X, 2X)} O(h^3n^{-2}) &= O(h^3X^{-1}).
+\end{align*}
+It is trivial.
 
-We define the set $$I = \set{[X,2X): X = 2^k, 2X \l N-h}; \bigcup_{s \in I}s = [1,N-h], \forall s_1, s_2 \in I, s_1 \cap s_2 = \varnothing.$$ We ascertain that there are $\ll \log (N-h)-\log h$ intervals such that $R(n;h) \ll h^3n^{-2} \ll 1$, i.e. $X \gg h^\frac{3}{2}$ for $[X,2X] \in I$, and we mark these intervals as $I_1$; otherwise $I_2$.
+We define the set $$I = \set{[X, 2X): X = 2^k, 2X \l N-h}; \bigcup_{s \in I}s = [1,N-h], \forall s_1, s_2 \in I, s_1 \cap s_2 = \varnothing.$$ We ascertain that there are $\ll \log (N-h)-\log h$ intervals such that $R(n;h) \ll h^3n^{-2} \ll 1,$ i.e. $X \gg h^\frac{3}{2}$ for $[X, 2X) \in I,$ and we mark these intervals as $I_1$; otherwise, $I_2.$
 
-For the intervals that the residue $R(n;h) \ll 1$, we reduce the $S_1(h)$ to $$\sum_{n \in [X,2X] \in I_1} \e{ah\log n + \frac{ah(h+1)}{2n}}; \; g^{(q)}(n;h) = \frac{(-1)^{q+1}ah}{n^q} + \frac{(-1)^{q}ah(h+1)}{n^{q+1}}.$$ $$\Longrightarrow \sum_{n \in [X,2X] \in I_1} n^{it} \cdot \e{\frac{ah(h+1)}{2n}}, t = 2\pi ah.$$ We use Abel summation with $\sigma(u) = \sum_{n \in [X,u]} n^{it}$: $$\sum_{n \in [X,2X] \in I_1} n^{it} \cdot \e{\frac{ah(h+1)}{2n}} = \sigma(2X) e^{\frac{ah(h+1)}{4X}} - \int_{X}^{2X} \sigma(t) \frac{d}{dt}(e^{\frac{ah(h+1)}{4t}})dt.$$ Thus $$\abs{\sum_{n \in [X,2X] \in I_1} n^{it} \cdot \e{\frac{ah(h+1)}{2n}}} \l \left( 1 + \int_{X}^{2X} \abs{\frac{d}{dt}(e^{\frac{ah(h+1)}{4t}})}dt \right) \max_{n \in [X,2X] \in I_1} \abs{\sigma(n)},$$ which we are familiar with. $$\sum_{n \in [X,2X] \in I_1} \e{ah\log n + \frac{ah(h+1)}{2n}} \ll \frac{X+ah^2}{1+\abs{t}}.$$
+For the intervals that the residue $R(n;h) \ll 1,$ we reduce the $S_1(h)$ to $$\sum_{n \in [X, 2X) \in I_1} \e{ah\log n + \frac{ah(h+1)}{2n}}; \; g^{(q)}(n;h) = \frac{(-1)^{q+1}ah}{n^q} + \frac{(-1)^{q}ah(h+1)}{n^{q+1}}.$$ $$\Longrightarrow \sum_{n \in [X, 2X) \in I_1} n^{it} \cdot \e{\frac{ah(h+1)}{2n}}, t = 2\pi ah.$$ We use Abel summation with $\sigma(u) = \sum_{n \in [X,u]} n^{it}$: $$\sum_{n \in [X, 2X) \in I_1} n^{it} \cdot \e{\frac{ah(h+1)}{2n}} = \sigma(2X) e^{\frac{ah(h+1)}{4X}} - \int_{X}^{2X} \sigma(t) \frac{d}{dt}\e{\frac{ah(h+1)}{2t}}dt.$$ Thus $$\abs{\sum_{n \in [X, 2X) \in I_1} n^{it} \cdot \e{\frac{ah(h+1)}{2n}}} \l \left( 1 + \int_{X}^{2X} \abs{\frac{d}{dt} \e{\frac{ah(h+1)}{2t}}}dt \right) \max_{n \in [X, 2X) \in I_1} \abs{\sigma(n)},$$ which we are familiar with. $$\sum_{n \in [X, 2X) \in I_1} \e{ah\log n + \frac{ah(h+1)}{2n}} \ll \frac{X+ah^2}{1+\abs{t}}.$$
 
-For intervals that $R(n;h)$ cannot be ignored, we use the derivatives of $g(n;h)$: $$g^{(q)}(n;h) = (-1)^{q+1}a \sum_{k \l h} \frac{1}{(n+k)^q} \asymp \frac{ah}{X^q}, n \in [X,2X] \in I_2.$$ We can use the Kusmin-Landau to derive $$\sum_{n \in [X,2X] \in I_2} \e{g(n;h)} \ll \frac{X}{|a|h}.$$
+For intervals that $R(n;h)$ cannot be ignored, we use the derivatives of $g(n;h)$: since $a = \alpha/\log b \neq 0, h > 0,$ $$g^{(q)}(n;h) = (-1)^{q+1}a \sum_{k \l h} \frac{1}{(n+k)^q} \asymp \frac{ah}{X^q}, n \in [X, 2X) \in I_2.$$ We can use the Kusmin-Landau to derive $$\sum_{n \in [X, 2X) \in I_2} \e{g(n;h)} \ll \frac{X}{|a|h}.$$
 
-\subsection*{Reviewing S(N)}
-$$S_1(h) \ll \sum_{[X,2X] \in I_1} \frac{X+ah^2}{1+\abs{t}} + \sum_{[X,2X] \in I_2}\frac{X}{|a|h} \ll \frac{N}{1+\abs{t}} + \frac{ah^2(\log (N-h)-\log h)}{1+\abs{t}} + \frac{h^\frac{1}{2}}{|a|}.$$ The bound is already accurate enough to reveal the $S(N)$ if we set $H = N^{1/3}$. Since the entire proof has nothing to do with $\alpha,b$, we have proved the theorem.
+\subsection{Reviewing S(N)}
+$$S_1(h) \ll \sum_{[X, 2X) \in I_1} \frac{X+ah^2}{1+\abs{t}} + \sum_{[X, 2X) \in I_2}\frac{X}{|a|h} \ll \frac{N}{1+\abs{t}} + \frac{ah^2(\log (N-h)-\log h)}{1+\abs{t}} + \frac{h^\frac{1}{2}}{|a|}.$$ The bound is already accurate enough to reveal the $S(N) = o(N)$ if we set $H = N^{1/3}.$ Since the entire proof has nothing to do with $\alpha,b,$ we have proved the theorem.
 \end{proof}
 
 \section{$\{nP(n)\} \bmod{1}$'s equidistribution and Polynomial vectors $\bmod{\mathbb{Z}^k}$}
 
 \begin{theorem}
-    $\forall P(x) \in \mathbb{R}[x]$, $P(x)$ have at least one irrational coefficient, and $\{nP(n)\} \bmod{1}$ is equidistributed. Give necessary and sufficient conditions on polynomials $P_1, P_2, P_3, ..., P_k \in \mathbb{R}[x]$ for the sequence of vectors 
+    If $\forall Q(x) \in \mathbb{R}[x],$ $P(x)$ has at least one irrational, non-constant coefficient, and $\{Q(n)\} \bmod{1}$ is equidistributed. Give necessary and sufficient conditions on polynomials $P_1, P_2, P_3,  \cdots , P_k \in \mathbb{R}[x]$ for the sequence of vectors. Set $Q(n) = nP(n).$
 \end{theorem}
 
 \begin{proof}
-We still apply Weyl's criterion: $$\lim_{N \rightarrow \infty} \frac{1}{N} \sum_{n \l N} \e{knP(n)} = 0, \forall k \in \mathbb{Z}$$ for which polynomial $P(n)$ with an irrational coefficient. We assume that $\deg P = d$. We separate the interval $[1,N]$ into dyadic: $$I = \set{[X,2X): X = 2^k, 2X \l N}; \bigcup_{s \in I}s = [1,N], \forall s_1, s_2 \in I, s_1 \cap s_2 = \varnothing.$$ Thus, the original sum $S(N)$ is turned into $$\sum_{n \in [X,2X] \in I} \e{knP(n)} \cdot \log{N} \asymp S(N).$$ 
-\subsection*{Reduction by difference}
-We iterate the Van der Corput inequality (Generalized Van der Corput) to fit the attribute that $\Delta_{d+1}(nP(n)) = a_p(d+1)!$ is a constant in which the $a_p$ is the coefficient of the term with the highest order, but we would use the linear function of $\Delta_d (nP(n)) = an+b$. Giving $q = d$ and $Q = 2^q$, $$\abs{S_X}^Q \l 8^{Q-1} \left( \frac{X^Q}{H} + \frac{X^{Q-1}}{H^{2-\frac{2}{Q}}} \sum_{\mathbf{h}} \abs{S_q(\mathbf{h})} \right)$$
-
-What's left is the detail of the multiple sum $\sum_{\mathbf{h}} \abs{S_q(\mathbf{h})}$. $$\mathbf{h} = (h_1,h_2,h_3,...,h_q), 1 \l h_i \l H^{2^{i-q}}; \prod_{i=1}^q h_i\l H^{2-2/Q}; S_q(\mathbf{h}) = \sum_{n \in [X,2X-\sum h_i]} e(f_q(n;\mathbf{h})).$$ Since we can derive that for a polynomial $P$ of degree $d$, $\Delta_{h_1h_2...h_d} P(n) = a_p d! \prod_{i \l d} h_i,$ 
-
+We still apply Weyl's criterion: $$\lim_{N \rightarrow \infty} \frac{1}{N} \sum_{n \l N} \e{knP(n)} = 0, \forall k \in \mathbb{Z}$$ for which polynomial $P(n)$ as an irrational coefficient. We assume that $\deg P = d.$ We separate the interval $[1,N]$ into dyadic intervals: $$I = \set{[X, 2X): X = 2^k, 2X \l N}; \bigcup_{s \in I}s = [1,N], \forall s_1, s_2 \in I, s_1 \cap s_2 = \varnothing.$$ Thus, the original sum $S(N)$ is transformed into 
 \begin{align*}
-    &f_q(n;\mathbf{h}) = \Delta_{h_1h_2h_3...h_q} knP(n) = kA(\mathbf{h})n+C(\mathbf{h}), \\
-    &A(\mathbf{h})(n+h_{q+1}-n) = a_p (q+1)! \prod_{i=1}^{q+1} h_i \\
-    \Longrightarrow &kA(\mathbf{h})n+C(\mathbf{h}) = ka_p (q+1)! \prod_{i=1}^q h_i \cdot n+ C(\mathbf{h}).
+    S(N) &= \abs{\sum_{[X, 2X) \in I} \sum_{n \in [X, 2X)} \e{knP(n)}} \\
+    &\ll \log N \abs{\sum_{n \in [X, 2X) \in I} \e{knP(n)}}
 \end{align*}
 
-It is merely a linear function of $n$. Thus, our inequality is reduced to a rather simple form: $$\abs{S_X} \ll_Q \left( \frac{X^Q}{H} + \frac{X^{Q-1}}{H^{2-\frac{2}{Q}}} \sum_{\mathbf{h}} \abs{\sum_{n \in [X,2X-\sum h_i]} e\left( ka_p (q+1)! \prod_{i=1}^q h_i \cdot n \right)} \right)^{1/Q}$$ 
+\subsection{Reduction by difference}
+We iterate the \emph{Van der Corput inequality} (Generalized Van der Corput) to fit the attribute that $\Delta_{d+1}(nP(n)) = a_p(d+1)!$ is a constant in which the $a_p$ is the coefficient of the term with the highest order, but we would use the linear function of $\Delta_d (nP(n)) = an+b.$ Giving $q = d$ and $Q = 2^q,$ $$\abs{S_X}^Q \l 8^{Q-1} \left( \frac{X^Q}{H} + \frac{X^{Q-1}}{H^{2-\frac{2}{Q}}} \sum_{\mathbf{h}} \abs{S_q(\mathbf{h})} \right)$$
 
-\subsection*{Estimation of Linear $n$}
-By the classical arguments that $\sum_{n \in [N,2N]} e(\alpha n) = O(\norm{\alpha}^{-1})$, we conclude that the sum $$\sum_{n \in [X,2X-\sum h_i]} e\left( A(\mathbf{h}) n \right) \ll \min \left( \frac{1}{\norm{ka_p (q+1)! \prod_{i=1}^q h_i}}, X \right).$$ Then, we introduce some new notation: $\Pi := \prod_{i=1}^q h_i$, $\theta = ka_p (q+1)! \in \mathbb{R} \backslash \mathbb{Q}$. Considering the outer sum, $$\sum_{h_1,h_2,...,h_q} \min(\norm{\theta\Pi}^{-1}, X),$$ and we remove the $h$ variable by using $\Pi$: $$\sigma := \sum_{\Pi \l H^{2-2/Q}} r(\Pi) \min(\norm{\theta\Pi}^{-1}, X).$$ We prove the following lemma.
+What's left is the detail of the multiple sum $\sum_{\mathbf{h}} \abs{S_q(\mathbf{h})}.$ $$\mathbf{h} = (h_1,h_2,h_3, \cdots ,h_q), 1 \l h_i \l H^{2^{i-q}}; \prod_{i=1}^q h_i\l H^{2-2/Q}; S_q(\mathbf{h}) = \sum_{n \in [X,2X-\sum h_i]} e(f_q(n;\mathbf{h})).$$ Since we can derive that for a polynomial $P$ of degree $d,$ $\Delta_{h_1}\Delta_{h_2} \cdots \Delta_{h_q} P(n) = a_p d! \prod_{i \l d} h_i,$ 
+\begin{align*}
+    &f_q(n;\mathbf{h}) = \Delta_{h_1}\Delta_{h_2} \cdots \Delta_{h_q} knP(n) = kA(\mathbf{h})n+C(\mathbf{h}), \\
+    \Longrightarrow &k A(\mathbf{h})n+C(\mathbf{h}) = ka_p (q+1)! \prod_{i=1}^q h_i \cdot n+ C(\mathbf{h}).
+\end{align*}
+due to the fact that repeated differencing of a polynomial lowers the degree by one, and the leading coefficient transforms multiplicatively.
+
+It is merely a linear function of $n.$ Thus, our inequality is reduced to a rather simple form: $$\abs{S_X} \ll_Q \left( \frac{X^Q}{H} + \frac{X^{Q-1}}{H^{2-\frac{2}{Q}}} \sum_{\mathbf{h}} \abs{\sum_{n \in [X,2X-\sum h_i]} e\left( ka_p (q+1)! \prod_{i=1}^q h_i \cdot n \right)} \right)^{1/Q}$$ 
+
+\subsection{Estimation of Linear $n$}
+By the classical arguments that $\sum_{n \in [N,2N]} e(\alpha n) = \min(N, O(\norm{\alpha}^{-1})),$ we conclude that the sum $$\sum_{n \in [X,2X-\sum h_i]} e\left( A(\mathbf{h}) n \right) \ll \min \left( \frac{1}{\norm{ka_p (q+1)! \prod_{i=1}^q h_i}}, X \right).$$ Then, we introduce some new notation: $\Pi := \prod_{i=1}^q h_i,$ $\theta = ka_p (q+1)! \in \mathbb{R} \backslash \mathbb{Q}.$ Considering the outer sum, $$\sum_{h_1,h_2, \cdots ,h_q} \min(\norm{\theta\Pi}^{-1}, X),$$ and we remove the $h$ variable by using $\Pi$: $$\sigma := \sum_{\Pi \l H^{2-2/Q}} r(\Pi) \min(\norm{\theta\Pi}^{-1}, X).$$ We prove the following lemma.
 \begin{lemma}
     $$\sum_{1 \l \Pi \l U} \min(\norm{\theta\Pi}^{-1}, X) \ll (X+U)\log 2U$$
 \end{lemma}
@@ -54,8 +69,9 @@ Applying dyadic intervals,
 \begin{align*}
     \sum_{1 \l \Pi \l U} \min(\norm{\theta\Pi}^{-1}, X) &= \sum_{1 \l \Pi \l U} N \cdot \mathbf{1}_{\norm{\theta\Pi} \l X^{-1}} + (\norm{\theta\Pi})^{-1} \cdot \mathbf{1}_{\norm{\theta\Pi} \g X^{-1}} \\
     &\l \sum_{1 \l \Pi \l U} \left( N \cdot \mathbf{1}_{\norm{\theta\Pi} \l X^{-1}} + \sum_{k = 1}^{[\log_2X]+1} 2^k \cdot \mathbf{1}_{\norm{\theta\Pi} \in [2^-k,2^{-k+1}]} \right) \\ 
-    &\ll X(\frac{U}{X}+1) + \sum_{k \l \log_2X} 2^k (\frac{U}{2^k}+1) \ll (X+U)\log{2U}
+    &\ll X(\frac{U}{X}+1) + \sum_{k \l \log_2X} 2^k (\frac{U}{2^k}+1) \ll (X+U)\log{2U},
 \end{align*}
+by $\#\{n\le U: \|\theta n\|<\delta\} \ll U\delta+1.$
 \end{proof}
 
 Thus, we are able to deal with the sum
@@ -63,8 +79,8 @@ Thus, we are able to deal with the sum
     \sigma &\l \sum_{\Pi \l H^{2-2/Q}} r(\Pi) \min(\norm{\theta\Pi}^{-1}, X) = \sum_{\Pi \l H^{2-2/Q}} r(\Pi) \left( N \cdot \mathbf{1}_{\norm{\theta\Pi} \l X^{-1}} + (\norm{\theta\Pi})^{-1} \cdot \mathbf{1}_{\norm{\theta\Pi} \g X^{-1}} \right) \\
     &\ll_{(1)} H^{(2-2/Q)\varepsilon} (X+H^{2-2/Q}) \log{2H^{2-2/Q}}, \forall \varepsilon > 0.
 \end{align*}
-In $(1)$, we deduce that the $r(\Pi) := \#\{\mathbf{h} : \prod h_i = \Pi ,\ 1\l h_i\l H^{2^{i-q}}\}$ is bounded by $\ll_\varepsilon \Pi^\varepsilon \l H^{(2-2/Q)\varepsilon}$, which is actually loose for each $h_i$ subjected to tight conditions ($H^{2^{i-q}}$), and the following bound is obtained by Lemma 3.2.
+In $(1),$ we deduce that the $r(\Pi) := \#\{\mathbf{h} : \prod h_i = \Pi ,\ 1\l h_i\l H^{2^{i-q}}\}$ is bounded by $\ll_\varepsilon \Pi^\varepsilon \l H^{(2-2/Q)\varepsilon},$ which is actually loose for each $h_i$ subjected to tight conditions ($H^{2^{i-q}}$), and the following bound is obtained by Lemma 3.2.
 
 \subsection{Reviewing S(N)}
-We take the result back to the $|S_X|^Q$: $$\abs{S_X} \ll_Q \left( \frac{X^Q}{H} + \frac{X^{Q-1}}{H^{2-\frac{2}{Q}}} \sigma \right)^{1/Q} \ll \left( \frac{X^Q}{H} + \frac{X^{Q-1}}{H^{2-\frac{2}{Q}}} H^{(2-2/Q)\varepsilon} (X+H^{2-2/Q}) \log{2H^{2-2/Q}}\right)^{1/Q}.$$ We found that if we set $H = X^{\gamma}$, the bound can be reduced to $X^{Q-\kappa(\gamma)}$. Therefore, we conclude that the $S(N) = o(N) \iff a_p \in \mathbb{R \backslash Q}$. 
+We take the result back to the $|S_X|^Q$: $$\abs{S_X} \ll_Q \left( \frac{X^Q}{H} + \frac{X^{Q-1}}{H^{2-\frac{2}{Q}}} \sigma \right)^{1/Q} \ll \left( \frac{X^Q}{H} + \frac{X^{Q-1}}{H^{2-\frac{2}{Q}}} H^{(2-2/Q)\varepsilon} (X+H^{2-2/Q}) \log{2H^{2-2/Q}}\right)^{1/Q}.$$ We found that if we set $H = X^\frac{1}{2},$ the bound can be reduced to $|S_X|^Q \ll X^{Q-\frac12} + X^{Q-1+\frac1Q} + X^{Q-1} \asymp X^{Q-\frac12}.$ Therefore, we conclude that the $S(N) = o(N) \iff a_p \in \mathbb{R \backslash Q}.$ 
 \end{proof}
