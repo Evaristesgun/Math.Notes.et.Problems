@@ -1,4 +1,4 @@
-name: Build Problems in Mathematical Analysis PDF
+name: Build Analysis PDF
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
         # stop if nothing changed
         git diff --cached --quiet && echo "No PDF changes" && exit 0
 
-        git commit -m "Update Problems in Mathematical Analysis PDF"
+        git commit -m "Update Analysis PDF"
 
         # sync latest main to avoid push conflicts
         git pull --rebase origin main
