@@ -4,6 +4,12 @@ This repository contains on-going Linear Algebra, Exponent Sum, etc. lecture-sty
 
 ## Notes
 
+### Problems in Mathematical Analysis
+
+Based on *Problems in Mathematical Analysis* by *B. P. Demidovich*,
+
+analysis project is a selection of some exceptionally hard or unfamiliar exercises from the exercise booklet.
+
 ### Linear Algebra
 
 Based on *Linear Algebra and Geometry* by *Shafarevich*,  
@@ -30,6 +36,13 @@ All PDF documents are automatically compiled through GitHub Actions and deployed
 
 ## Online PDFs
 
+### Problems in Mathematical Analysis
+
+Link:  
+https://Evaristesgun.github.io/Math.Notes.et.Problems/Problems_in_Mathematical_Analysis/main.pdf
+
+---
+
 ### Linear Algebra
 
 Link:  
@@ -52,14 +65,25 @@ Math.Notes.et.Problems/
 ├── LinearAlgebra/
 │   ├── sections/      Linear algebra notes in distinct themes
 │   ├── src/           Custom notation and style settings
-│   ├── main.tex
-│   └── main.pdf
+│   ├── main.tex       Main LaTeX source
+│   └── main.pdf       Compiled PDF
 │
 ├── ExPair/
-│   ├── sections/      Exercises and expository discussions
+│   ├── sections/      Expository notes and exercises
 │   ├── src/           Custom notation and style settings
-│   ├── main.tex
-│   └── main.pdf
+│   ├── main.tex       Main LaTeX source
+│   └── main.pdf       Compiled PDF
 │
-└── .github/
-    └── workflows/     GitHub Actions workflows
+├── Problems_in_Mathematical_Analysis/
+│   ├── main.tex       Main LaTeX source
+│   └── main.pdf       Compiled PDF
+│
+├── .github/
+│   └── workflows/
+│       ├── LinearAlgebra.yml
+│       ├── ExPair.yml
+│       ├── analysis.yml
+│       └── deploy-pages.yml
+│
+└── index.html         Personal homepage for GitHub Pages
+```
