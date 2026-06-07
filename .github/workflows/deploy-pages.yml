@@ -22,8 +22,9 @@ jobs:
     - uses: actions/checkout@v4
       with:
         ref: main
+        fetch-depth: 0
 
-    # 确保拿到最新 main（含 PDF commit）
+    # ===== Sync latest main commit =====
     - name: Sync latest commit
       run: |
         git fetch origin main
@@ -33,9 +34,12 @@ jobs:
     - name: Prepare Pages directory
       run: |
         rm -rf public
+
         mkdir -p public/LinearAlgebra
         mkdir -p public/ExPair
+        mkdir -p public/Problems_in_Mathematical_Analysis
 
+        # ===== Copy PDFs =====
         if [ -f LinearAlgebra/main.pdf ]; then
           cp LinearAlgebra/main.pdf public/LinearAlgebra/
         fi
@@ -44,7 +48,11 @@ jobs:
           cp ExPair/main.pdf public/ExPair/
         fi
 
-        # optional homepage
+        if [ -f Problems_in_Mathematical_Analysis/main.pdf ]; then
+          cp Problems_in_Mathematical_Analysis/main.pdf public/Problems_in_Mathematical_Analysis/
+        fi
+
+        # ===== Optional homepage =====
         if [ -f index.html ]; then
           cp index.html public/
         fi
