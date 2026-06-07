@@ -28,14 +28,14 @@ The Van der Corput's estimate stated in the Theorem can be properly depicted by 
 \end{theorem}
 
 \begin{proof} For $(i)$,
-$$\zeta \left( \frac{1}{2}+it \right) \ll_\varepsilon \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^\frac{1}{2} \abs{\frac{1}{N} \sum_{N \l n < N+M} \e(-\frac{t}{2\pi}\log n)},$$ and for function $f(n) = -\frac{t}{2\pi}\log n$, $\abs{f^{(j)}(x)} \asymp \frac{\abs{t}}{N^j}.$ Then, we apply van der Corput's estimate when $k = 3$.
+$$\zeta \left( \frac{1}{2}+it \right) \ll_\varepsilon \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^\frac{1}{2} \abs{\frac{1}{N} \sum_{N \l n < N+M} \e{-\frac{t}{2\pi}\log n}},$$ and for function $f(n) = -\frac{t}{2\pi}\log n$, $\abs{f^{(j)}(x)} \asymp \frac{\abs{t}}{N^j}.$ Then, we apply van der Corput's estimate when $k = 3$.
 \begin{align*}
     \zeta \left( \frac{1}{2}+it \right) &\ll \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^\frac{1}{2} \left( \frac{\abs{t}^\frac{1}{6}}{N^\frac{1}{2}} \log^\frac{1}{2}(\abs{t} + 2) \right) \\
     &\asymp \abs{t}^\frac{1}{6} \log^\frac{3}{2}(\abs{t}+2) \\
     &\ll (1 + \abs{t})^\frac{1}{6} \log^{O(1)}(\abs{t}+2)
 \end{align*}
 
-For $(ii)$, we have to separate the interval $[N, 2N)$. When van der Corput's estimate offers a result that is worse than the trivial bound, we replace it with trivial bound. $$\left( \frac{T}{N^k} \right)^\frac{1}{2^k-2} \log^\frac{1}{2}(T+2) \gg 1 \Longleftrightarrow N \ll R_k(T) := T^\frac{1}{k} \log^\frac{1}{2k(2^k-2)}(T+2).$$ Thus, we apply the $B(T) \asymp T^{\frac{1}{k}+o(1)}$ to the $\zeta$ function's exponential sum $S_M = \frac{1}{N} \sum_{N \l n < N+M} \e(-\frac{t}{2\pi}\log n)$: 
+For $(ii)$, we have to separate the interval $[N, 2N)$. When van der Corput's estimate offers a result that is worse than the trivial bound, we replace it with trivial bound. $$\left( \frac{T}{N^k} \right)^\frac{1}{2^k-2} \log^\frac{1}{2}(T+2) \gg 1 \Longleftrightarrow N \ll R_k(T) := T^\frac{1}{k} \log^\frac{1}{2k(2^k-2)}(T+2).$$ Thus, we apply the $B(T) \asymp T^{\frac{1}{k}+o(1)}$ to the $\zeta$ function's exponential sum $S_M = \frac{1}{N} \sum_{N \l n < N+M} \e{-\frac{t}{2\pi}\log n}$: 
 \begin{align}
     \zeta(s) &\ll_\varepsilon \log(\abs{t}+2) \sup_{1 < M \l N \ll \abs{t}} N^{1-\sigma} \abs{S_M} \\
     &\ll \log(\abs{t}+2) \min_{1 < N_1 \ll R_k(\abs{t}) \ll N_2 \ll \abs{t}} \left( N_1^{1-\sigma}, \abs{t}^\frac{1}{2^k-2} N_2^{1-\sigma-\frac{k}{2^k-2}} \log^\frac{1}{2}(\abs{t}+2) \right) \\ 
@@ -88,8 +88,8 @@ Although the bound obtained from the oscillatory integral formally improves as $
 
 We reconstruct the proof procedure of Weyl-differencing, the fundamental principal of A-process. 
 \begin{enumerate}
-    \item $$\abs{S}^2 = \sum_{h} \sum_{n} \e(f(n+h)-f(n)) \Rightarrow \abs{S}^2 \l \sum_{|h|\l H} \abs{\sum_{n} \e(\Delta_h f(n))} + \text{(error)},$$ losing factor $H$. Cauchy-Schwarz, $$\abs{S}^4 \ll H \sum_h \abs{\sum_n \e(\Delta_h f(n))}^2,$$ add one $H$ to the constant $C_k$.
-    \item Iterate $k$ times, we derive $$\abs{S}^{2^k} \ll \sum_{h_1,h_2,\dots,h_k} \abs{\sum_n \e(\Delta_{h_1} \Delta_{h_2} \cdots \Delta_{h_k} f(n))}.$$ Considering the difference function, $$\Delta_{h_1} \Delta_{h_2} \cdots \Delta_{h_k} f(n) = \sum_{J\subseteq\{1,\dots,k\}} (-1)^{k-|J|} f\Bigl(n+\sum_{j\in J} h_j\Bigr).$$ The $k$-fold difference involves $2^k$ shifted values of $f$, reflecting an exponential combinatorial complexity.
+    \item $$\abs{S}^2 = \sum_{h} \sum_{n} \e{f(n+h)-f(n)} \Rightarrow \abs{S}^2 \l \sum_{|h|\l H} \abs{\sum_{n} \e{\Delta_h f(n)}} + \text{(error)},$$ losing factor $H$. Cauchy-Schwarz, $$\abs{S}^4 \ll H \sum_h \abs{\sum_n \e{\Delta_h f(n)}}^2,$$ add one $H$ to the constant $C_k$.
+    \item Iterate $k$ times, we derive $$\abs{S}^{2^k} \ll \sum_{h_1,h_2,\dots,h_k} \abs{\sum_n \e{\Delta_{h_1} \Delta_{h_2} \cdots \Delta_{h_k} f(n)}}.$$ Considering the difference function, $$\Delta_{h_1} \Delta_{h_2} \cdots \Delta_{h_k} f(n) = \sum_{J\subseteq\{1,\dots,k\}} (-1)^{k-|J|} f\Bigl(n+\sum_{j\in J} h_j\Bigr).$$ The $k$-fold difference involves $2^k$ shifted values of $f$, reflecting an exponential combinatorial complexity.
     \item We can also analyze the Taylor expansion of difference since we have $f(x+h) = f(x) + f'(x)h +o(h)$: $$\Delta_{h_1} \Delta_{h_2} \cdots \Delta_{h_k} f(n) = \frac{f^{(k)}(n)}{k!}h_1h_2h_3\cdots h_k + O\left(\sum_i |h_i|^{k+1}\right).$$ We must at least multiply $k!$ to obtain effective oscillation of function $f$.
 \end{enumerate}
 To sum up, we have a $c^k$ for Cauchy-Schwarz, a $\prod_i H_i \asymp c^k$, and a $k!$ from differencing function. For a constant $c$, 
