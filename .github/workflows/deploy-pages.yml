@@ -5,6 +5,7 @@ on:
     workflows:
       - Build LinearAlgebra PDF
       - Build ExPair PDF
+      - Build Problems_in_Mathematical_Analysis PDF
     types:
       - completed
 
