@@ -29,6 +29,9 @@ In addition, I addressed some typical number theory problems:
 1. Exercise in _Harvard Lecture Notes- "Exponential sums III- the van der Corput" by Noam Elkies_, involving _Equidistribution_,
 2. Exercise 3, 4, 5 in _Terrence Tao "254A, Notes 5: Bounding exponential sums and the zeta function"_, involving _Vinogradov-Korobov bound_ of L(s,χ).
 
+### Other Short articles (non long-term projects)
+1. Gaussian Integers: Introduction of the algebraic attributes of gaussian integers.  
+2. Note for Sieve Theory & Review For Tuesday: notes on my studying of Sieve theory.
 
 ## Build System
 
