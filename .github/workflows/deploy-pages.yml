@@ -35,11 +35,12 @@ jobs:
       run: |
         rm -rf public
 
+        # ===== Create directories =====
         mkdir -p public/LinearAlgebra
         mkdir -p public/ExPair
         mkdir -p public/Problems_in_Mathematical_Analysis
 
-        # ===== Copy PDFs =====
+        # ===== Copy compiled PDFs =====
         if [ -f LinearAlgebra/main.pdf ]; then
           cp LinearAlgebra/main.pdf public/LinearAlgebra/
         fi
@@ -52,7 +53,20 @@ jobs:
           cp Problems_in_Mathematical_Analysis/main.pdf public/Problems_in_Mathematical_Analysis/
         fi
 
-        # ===== Optional homepage =====
+        # ===== Copy additional PDFs from repository root =====
+        if [ -f GaussInteger.pdf ]; then
+          cp GaussInteger.pdf public/
+        fi
+
+        if [ -f NoteForSieveTheory.pdf ]; then
+          cp NoteForSieveTheory.pdf public/
+        fi
+
+        if [ -f ReviewFORTuesday.pdf ]; then
+          cp ReviewFORTuesday.pdf public/
+        fi
+
+        # ===== Copy homepage =====
         if [ -f index.html ]; then
           cp index.html public/
         fi
