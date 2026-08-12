@@ -1,6 +1,10 @@
 name: Deploy GitHub Pages
 
 on:
+  push:
+    branches:
+      - main
+
   workflow_run:
     workflows:
       - Build LinearAlgebra PDF
@@ -11,7 +15,9 @@ on:
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: |
+      github.event_name == 'push' ||
+      github.event.workflow_run.conclusion == 'success'
 
     runs-on: ubuntu-latest
 
@@ -35,7 +41,7 @@ jobs:
       run: |
         rm -rf public
 
-        # ===== Create directories =====
+        # ===== Main projects =====
         mkdir -p public/LinearAlgebra
         mkdir -p public/ExPair
         mkdir -p public/Problems_in_Mathematical_Analysis
@@ -53,7 +59,7 @@ jobs:
           cp Problems_in_Mathematical_Analysis/main.pdf public/Problems_in_Mathematical_Analysis/
         fi
 
-        # ===== Copy additional PDFs from repository root =====
+        # ===== Copy additional documents =====
         if [ -f GaussInteger.pdf ]; then
           cp GaussInteger.pdf public/
         fi
@@ -70,6 +76,10 @@ jobs:
         if [ -f index.html ]; then
           cp index.html public/
         fi
+
+        # ===== Verify deployment files =====
+        echo "===== Files to be deployed ====="
+        find public -maxdepth 2 -type f -print
 
     # ===== Deploy =====
     - name: Deploy to GitHub Pages
