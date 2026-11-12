@@ -9,7 +9,6 @@ on:
     workflows:
       - Build LinearAlgebra PDF
       - Build ExPair PDF
-      - Build Analysis PDF
     types:
       - completed
 
@@ -44,7 +43,6 @@ jobs:
         # ===== Main projects =====
         mkdir -p public/LinearAlgebra
         mkdir -p public/ExPair
-        mkdir -p public/Problems_in_Mathematical_Analysis
 
         # ===== Copy compiled PDFs =====
         if [ -f LinearAlgebra/main.pdf ]; then
@@ -53,10 +51,6 @@ jobs:
 
         if [ -f ExPair/main.pdf ]; then
           cp ExPair/main.pdf public/ExPair/
-        fi
-
-        if [ -f Problems_in_Mathematical_Analysis/main.pdf ]; then
-          cp Problems_in_Mathematical_Analysis/main.pdf public/Problems_in_Mathematical_Analysis/
         fi
 
         # ===== Copy additional documents =====
