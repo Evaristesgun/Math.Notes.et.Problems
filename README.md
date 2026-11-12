@@ -4,12 +4,6 @@ This repository contains on-going Linear Algebra, Exponent Sum, etc. lecture-sty
 
 ## Notes
 
-### Problems in Mathematical Analysis
-
-Based on *Problems in Mathematical Analysis* by *B. P. Demidovich*,
-
-analysis project is a selection of some exceptionally hard or unfamiliar exercises from the exercise booklet.
-
 ### Linear Algebra
 
 Based on *Linear Algebra and Geometry* by *Shafarevich*,  
@@ -38,13 +32,6 @@ In addition, I addressed some typical number theory problems:
 All PDF documents are automatically compiled through GitHub Actions and deployed through GitHub Pages.
 
 ## Online PDFs
-
-### Problems in Mathematical Analysis
-
-Link:  
-https://Evaristesgun.github.io/Math.Notes.et.Problems/Problems_in_Mathematical_Analysis/main.pdf
-
----
 
 ### Linear Algebra
 
@@ -77,15 +64,10 @@ Math.Notes.et.Problems/
 │   ├── main.tex       Main LaTeX source
 │   └── main.pdf       Compiled PDF
 │
-├── Problems_in_Mathematical_Analysis/
-│   ├── main.tex       Main LaTeX source
-│   └── main.pdf       Compiled PDF
-│
 ├── .github/
 │   └── workflows/
 │       ├── LinearAlgebra.yml
 │       ├── ExPair.yml
-│       ├── analysis.yml
 │       └── deploy-pages.yml
 │
 └── index.html         Personal homepage for GitHub Pages
